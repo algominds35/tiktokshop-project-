@@ -1,0 +1,27 @@
+# Copy this file to .env.local and fill in your actual values
+
+# Supabase (Get from: https://supabase.com → Your Project → Settings → API)
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key_here
+
+# TikTok Shop API (Get from: https://partner.tiktokshop.com)
+TIKTOK_APP_KEY=your_tiktok_app_key_here
+TIKTOK_APP_SECRET=your_tiktok_app_secret_here
+TIKTOK_REDIRECT_URI=http://localhost:3000/api/auth/callback
+
+# Stripe (Get from: https://stripe.com → Developers → API keys)
+STRIPE_SECRET_KEY=sk_test_xxxxx
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxx
+STRIPE_PRICE_ID=price_xxxxx
+STRIPE_WEBHOOK_SECRET=whsec_xxxxx
+
+# NextAuth (Generate secret with: openssl rand -base64 32)
+NEXTAUTH_SECRET=your_random_secret_minimum_32_characters
+NEXTAUTH_URL=http://localhost:3000
+
+# PRODUCTION DEPLOYMENT NOTES:
+# When deploying to Vercel, update these URLs:
+# - TIKTOK_REDIRECT_URI=https://your-app.vercel.app/api/auth/callback
+# - NEXTAUTH_URL=https://your-app.vercel.app
+
