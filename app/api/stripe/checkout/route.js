@@ -3,6 +3,8 @@ import { cookies } from 'next/headers'
 import { db } from '@/lib/supabase'
 import { createCheckoutSession } from '@/lib/stripe'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request) {
   try {
     // Get user from session

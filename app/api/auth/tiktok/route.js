@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { getAuthorizationUrl } from '@/lib/tiktok-api'
 import { cookies } from 'next/headers'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request) {
   try {
     // Generate random state for OAuth security

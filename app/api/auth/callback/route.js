@@ -3,6 +3,8 @@ import { cookies } from 'next/headers'
 import { exchangeCodeForToken } from '@/lib/tiktok-api'
 import { db } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request) {
   try {
     const searchParams = request.nextUrl.searchParams

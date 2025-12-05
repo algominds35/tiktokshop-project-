@@ -4,6 +4,8 @@ import { TikTokAPI } from '@/lib/tiktok-api'
 import { db } from '@/lib/supabase'
 import { calculateProfit, calculateProductProfits } from '@/lib/profit-calculator'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request) {
   try {
     // Get user from session

@@ -1,9 +1,9 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams()
   const [error, setError] = useState('')
 
@@ -209,6 +209,14 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-cyan-50 flex items-center justify-center"><div className="text-2xl">Loading...</div></div>}>
+      <HomeContent />
+    </Suspense>
   )
 }
 
