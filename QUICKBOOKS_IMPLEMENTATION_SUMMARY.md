@@ -313,3 +313,4 @@ You now have a production-ready QuickBooks integration that:
 
 **Next step:** Get your QuickBooks API credentials and start testing!
 
+

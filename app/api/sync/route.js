@@ -88,12 +88,31 @@ export async function POST(request) {
       await db.saveProductProfits(productProfitsData)
     }
 
+    // Create settlement record for QuickBooks sync
+    const settlement = await db.createSettlement({
+      user_id: userId,
+      shop_id: connection.shop_id,
+      period_start: new Date(startTime * 1000).toISOString(),
+      period_end: new Date(endTime * 1000).toISOString(),
+      currency: 'USD',
+      gross_revenue: profitData.grossRevenue,
+      platform_fees: profitData.fees.platformFees,
+      payment_fees: profitData.fees.paymentFees,
+      shipping_cost: profitData.fees.shippingFees,
+      customer_shipping_paid: 0, // TODO: Extract from orders
+      affiliate_commissions: profitData.fees.commissions,
+      refunds: profitData.fees.refunds,
+      adjustments: 0,
+      net_payout: profitData.netProfit,
+    })
+
     return NextResponse.json({
       success: true,
       snapshot: {
         ...snapshot,
         products: productProfits,
       },
+      settlement: settlement,
     })
   } catch (error) {
     console.error('Sync error:', error)

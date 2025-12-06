@@ -128,10 +128,16 @@ export default function Dashboard() {
                 {syncing ? '🔄 Syncing...' : '🔄 Sync Now'}
               </button>
               <button
-                onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
-                className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center gap-2"
+                onClick={() => router.push('/settlements')}
+                className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
               >
-                📊 Connect QuickBooks
+                💰 Settlements
+              </button>
+              <button
+                onClick={() => router.push('/settings/quickbooks')}
+                className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+              >
+                ⚙️ QuickBooks
               </button>
               <button
                 onClick={handleSubscribe}
@@ -179,20 +185,46 @@ export default function Dashboard() {
               </div>
             </div>
             
-            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
-              <div className="text-5xl mb-4">📊</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                QuickBooks Integration Available
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Connect QuickBooks to automatically sync your TikTok Shop settlements as journal entries.
-              </p>
-              <button
-                onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
-                className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-700 transition-all"
-              >
-                📊 Connect QuickBooks Online
-              </button>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
+                <div className="text-5xl mb-4">📊</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  QuickBooks Integration
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Connect QuickBooks to automatically sync your TikTok Shop settlements as journal entries.
+                </p>
+                <div className="space-y-3">
+                  <button
+                    onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
+                    className="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-all"
+                  >
+                    🔗 Connect QuickBooks
+                  </button>
+                  <button
+                    onClick={() => router.push('/settings/quickbooks')}
+                    className="w-full bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all"
+                  >
+                    ⚙️ Configure Accounts
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-8 text-center">
+                <div className="text-5xl mb-4">💰</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  View Settlements
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  See all your TikTok Shop settlements and sync them to QuickBooks with one click.
+                </p>
+                <button
+                  onClick={() => router.push('/settlements')}
+                  className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-all"
+                >
+                  💰 View Settlements
+                </button>
+              </div>
             </div>
           </div>
         ) : (

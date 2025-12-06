@@ -94,3 +94,4 @@ CREATE POLICY "Users can read own QB mappings" ON quickbooks_account_mappings
 CREATE POLICY "Users can read own settlements" ON tiktok_settlements
   FOR SELECT USING (true);
 
+

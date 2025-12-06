@@ -318,3 +318,4 @@ Consider adding QuickBooks integration as a premium feature:
 
 This adds significant value for accounting-conscious sellers!
 
+
