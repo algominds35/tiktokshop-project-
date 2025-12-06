@@ -20,10 +20,6 @@ function HomeContent() {
     }
   }, [searchParams])
 
-  const handleConnect = () => {
-    window.location.href = '/api/auth/tiktok'
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-cyan-50">
       {/* Header */}
@@ -33,12 +29,20 @@ function HomeContent() {
             <span className="text-3xl">📊</span>
             <span className="text-2xl font-bold text-gray-800">ReconcileBook</span>
           </div>
-          <button
-            onClick={handleConnect}
-            className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors"
-          >
-            Sign In
-          </button>
+          <div className="flex items-center gap-4">
+            <a
+              href="/login"
+              className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors"
+            >
+              Sign In
+            </a>
+            <a
+              href="/signup"
+              className="px-6 py-2 text-sm font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Get Started Free
+            </a>
+          </div>
         </div>
       </header>
 
@@ -64,12 +68,12 @@ function HomeContent() {
             TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
           </p>
 
-          <button
-            onClick={handleConnect}
-            className="bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all transform hover:scale-105"
+          <a
+            href="/signup"
+            className="inline-block bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all transform hover:scale-105"
           >
-            🚀 Connect TikTok Shop (Free Trial)
-          </button>
+            🚀 Get Started Free
+          </a>
 
           <p className="text-sm text-gray-500 mt-4">
             7-day free trial • No credit card required • Cancel anytime
