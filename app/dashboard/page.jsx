@@ -126,6 +126,12 @@ export default function Dashboard() {
                 {syncing ? '🔄 Syncing...' : '🔄 Sync Now'}
               </button>
               <button
+                onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
+                className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center gap-2"
+              >
+                📊 Connect QuickBooks
+              </button>
+              <button
                 onClick={handleSubscribe}
                 className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
               >
