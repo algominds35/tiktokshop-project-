@@ -9,8 +9,16 @@ export const dynamic = 'force-dynamic'
  */
 export async function GET(request) {
   try {
-    // TODO: Get userId from session
-    const userId = 'TODO_GET_FROM_SESSION'
+    // Get userId from session
+    const { getUserId } = await import('@/lib/auth')
+    const userId = getUserId()
+    
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
 
     const settlements = await db.getSettlements(userId)
 

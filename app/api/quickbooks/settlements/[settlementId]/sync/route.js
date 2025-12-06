@@ -176,8 +176,16 @@ export async function GET(request, { params }) {
   try {
     const { settlementId } = params
 
-    // TODO: Get userId from session and validate access
-    const userId = 'TODO_GET_FROM_SESSION'
+    // Get userId from session and validate access
+    const { getUserId } = await import('@/lib/auth')
+    const userId = getUserId()
+    
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
 
     const { data: settlement, error } = await supabase
       .from('tiktok_settlements')

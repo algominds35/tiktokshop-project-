@@ -145,6 +145,15 @@ export default function Dashboard() {
               >
                 💳 Manage Subscription
               </button>
+              <button
+                onClick={async () => {
+                  await fetch('/api/auth/logout', { method: 'POST' })
+                  router.push('/')
+                }}
+                className="bg-red-100 text-red-700 px-6 py-2 rounded-lg font-semibold hover:bg-red-200 transition-colors"
+              >
+                🚪 Logout
+              </button>
             </div>
           </div>
         </div>

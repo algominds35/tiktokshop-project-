@@ -77,8 +77,16 @@ export async function POST(request) {
       )
     }
 
-    // TODO: Get userId from session
-    const userId = 'TODO_GET_FROM_SESSION'
+    // Get userId from session
+    const { getUserId } = await import('@/lib/auth')
+    const userId = getUserId()
+    
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
 
     // Check if mapping exists
     const { data: existingMapping } = await supabase

@@ -54,8 +54,15 @@ export async function GET(request) {
     // Calculate expiration timestamp
     const expiresAt = new Date(Date.now() + expiresIn * 1000).toISOString()
 
-    // TODO: Get userId from session
-    const userId = 'TODO_GET_FROM_SESSION'
+    // Get userId from session
+    const { getUserId } = await import('@/lib/auth')
+    const userId = getUserId()
+    
+    if (!userId) {
+      return NextResponse.redirect(
+        new URL('/login?error=unauthorized', request.url)
+      )
+    }
 
     // Store or update connection in database
     const { data: existingConnection } = await supabase
