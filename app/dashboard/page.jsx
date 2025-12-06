@@ -27,7 +27,9 @@ export default function Dashboard() {
 
       if (!response.ok) {
         if (response.status === 401) {
-          router.push('/')
+          // Don't redirect, just show empty state for now
+          setData(null)
+          setLoading(false)
           return
         }
         throw new Error(result.error || 'Failed to load data')
@@ -151,21 +153,47 @@ export default function Dashboard() {
         )}
 
         {!data ? (
-          <div className="bg-white rounded-lg shadow-md p-12 text-center">
-            <div className="text-6xl mb-4">🎯</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Welcome to ReconcileBook!
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Click "Sync Now" to fetch your TikTok Shop data and see your real profit breakdown.
-            </p>
-            <button
-              onClick={handleSync}
-              disabled={syncing}
-              className="bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all disabled:opacity-50"
-            >
-              {syncing ? '🔄 Syncing Your Data...' : '🚀 Sync My First Data'}
-            </button>
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg shadow-md p-12 text-center">
+              <div className="text-6xl mb-4">🎯</div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                Welcome to ReconcileBook!
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Connect your TikTok Shop to get started, then sync your data to see profit breakdown.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <button
+                  onClick={() => window.location.href = '/api/auth/tiktok'}
+                  className="bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all"
+                >
+                  🔗 Connect TikTok Shop
+                </button>
+                <button
+                  onClick={handleSync}
+                  disabled={syncing}
+                  className="bg-gray-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all disabled:opacity-50"
+                >
+                  {syncing ? '🔄 Syncing...' : '🔄 Sync Data'}
+                </button>
+              </div>
+            </div>
+            
+            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
+              <div className="text-5xl mb-4">📊</div>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                QuickBooks Integration Available
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Connect QuickBooks to automatically sync your TikTok Shop settlements as journal entries.
+              </p>
+              <button
+                onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
+                className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-700 transition-all"
+              >
+                📊 Connect QuickBooks Online
+              </button>
+            </div>
           </div>
         ) : (
           <div className="space-y-8">
