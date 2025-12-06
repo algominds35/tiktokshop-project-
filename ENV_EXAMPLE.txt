@@ -20,8 +20,23 @@ STRIPE_WEBHOOK_SECRET=whsec_xxxxx
 NEXTAUTH_SECRET=your_random_secret_minimum_32_characters
 NEXTAUTH_URL=http://localhost:3000
 
+# QuickBooks Online Integration (Get from: https://developer.intuit.com)
+# See QUICKBOOKS_SETUP_GUIDE.md for detailed setup instructions
+QBO_CLIENT_ID=your_quickbooks_client_id_here
+QBO_CLIENT_SECRET=your_quickbooks_client_secret_here
+QBO_REDIRECT_URI=http://localhost:3000/api/quickbooks/callback
+
+# QuickBooks API URLs (Use sandbox for development, production for live)
+# Sandbox (for testing):
+QBO_BASE_URL=https://sandbox-quickbooks.api.intuit.com
+QBO_AUTH_URL=https://appcenter.intuit.com/connect/oauth2
+# Production (uncomment for live):
+# QBO_BASE_URL=https://quickbooks.api.intuit.com
+# QBO_AUTH_URL=https://appcenter.intuit.com/connect/oauth2
+
 # PRODUCTION DEPLOYMENT NOTES:
 # When deploying to Vercel, update these URLs:
 # - TIKTOK_REDIRECT_URI=https://your-app.vercel.app/api/auth/callback
+# - QBO_REDIRECT_URI=https://your-app.vercel.app/api/quickbooks/callback
 # - NEXTAUTH_URL=https://your-app.vercel.app
 

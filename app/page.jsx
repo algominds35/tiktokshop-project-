@@ -61,7 +61,7 @@ function HomeContent() {
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
+            TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes, your real profit margins, and sync everything to QuickBooks automatically.
           </p>
 
           <button
@@ -77,8 +77,8 @@ function HomeContent() {
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl transition-shadow">
             <div className="text-4xl mb-4">🔗</div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               Instant Connection
@@ -88,7 +88,7 @@ function HomeContent() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl transition-shadow">
             <div className="text-4xl mb-4">💰</div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               See All Hidden Fees
@@ -98,7 +98,17 @@ function HomeContent() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl transition-shadow">
+            <div className="text-4xl mb-4">📊</div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">
+              QuickBooks Sync
+            </h3>
+            <p className="text-gray-600">
+              Automatic journal entries in QuickBooks using the A2X method. Perfect books, zero manual work.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl transition-shadow">
             <div className="text-4xl mb-4">📈</div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               Product-Level Insights
@@ -120,6 +130,7 @@ function HomeContent() {
               <li>• You see "net payout" but don't know your real profit margin</li>
               <li>• Some products look profitable but actually lose money</li>
               <li>• Hours spent trying to reconcile TikTok's confusing reports</li>
+              <li>• Manual QuickBooks entries are tedious and error-prone</li>
             </ul>
           </div>
 
@@ -131,6 +142,7 @@ function HomeContent() {
               <li>• Automatic sync with TikTok Shop API</li>
               <li>• Complete fee breakdown (platform, payment, shipping, commissions)</li>
               <li>• Real profit margins per product with color-coded alerts</li>
+              <li>• One-click QuickBooks sync with A2X-style journal entries</li>
               <li>• Know your numbers in 30 seconds, not 3 hours</li>
             </ul>
           </div>
@@ -157,6 +169,10 @@ function HomeContent() {
               <li className="flex items-start gap-2">
                 <span className="text-green-500 font-bold">✓</span>
                 <span className="text-gray-700">Real-time profit tracking</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 font-bold">✓</span>
+                <span className="text-gray-700">QuickBooks Online integration</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 font-bold">✓</span>
