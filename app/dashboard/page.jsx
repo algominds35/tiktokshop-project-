@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [syncing, setSyncing] = useState(false)
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
+  const [isDemo, setIsDemo] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -98,6 +99,28 @@ export default function Dashboard() {
     }
   }
 
+  const handleLoadDemo = async () => {
+    try {
+      setLoading(true)
+      setError('')
+
+      const response = await fetch('/api/demo/data')
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to load demo data')
+      }
+
+      setData(result.data)
+      setIsDemo(true)
+    } catch (err) {
+      console.error('Load demo error:', err)
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -177,7 +200,7 @@ export default function Dashboard() {
               <p className="text-gray-600 mb-6">
                 Connect your TikTok Shop to get started, then sync your data to see profit breakdown.
               </p>
-              <div className="flex gap-4 justify-center">
+              <div className="flex gap-4 justify-center flex-wrap">
                 <button
                   onClick={() => window.location.href = '/api/auth/tiktok'}
                   className="bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all"
@@ -190,6 +213,12 @@ export default function Dashboard() {
                   className="bg-gray-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all disabled:opacity-50"
                 >
                   {syncing ? '🔄 Syncing...' : '🔄 Sync Data'}
+                </button>
+                <button
+                  onClick={handleLoadDemo}
+                  className="bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all"
+                >
+                  🎬 View Demo Data
                 </button>
               </div>
             </div>
@@ -238,6 +267,15 @@ export default function Dashboard() {
           </div>
         ) : (
           <div className="space-y-8">
+            {/* Demo Banner */}
+            {isDemo && (
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+                <p className="text-purple-800 text-center">
+                  🎬 <strong>Demo Mode:</strong> This is sample data to showcase the dashboard. Connect your TikTok Shop to see your real data!
+                </p>
+              </div>
+            )}
+
             {/* Profit Cards */}
             <ProfitCards data={data} />
 
