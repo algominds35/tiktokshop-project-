@@ -228,6 +228,40 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+
+            {/* QuickBooks Integration - Always Visible */}
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-lg font-bold text-gray-900">QuickBooks Integration</h3>
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      Optional
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Automatically sync your TikTok Shop payouts to QuickBooks. Same accounting method as A2X - creates one journal entry per payout with proper clearing account reconciliation.
+                  </p>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
+                      className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      Connect QuickBooks Online
+                    </button>
+                    <button
+                      onClick={() => router.push('/settings/quickbooks')}
+                      className="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      Account Settings
+                    </button>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-3">
+                    You can connect QuickBooks before or after connecting TikTok Shop
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="space-y-6">
@@ -418,9 +452,9 @@ export default function Dashboard() {
             <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Automatic Bookkeeping with QuickBooks</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Sync Payouts to QuickBooks</h3>
                   <p className="text-sm text-gray-600 mb-4">
-                    Sync your TikTok Shop settlements to QuickBooks automatically. Same method as A2X - one journal entry per settlement.
+                    Automatically sync your TikTok Shop payouts to QuickBooks. Same method as A2X - one journal entry per payout with proper reconciliation.
                   </p>
                   <div className="flex gap-3">
                     <button
