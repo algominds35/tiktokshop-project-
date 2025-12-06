@@ -176,12 +176,12 @@ function HomeContent() {
               </li>
             </ul>
 
-            <button
-              onClick={handleConnect}
-              className="w-full bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all"
+            <a
+              href="/signup"
+              className="block w-full bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all text-center"
             >
               Start Free Trial
-            </button>
+            </a>
             <p className="text-xs text-gray-500 mt-3">Cancel anytime. No questions asked.</p>
           </div>
         </div>
@@ -194,12 +194,12 @@ function HomeContent() {
           <p className="text-xl mb-6 opacity-90">
             Join TikTok Shop sellers who know their real numbers
           </p>
-          <button
-            onClick={handleConnect}
-            className="bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all transform hover:scale-105"
+          <a
+            href="/signup"
+            className="inline-block bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all transform hover:scale-105"
           >
-            Connect TikTok Shop Now
-          </button>
+            Get Started Now
+          </a>
         </div>
       </main>
 

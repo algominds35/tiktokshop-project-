@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 /**
- * GET /api/demo/data
+ * POST /api/demo/data
  * Returns demo profit data for testing/showcasing the dashboard
  */
-export async function GET(request) {
+export async function POST(request) {
   // Generate realistic demo data
   const demoData = {
     revenue: 10245.50,
