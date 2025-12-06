@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { getQuickBooksAuthUrl } from '@/lib/quickbooks-api'
 import crypto from 'crypto'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * GET /api/quickbooks/connect
  * Redirects user to QuickBooks OAuth authorization page

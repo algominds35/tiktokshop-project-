@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { getQuickBooksAccessTokenForShop, fetchQuickBooksAccounts } from '@/lib/quickbooks-api'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * GET /api/quickbooks/accounts?shopId=xxx
  * Fetches available QuickBooks accounts for display in mapping UI
