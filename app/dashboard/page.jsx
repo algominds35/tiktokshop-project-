@@ -60,14 +60,12 @@ export default function Dashboard() {
           return
         }
         if (response.status === 403) {
-          // Redirect to subscription
           handleSubscribe()
           return
         }
         throw new Error(result.error || 'Failed to sync data')
       }
 
-      // Reload data after sync
       await loadData()
     } catch (err) {
       console.error('Sync error:', err)
@@ -89,7 +87,6 @@ export default function Dashboard() {
         throw new Error(result.error || 'Failed to create checkout session')
       }
 
-      // Redirect to Stripe Checkout
       window.location.href = result.url
     } catch (err) {
       console.error('Checkout error:', err)
@@ -144,7 +141,6 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -177,7 +173,6 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         {error && (
           <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
@@ -187,7 +182,6 @@ export default function Dashboard() {
 
         {!data ? (
           <div className="space-y-6">
-            {/* Getting Started Guide */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-3">Getting Started</h3>
               <p className="text-slate-600 text-sm mb-4">
@@ -209,7 +203,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Step 1: Connect TikTok */}
             <div className="bg-white rounded-lg shadow-sm border-l-4 border-blue-600 p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
@@ -236,7 +229,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Step 2: Sync Data */}
             <div className="bg-white rounded-lg shadow-sm border-l-4 border-slate-300 p-6 opacity-75">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
@@ -266,7 +258,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Step 3: QuickBooks (Optional) */}
             <div className="bg-white rounded-lg shadow-sm border-l-4 border-green-600 p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
@@ -304,7 +295,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Demo Mode */}
             <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -324,7 +314,6 @@ export default function Dashboard() {
           </div>
         ) : (
           <div className="space-y-8">
-            {/* Demo Banner */}
             {isDemo && (
               <div className="bg-amber-50 border-l-4 border-amber-500 p-5">
                 <div className="flex items-start gap-3">
@@ -341,15 +330,11 @@ export default function Dashboard() {
               </div>
             )}
 
-            {/* Profit Cards */}
             <ProfitCards data={data} />
 
-            {/* Two Column Layout */}
             <div className="grid lg:grid-cols-2 gap-8">
-              {/* Fee Breakdown */}
               <FeeBreakdown feeBreakdown={data.fee_breakdown} />
 
-              {/* Quick Stats */}
               <div className="bg-white rounded-lg shadow-md p-6">
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">Quick Stats</h2>
                 <div className="space-y-4">
@@ -396,13 +381,11 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Product Table */}
             <ProductTable products={data.products} />
           </div>
         )}
       </main>
 
-      {/* Footer */}
       <footer className="container mx-auto px-4 py-8 mt-16">
         <div className="text-center text-gray-500 text-sm">
           <p>Data synced from TikTok Shop API • Last 30 days</p>
@@ -411,4 +394,3 @@ export default function Dashboard() {
     </div>
   )
 }
-
