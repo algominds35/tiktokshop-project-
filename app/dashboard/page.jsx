@@ -135,47 +135,41 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-3xl">📊</span>
-              <span className="text-2xl font-bold text-gray-800">ReconcileBook</span>
+              <div className="w-8 h-8 bg-blue-600 rounded"></div>
+              <span className="text-2xl font-bold text-slate-900">ReconcileBook</span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <button
                 onClick={handleSync}
                 disabled={syncing}
-                className="bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {syncing ? '🔄 Syncing...' : '🔄 Sync Now'}
+                {syncing ? 'Syncing...' : 'Sync Now'}
               </button>
               <button
                 onClick={() => router.push('/settlements')}
-                className="bg-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+                className="bg-white border border-gray-300 text-slate-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
-                💰 Settlements
+                Settlements
               </button>
               <button
                 onClick={() => router.push('/settings/quickbooks')}
-                className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                className="bg-white border border-gray-300 text-slate-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
-                ⚙️ QuickBooks
-              </button>
-              <button
-                onClick={handleSubscribe}
-                className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-              >
-                💳 Manage Subscription
+                QuickBooks
               </button>
               <button
                 onClick={async () => {
                   await fetch('/api/auth/logout', { method: 'POST' })
                   router.push('/')
                 }}
-                className="bg-red-100 text-red-700 px-6 py-2 rounded-lg font-semibold hover:bg-red-200 transition-colors"
+                className="bg-white border border-gray-300 text-slate-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
-                🚪 Logout
+                Logout
               </button>
             </div>
           </div>
@@ -192,75 +186,72 @@ export default function Dashboard() {
 
         {!data ? (
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-md p-12 text-center">
-              <div className="text-6xl mb-4">🎯</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Welcome to ReconcileBook!
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                Welcome to ReconcileBook
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-slate-600 mb-8 max-w-lg mx-auto">
                 Connect your TikTok Shop to get started, then sync your data to see profit breakdown.
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <button
                   onClick={() => window.location.href = '/api/auth/tiktok'}
-                  className="bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all"
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all"
                 >
-                  🔗 Connect TikTok Shop
+                  Connect TikTok Shop
                 </button>
                 <button
                   onClick={handleSync}
                   disabled={syncing}
-                  className="bg-gray-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all disabled:opacity-50"
+                  className="bg-white border border-gray-300 text-slate-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-all disabled:opacity-50"
                 >
-                  {syncing ? '🔄 Syncing...' : '🔄 Sync Data'}
+                  {syncing ? 'Syncing...' : 'Sync Data'}
                 </button>
                 <button
                   onClick={handleLoadDemo}
-                  className="bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-bold hover:shadow-xl transition-all"
+                  className="bg-slate-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-all"
                 >
-                  🎬 View Demo Data
+                  View Demo Data
                 </button>
               </div>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
-                <div className="text-5xl mb-4">📊</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
+                <h3 className="text-xl font-bold text-slate-900 mb-4">
                   QuickBooks Integration
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 mb-6">
                   Connect QuickBooks to automatically sync your TikTok Shop settlements as journal entries.
                 </p>
                 <div className="space-y-3">
                   <button
                     onClick={() => window.location.href = '/api/quickbooks/connect?shopId=default'}
-                    className="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-all"
+                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all"
                   >
-                    🔗 Connect QuickBooks
+                    Connect QuickBooks
                   </button>
                   <button
                     onClick={() => router.push('/settings/quickbooks')}
-                    className="w-full bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all"
+                    className="w-full bg-white border border-gray-300 text-slate-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-all"
                   >
-                    ⚙️ Configure Accounts
+                    Configure Accounts
                   </button>
                 </div>
               </div>
 
-              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-8 text-center">
-                <div className="text-5xl mb-4">💰</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
+                <h3 className="text-xl font-bold text-slate-900 mb-4">
                   View Settlements
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-slate-600 mb-6">
                   See all your TikTok Shop settlements and sync them to QuickBooks with one click.
                 </p>
                 <button
                   onClick={() => router.push('/settlements')}
-                  className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-all"
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all"
                 >
-                  💰 View Settlements
+                  View Settlements
                 </button>
               </div>
             </div>
@@ -269,9 +260,9 @@ export default function Dashboard() {
           <div className="space-y-8">
             {/* Demo Banner */}
             {isDemo && (
-              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
-                <p className="text-purple-800 text-center">
-                  🎬 <strong>Demo Mode:</strong> This is sample data to showcase the dashboard. Connect your TikTok Shop to see your real data!
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-blue-800 text-center">
+                  <strong>Demo Mode:</strong> This is sample data to showcase the dashboard. Connect your TikTok Shop to see your real data.
                 </p>
               </div>
             )}

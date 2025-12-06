@@ -37,15 +37,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-cyan-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-4xl">📊</span>
-            <span className="text-3xl font-bold text-gray-800">ReconcileBook</span>
+            <div className="w-10 h-10 bg-blue-600 rounded"></div>
+            <span className="text-3xl font-bold text-slate-900">ReconcileBook</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">Welcome Back</h1>
+          <p className="text-slate-600">Sign in to your account</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl p-8">
@@ -73,18 +73,18 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transition-all disabled:opacity-50"
+              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all disabled:opacity-50"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600 text-sm">
+            <p className="text-slate-600 text-sm">
               Don't have an account?{' '}
               <button
                 onClick={() => router.push('/signup')}
-                className="text-cyan-600 font-semibold hover:text-cyan-700"
+                className="text-blue-600 font-semibold hover:text-blue-700"
               >
                 Sign up for free trial
               </button>

@@ -6,40 +6,32 @@ export default function ProfitCards({ data }) {
       title: 'Gross Revenue',
       value: data?.revenue || 0,
       color: 'blue',
-      icon: '💰',
     },
     {
       title: 'Total Fees',
       value: data?.fees || 0,
-      color: 'red',
-      icon: '💸',
+      color: 'slate',
     },
     {
       title: 'Net Profit',
       value: data?.profit || 0,
-      color: 'green',
-      icon: '✅',
+      color: 'blue',
     },
     {
       title: 'Profit Margin',
       value: `${data?.margin || 0}%`,
-      color: 'purple',
-      icon: '📊',
+      color: 'slate',
     },
   ]
 
   const colorClasses = {
     blue: 'bg-blue-50 border-blue-200',
-    red: 'bg-red-50 border-red-200',
-    green: 'bg-green-50 border-green-200',
-    purple: 'bg-purple-50 border-purple-200',
+    slate: 'bg-slate-50 border-slate-200',
   }
 
   const textColorClasses = {
     blue: 'text-blue-600',
-    red: 'text-red-600',
-    green: 'text-green-600',
-    purple: 'text-purple-600',
+    slate: 'text-slate-700',
   }
 
   return (
@@ -47,11 +39,10 @@ export default function ProfitCards({ data }) {
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`${colorClasses[card.color]} border-2 rounded-lg p-6 transition-all hover:shadow-lg`}
+          className={`${colorClasses[card.color]} border rounded-lg p-6 transition-all hover:shadow-md`}
         >
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-2xl">{card.icon}</span>
-            <span className="text-sm font-medium text-gray-600">
+          <div className="mb-3">
+            <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
               {card.title}
             </span>
           </div>

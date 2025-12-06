@@ -37,15 +37,15 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-cyan-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-4xl">📊</span>
-            <span className="text-3xl font-bold text-gray-800">ReconcileBook</span>
+            <div className="w-10 h-10 bg-blue-600 rounded"></div>
+            <span className="text-3xl font-bold text-slate-900">ReconcileBook</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Start Your Free Trial</h1>
-          <p className="text-gray-600">7 days free, no credit card required</p>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">Start Your Free Trial</h1>
+          <p className="text-slate-600">7 days free, no credit card required</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl p-8">
@@ -76,33 +76,39 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-pink-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transition-all disabled:opacity-50"
+              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all disabled:opacity-50"
             >
               {loading ? 'Creating account...' : 'Start Free Trial'}
             </button>
           </form>
 
           <div className="mt-6">
-            <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 rounded-lg p-3">
-              <span>✓</span>
+            <div className="flex items-center gap-3 text-sm text-slate-700 bg-blue-50 rounded-lg p-3 border border-blue-100">
+              <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+              </svg>
               <span>7-day free trial</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 rounded-lg p-3 mt-2">
-              <span>✓</span>
+            <div className="flex items-center gap-3 text-sm text-slate-700 bg-blue-50 rounded-lg p-3 mt-2 border border-blue-100">
+              <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+              </svg>
               <span>No credit card required</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 rounded-lg p-3 mt-2">
-              <span>✓</span>
+            <div className="flex items-center gap-3 text-sm text-slate-700 bg-blue-50 rounded-lg p-3 mt-2 border border-blue-100">
+              <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+              </svg>
               <span>Cancel anytime</span>
             </div>
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600 text-sm">
+            <p className="text-slate-600 text-sm">
               Already have an account?{' '}
               <button
                 onClick={() => router.push('/login')}
-                className="text-cyan-600 font-semibold hover:text-cyan-700"
+                className="text-blue-600 font-semibold hover:text-blue-700"
               >
                 Sign in
               </button>
