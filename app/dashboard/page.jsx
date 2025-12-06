@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [syncing, setSyncing] = useState(false)
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
+  const [isDemo, setIsDemo] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -96,6 +97,40 @@ export default function Dashboard() {
     }
   }
 
+  const handleLoadDemo = async () => {
+    try {
+      setLoading(true)
+      setError('')
+
+      const response = await fetch('/api/demo/data', {
+        method: 'POST',
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to load demo data')
+      }
+
+      setData(result.data)
+      setIsDemo(true)
+    } catch (err) {
+      console.error('Demo load error:', err)
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' })
+      router.push('/')
+    } catch (err) {
+      console.error('Logout error:', err)
+    }
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -130,6 +165,12 @@ export default function Dashboard() {
                 className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
               >
                 💳 Manage Subscription
+              </button>
+              <button
+                onClick={handleLogout}
+                className="bg-red-50 text-red-600 px-6 py-2 rounded-lg font-semibold hover:bg-red-100 transition-colors"
+              >
+                Logout
               </button>
             </div>
           </div>
