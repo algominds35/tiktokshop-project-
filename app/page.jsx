@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 export default function LandingPage() {
   const [showDemo, setShowDemo] = useState(false)
+  const [showEmailPopup, setShowEmailPopup] = useState(false)
   const [pricingInterval, setPricingInterval] = useState('monthly')
   const [openFaq, setOpenFaq] = useState(null)
 
@@ -25,12 +26,12 @@ export default function LandingPage() {
               <a href="#pricing" className="text-sm text-gray-600 hover:text-gray-900">Pricing</a>
               <a href="#faq" className="text-sm text-gray-600 hover:text-gray-900">FAQs</a>
             </div>
-            <Link
-              href="/signup"
+            <button
+              onClick={() => setShowEmailPopup(true)}
               className="px-6 py-2.5 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-medium text-sm transition-colors"
             >
               Start Free Trial
-            </Link>
+            </button>
           </div>
         </div>
       </nav>
@@ -51,9 +52,9 @@ export default function LandingPage() {
               </p>
 
               <div className="mb-8">
-                <Link
-                  href="/signup"
-                  className="inline-block"
+                <button
+                  onClick={() => setShowEmailPopup(true)}
+                  className="inline-block w-full"
                 >
                   <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-2xl px-12 py-6 text-center shadow-2xl transition-all transform hover:scale-105 cursor-pointer">
                     <div className="text-3xl font-bold text-white mb-2 tracking-wide">
@@ -63,7 +64,7 @@ export default function LandingPage() {
                       No credit card required, Cancel anytime.
                     </div>
                   </div>
-                </Link>
+                </button>
               </div>
 
               <div className="text-lg text-gray-700 mb-6">
@@ -647,6 +648,66 @@ export default function LandingPage() {
       {showDemo && (
         <DemoModal onClose={() => setShowDemo(false)} />
       )}
+
+      {/* Email Popup */}
+      {showEmailPopup && (
+        <EmailPopup onClose={() => setShowEmailPopup(false)} />
+      )}
+    </div>
+  )
+}
+
+function EmailPopup({ onClose }) {
+  const [email, setEmail] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (email) {
+      localStorage.setItem('user_email', email)
+      localStorage.setItem('user_logged_in', 'true')
+      localStorage.setItem('trial_start', new Date().toISOString())
+      window.location.href = '/dashboard'
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+      <div className="bg-white rounded-2xl max-w-md w-full p-8">
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">Start Your Free Trial</h3>
+          <p className="text-gray-600">Enter your email to get instant access</p>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@company.com"
+            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 text-lg focus:border-orange-500 focus:outline-none"
+            autoFocus
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
+          >
+            Get Instant Access →
+          </button>
+        </form>
+
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          <span className="text-2xl text-gray-600">×</span>
+        </button>
+
+        <p className="text-xs text-gray-500 text-center mt-4">
+          No credit card required • 14 days free
+        </p>
+      </div>
     </div>
   )
 }
