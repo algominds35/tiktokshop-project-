@@ -8,10 +8,14 @@ const supabase = createClient(
 
 export async function GET(request) {
   try {
+    // Get user email from header (sent by dashboard)
     const email = request.headers.get('x-user-email')
-    
+
     if (!email) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      return NextResponse.json(
+        { error: 'Email required' },
+        { status: 400 }
+      )
     }
 
     // Get user from database
@@ -22,40 +26,45 @@ export async function GET(request) {
       .single()
 
     if (error || !user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 })
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      )
     }
 
+    // Calculate trial status
     const now = new Date()
     const trialEndsAt = user.trial_ends_at ? new Date(user.trial_ends_at) : null
     const subscriptionStatus = user.subscription_status || 'trialing'
 
-    // Check if trial expired
-    let isTrialExpired = false
-    let daysRemaining = 0
+    // Check if trial has expired
+    const isTrialExpired = trialEndsAt 
+      ? now > trialEndsAt 
+      : false
 
-    if (subscriptionStatus === 'trialing' && trialEndsAt) {
-      isTrialExpired = now > trialEndsAt
-      const diffTime = trialEndsAt - now
-      daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-      if (daysRemaining < 0) daysRemaining = 0
-    }
-
-    // If user has active subscription, they're good
+    // Check if user has active access (active subscription or valid trial)
     const hasAccess = subscriptionStatus === 'active' || 
                      (subscriptionStatus === 'trialing' && !isTrialExpired)
 
+    // Calculate days remaining
+    let daysRemaining = null
+    if (trialEndsAt && subscriptionStatus === 'trialing') {
+      const diff = trialEndsAt - now
+      daysRemaining = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)))
+    }
+
     return NextResponse.json({
-      hasAccess,
       subscriptionStatus,
+      trialEndsAt: trialEndsAt?.toISOString() || null,
       isTrialExpired,
+      hasAccess,
       daysRemaining,
-      trialEndsAt: user.trial_ends_at,
-      subscriptionPlan: user.subscription_plan
+      subscriptionPlan: user.subscription_plan || null,
     })
   } catch (error) {
     console.error('Trial status error:', error)
     return NextResponse.json(
-      { error: error.message || 'Failed to check trial status' },
+      { error: 'Failed to check trial status' },
       { status: 500 }
     )
   }

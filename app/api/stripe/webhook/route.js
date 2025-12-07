@@ -30,12 +30,23 @@ export async function POST(request) {
         const session = event.data.object
         const userId = session.metadata.userId
 
+        // Get subscription to check trial end date
+        let trialEndsAt = null
+        if (session.subscription) {
+          const subscription = await stripe.subscriptions.retrieve(session.subscription)
+          if (subscription.trial_end) {
+            trialEndsAt = new Date(subscription.trial_end * 1000).toISOString()
+          }
+        }
+
         // Update user subscription status
         await supabase
           .from('users')
           .update({
-            subscription_status: 'active',
+            subscription_status: session.subscription ? 'trialing' : 'active', // If subscription exists, it's in trial
             stripe_subscription_id: session.subscription,
+            subscription_plan: session.metadata.plan || null,
+            trial_ends_at: trialEndsAt,
             updated_at: new Date().toISOString(),
           })
           .eq('id', userId)
@@ -77,11 +88,28 @@ export async function POST(request) {
           .single()
 
         if (user) {
-          const status = subscription.status === 'active' ? 'active' : 'expired'
+          // Determine status: trialing if in trial, active if active, expired otherwise
+          let status = 'expired'
+          if (subscription.status === 'trialing') {
+            status = 'trialing'
+          } else if (subscription.status === 'active') {
+            status = 'active'
+          }
+
+          // Update trial_ends_at if subscription has trial_end
+          let trialEndsAt = user.trial_ends_at
+          if (subscription.trial_end) {
+            trialEndsAt = new Date(subscription.trial_end * 1000).toISOString()
+          } else if (status === 'active') {
+            // Clear trial_ends_at when subscription becomes active (trial ended)
+            trialEndsAt = null
+          }
+
           await supabase
             .from('users')
             .update({
               subscription_status: status,
+              trial_ends_at: trialEndsAt,
               updated_at: new Date().toISOString(),
             })
             .eq('id', user.id)

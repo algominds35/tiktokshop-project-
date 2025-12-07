@@ -47,10 +47,14 @@ export async function GET(request) {
     let user = await db.getUserByEmail(userEmail)
     
     if (!user) {
-      // Create new user
+      // Create new user with 7-day trial
+      const trialEndsAt = new Date()
+      trialEndsAt.setDate(trialEndsAt.getDate() + 7) // 7 days from now
+
       user = await db.createUser({
         email: userEmail,
-        subscription_status: 'trial',
+        subscription_status: 'trialing',
+        trial_ends_at: trialEndsAt.toISOString(),
       })
     }
 
