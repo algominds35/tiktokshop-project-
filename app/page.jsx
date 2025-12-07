@@ -17,35 +17,6 @@ export default function LandingPage() {
   const [pricingInterval, setPricingInterval] = useState('monthly')
   const [openFaq, setOpenFaq] = useState(null)
 
-  // Handle email confirmation from Supabase
-  useEffect(() => {
-    const handleEmailConfirmation = async () => {
-      // Check if there's a hash with access_token (from email confirmation)
-      const hashParams = new URLSearchParams(window.location.hash.substring(1))
-      const accessToken = hashParams.get('access_token')
-      const type = hashParams.get('type')
-
-      if (accessToken && type === 'signup') {
-        try {
-          // Set the session with Supabase
-          const { data, error } = await supabase.auth.setSession({
-            access_token: accessToken,
-            refresh_token: hashParams.get('refresh_token') || '',
-          })
-
-          if (!error && data.session) {
-            // Email confirmed! Redirect to dashboard
-            window.location.href = '/dashboard'
-          }
-        } catch (err) {
-          console.error('Error confirming email:', err)
-        }
-      }
-    }
-
-    handleEmailConfirmation()
-  }, [])
-
   const handlePlanSelect = (plan) => {
     // For free trial (no plan), redirect to signup
     if (!plan) {
