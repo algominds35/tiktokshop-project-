@@ -13,17 +13,27 @@ export default function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault()
     
-    if (!email) {
+    if (!email || email.trim() === '') {
       setError('Please enter your email')
       return
     }
 
+    console.log('Login clicked, email:', email)
+    
     // Simple localStorage auth
-    localStorage.setItem('user_email', email)
-    localStorage.setItem('user_logged_in', 'true')
-
-    // Hard redirect
-    window.location.href = '/dashboard'
+    try {
+      localStorage.setItem('user_email', email)
+      localStorage.setItem('user_logged_in', 'true')
+      console.log('localStorage set, redirecting...')
+      
+      // Force hard redirect
+      setTimeout(() => {
+        window.location.href = '/dashboard'
+      }, 100)
+    } catch (err) {
+      console.error('Error:', err)
+      alert('Error: ' + err.message)
+    }
   }
 
   return (
