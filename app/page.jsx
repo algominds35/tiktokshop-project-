@@ -41,44 +41,46 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-500 rounded-full px-5 py-2.5 mb-6">
-                <span className="text-xl">🎉</span>
-                <span className="text-sm font-bold text-green-900">Start 14-Day FREE Trial - No Credit Card Required</span>
-              </div>
-              
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 Stop Guessing Your{' '}
                 <span className="text-[#FF6B5B]">TikTok Shop Profits</span>
               </h1>
               
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
+              <p className="text-xl text-gray-700 mb-10 leading-relaxed font-medium">
+                Spreadsheets miss TikTok's hidden fees - We uncover them.
               </p>
 
-              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8 rounded">
-                <p className="text-base font-semibold text-blue-900">
-                  ✓ 14-Day FREE Trial • ✓ No Credit Card Required • ✓ Cancel Anytime
-                </p>
-              </div>
-
-              <div className="flex items-center gap-4 mb-6">
+              <div className="mb-8">
                 <Link
                   href="/signup"
-                  className="px-8 py-4 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors shadow-lg"
+                  className="inline-block"
                 >
-                  Start 14-Day Free Trial
+                  <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-2xl px-12 py-6 text-center shadow-2xl transition-all transform hover:scale-105 cursor-pointer">
+                    <div className="text-3xl font-bold text-white mb-2 tracking-wide">
+                      14 DAY FREE TRIAL
+                    </div>
+                    <div className="text-lg text-white font-medium">
+                      No credit card required, Cancel anytime.
+                    </div>
+                  </div>
                 </Link>
+              </div>
+
+              <div className="text-lg text-gray-700 mb-6">
+                Trusted by <span className="font-bold text-gray-900">Top</span> TikTok Shop Sellers
+              </div>
+
+              <div className="flex items-center gap-4">
                 <button
                   onClick={() => setShowDemo(true)}
-                  className="px-8 py-4 bg-white text-gray-900 border-2 border-gray-300 rounded-lg hover:border-gray-900 font-semibold transition-all"
+                  className="px-8 py-3 bg-white text-gray-900 border-2 border-gray-300 rounded-lg hover:border-gray-900 font-semibold transition-all"
                 >
                   Preview Demo →
                 </button>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <span className="text-[#FF6B5B]">★</span>
-                <span className="font-medium">4.5/5 stars</span> on G2 for Profit Tracking
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <span className="text-[#FF6B5B]">★</span>
+                  <span className="font-medium">4.5/5 stars</span>
+                </div>
               </div>
             </div>
 
