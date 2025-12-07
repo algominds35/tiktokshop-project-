@@ -128,6 +128,27 @@ export default function LoginPage() {
             </button>
           </form>
 
+          <div className="text-center mt-4">
+            <button
+              onClick={async () => {
+                const userEmail = prompt('Enter your email to reset password:')
+                if (userEmail) {
+                  const { error } = await supabase.auth.resetPasswordForEmail(userEmail, {
+                    redirectTo: `${window.location.origin}/reset-password`,
+                  })
+                  if (error) {
+                    alert('Error sending reset email. Please try again.')
+                  } else {
+                    alert('Password reset email sent! Check your inbox.')
+                  }
+                }
+              }}
+              className="text-sm text-gray-600 hover:text-gray-900 underline"
+            >
+              Forgot Password?
+            </button>
+          </div>
+
           <p className="text-sm text-gray-500 text-center mt-6">
             Don't have an account?{' '}
             <Link href="/signup" className="text-[#FF6B5B] hover:text-[#FF5547] font-medium">
