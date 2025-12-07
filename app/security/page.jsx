@@ -202,8 +202,8 @@ export default function DataProtectionSummary() {
               Our security team is here to help answer any questions from your IT or compliance team.
             </p>
             <p className="text-blue-800">
-              <strong>Contact:</strong> <a href="mailto:security@reconcilebook.com" className="underline">security@reconcilebook.com</a><br />
-              <strong>Data Protection Officer:</strong> <a href="mailto:dpo@reconcilebook.com" className="underline">dpo@reconcilebook.com</a>
+              <strong>Contact:</strong> <a href="mailto:alex@reconcilebookapp.com" className="underline">alex@reconcilebookapp.com</a><br />
+              <strong>Data Protection Officer:</strong> <a href="mailto:alex@reconcilebookapp.com" className="underline">alex@reconcilebookapp.com</a>
             </p>
           </section>
         </div>

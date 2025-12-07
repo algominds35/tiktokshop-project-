@@ -147,7 +147,7 @@ export default function TermsOfService() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">15. Contact</h2>
             <p className="text-gray-700">
               For questions about these Terms:<br />
-              Email: <a href="mailto:legal@reconcilebook.com" className="text-blue-600 hover:underline">legal@reconcilebook.com</a>
+              Email: <a href="mailto:alex@reconcilebookapp.com" className="text-blue-600 hover:underline">alex@reconcilebookapp.com</a>
             </p>
           </section>
         </div>

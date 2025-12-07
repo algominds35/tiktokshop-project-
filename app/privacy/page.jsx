@@ -82,7 +82,7 @@ export default function PrivacyPolicy() {
               <li><strong>Withdraw Consent:</strong> At any time</li>
             </ul>
             <p className="text-gray-700">
-              To exercise these rights, contact us at: <a href="mailto:privacy@reconcilebook.com" className="text-blue-600 hover:underline">privacy@reconcilebook.com</a>
+              To exercise these rights, contact us at: <a href="mailto:alex@reconcilebookapp.com" className="text-blue-600 hover:underline">alex@reconcilebookapp.com</a>
             </p>
           </section>
 
@@ -127,8 +127,8 @@ export default function PrivacyPolicy() {
               For privacy-related questions or concerns:
             </p>
             <p className="text-gray-700">
-              Email: <a href="mailto:privacy@reconcilebook.com" className="text-blue-600 hover:underline">privacy@reconcilebook.com</a><br />
-              Data Protection Officer: <a href="mailto:dpo@reconcilebook.com" className="text-blue-600 hover:underline">dpo@reconcilebook.com</a>
+              Email: <a href="mailto:alex@reconcilebookapp.com" className="text-blue-600 hover:underline">alex@reconcilebookapp.com</a><br />
+              Data Protection Officer: <a href="mailto:alex@reconcilebookapp.com" className="text-blue-600 hover:underline">alex@reconcilebookapp.com</a>
             </p>
           </section>
 
