@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [sortConfig, setSortConfig] = useState({ key: 'revenue', direction: 'desc' })
   const [trialStatus, setTrialStatus] = useState(null)
   const [showTrialBanner, setShowTrialBanner] = useState(false)
+  const [showWelcomeBanner, setShowWelcomeBanner] = useState(false)
 
   useEffect(() => {
     // Check if logged in
@@ -21,6 +22,16 @@ export default function Dashboard() {
     if (!loggedIn || !email) {
       router.push('/login')
       return
+    }
+
+    // Check for verified parameter (from email confirmation)
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('verified') === 'true') {
+      setShowWelcomeBanner(true)
+      setTimeout(() => {
+        // Remove verified param from URL
+        window.history.replaceState({}, '', '/dashboard')
+      }, 5000)
     }
 
     // Check trial status
@@ -213,6 +224,31 @@ export default function Dashboard() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Welcome Banner (after email verification) */}
+        {showWelcomeBanner && (
+          <div className="mb-6 bg-green-50 border-2 border-green-400 rounded-lg p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="text-2xl">🎉</div>
+                <div>
+                  <p className="font-semibold text-green-900">
+                    Welcome! Your account has been verified.
+                  </p>
+                  <p className="text-sm text-green-700 mt-1">
+                    Your 14-day free trial has started. Connect your TikTok Shop to get started!
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowWelcomeBanner(false)}
+                className="text-green-700 hover:text-green-900 font-semibold"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Trial Expiration Banner */}
         {showTrialBanner && trialStatus && trialStatus.daysRemaining > 0 && (
           <div className="mb-6 bg-orange-50 border-2 border-orange-400 rounded-lg p-4">
