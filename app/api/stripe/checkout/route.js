@@ -77,8 +77,8 @@ export async function POST(request) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?payment=success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/?payment=canceled`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/complete-registration?email=${encodeURIComponent(email)}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/signup?payment=canceled`,
       metadata: {
         userId: user.id,
         plan: plan,
