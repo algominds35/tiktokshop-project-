@@ -680,6 +680,13 @@ export default function LandingPage() {
 }
 
 function EmailPopup({ onClose, plan }) {
+  // All hooks must be called first (Rules of Hooks)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [showVerificationMessage, setShowVerificationMessage] = useState(false)
+
   // If no plan (free trial), redirect to signup page immediately
   useEffect(() => {
     if (!plan) {
@@ -691,12 +698,6 @@ function EmailPopup({ onClose, plan }) {
   if (!plan) {
     return null
   }
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [showVerificationMessage, setShowVerificationMessage] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
