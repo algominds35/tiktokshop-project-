@@ -195,7 +195,7 @@ function CompleteRegistrationContent() {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           Questions?{' '}
-          <a href="mailto:support@reconcilebook.com" className="text-[#FF6B5B] hover:text-[#FF5547] font-medium">
+          <a href="mailto:alex@reconcilebookapp.com" className="text-[#FF6B5B] hover:text-[#FF5547] font-medium">
             Contact Support
           </a>
         </p>

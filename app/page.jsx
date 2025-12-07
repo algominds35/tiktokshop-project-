@@ -607,9 +607,12 @@ export default function LandingPage() {
               <p className="text-gray-600 mb-6">
                 Still confused with something? Let us know, we are here to help!
               </p>
-              <button className="px-6 py-3 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors">
+              <a 
+                href="mailto:alex@reconcilebookapp.com?subject=ReconcileBook Support Request"
+                className="inline-block px-6 py-3 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors"
+              >
                 Contact Us
-              </button>
+              </a>
             </div>
 
             {/* Right Side - FAQ Items */}
