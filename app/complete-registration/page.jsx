@@ -129,6 +129,11 @@ function CompleteRegistrationContent() {
           {error && (
             <div className="mb-4 bg-red-50 border border-red-200 rounded-lg p-3">
               <p className="text-red-700 text-sm">{error}</p>
+              {error.includes('already exists') && (
+                <Link href="/login" className="text-red-700 text-sm font-semibold underline hover:text-red-900 mt-2 inline-block">
+                  Go to Login Page →
+                </Link>
+              )}
             </div>
           )}
 
