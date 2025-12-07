@@ -925,11 +925,6 @@ function DemoModal({ onClose }) {
     </div>
   )
 }
-  if (!plan) {
-    return null
-  }
-
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
