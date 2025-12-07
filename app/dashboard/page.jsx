@@ -9,12 +9,39 @@ export default function Dashboard() {
   const [syncing, setSyncing] = useState(false)
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
-  const [isDemo, setIsDemo] = useState(false)
   const [sortConfig, setSortConfig] = useState({ key: 'revenue', direction: 'desc' })
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
+    checkAuth()
     loadData()
   }, [])
+
+  const checkAuth = async () => {
+    try {
+      const response = await fetch('/api/auth/session')
+      const session = await response.json()
+      
+      if (!session?.user) {
+        router.push('/login')
+        return
+      }
+      
+      setUser(session.user)
+      
+      // Check if trial expired
+      if (session.user.subscriptionStatus === 'trial') {
+        const trialEnd = new Date(session.user.trialEndDate)
+        if (new Date() > trialEnd) {
+          router.push('/subscribe')
+          return
+        }
+      }
+    } catch (error) {
+      console.error('Auth check error:', error)
+      router.push('/login')
+    }
+  }
 
   const loadData = async () => {
     try {
@@ -92,38 +119,23 @@ export default function Dashboard() {
     }
   }
 
-  const handleLoadDemo = async () => {
-    try {
-      setLoading(true)
-      setError('')
-
-      const response = await fetch('/api/demo/data', {
-        method: 'POST',
-      })
-
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to load demo data')
-      }
-
-      setData(result.data)
-      setIsDemo(true)
-    } catch (err) {
-      console.error('Demo load error:', err)
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' })
+      await fetch('/api/auth/signout')
       router.push('/')
     } catch (err) {
       console.error('Logout error:', err)
     }
+  }
+
+  const getRemainingTrialDays = () => {
+    if (!user || user.subscriptionStatus !== 'trial') return null
+    const trialEnd = new Date(user.trialEndDate)
+    const now = new Date()
+    const diffTime = Math.abs(trialEnd - now)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return diffDays
   }
 
   const sortTable = (key) => {
@@ -176,6 +188,13 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              {user?.subscriptionStatus === 'trial' && getRemainingTrialDays() !== null && (
+                <div className="px-3 py-1.5 bg-amber-50 rounded-lg border border-amber-200">
+                  <p className="text-xs font-medium text-amber-900">
+                    {getRemainingTrialDays()} days left in trial
+                  </p>
+                </div>
+              )}
               <button
                 onClick={handleSync}
                 disabled={syncing}
@@ -219,12 +238,6 @@ export default function Dashboard() {
                   >
                     Connect TikTok Shop
                   </button>
-                  <button
-                    onClick={handleLoadDemo}
-                    className="w-full px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors"
-                  >
-                    View Demo Data
-                  </button>
                 </div>
               </div>
             </div>
@@ -265,23 +278,6 @@ export default function Dashboard() {
           </div>
         ) : (
           <div className="space-y-6">
-            {/* Demo Banner */}
-            {isDemo && (
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <p className="font-semibold text-amber-900 text-sm">Demo Mode Active</p>
-                    <p className="text-sm text-amber-700 mt-1">
-                      You're viewing sample data. Connect your TikTok Shop to see your real profit and fees.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-white border border-gray-200 rounded-lg p-6">
