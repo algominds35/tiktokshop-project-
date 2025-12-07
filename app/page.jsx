@@ -669,7 +669,24 @@ export default function LandingPage() {
               <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg"></div>
               <span className="text-xl font-bold text-gray-900">ReconcileBook</span>
             </div>
-            <p className="text-gray-600 text-center">
+            
+            {/* Footer Links */}
+            <div className="flex flex-wrap justify-center gap-6 my-4">
+              <Link href="/privacy" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
+                Terms of Service
+              </Link>
+              <Link href="/security" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
+                Security
+              </Link>
+              <a href="mailto:alex@reconcilebookapp.com" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
+                Contact Support
+              </a>
+            </div>
+            
+            <p className="text-gray-600 text-center text-sm">
               © 2024 ReconcileBook. All rights reserved.
             </p>
             <p className="text-sm text-gray-500">
