@@ -6,16 +6,23 @@ import Link from 'next/link'
 export default function LandingPage() {
   const [showDemo, setShowDemo] = useState(false)
   const [showEmailPopup, setShowEmailPopup] = useState(false)
+  const [showPlanPopup, setShowPlanPopup] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState(null)
   const [pricingInterval, setPricingInterval] = useState('monthly')
   const [openFaq, setOpenFaq] = useState(null)
+
+  const handlePlanSelect = (plan) => {
+    setSelectedPlan(plan)
+    setShowPlanPopup(true)
+  }
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg"></div>
               <span className="text-xl font-bold text-gray-900">ReconcileBook</span>
             </div>
@@ -25,14 +32,14 @@ export default function LandingPage() {
               <a href="#benefits" className="text-sm text-gray-600 hover:text-gray-900">Benefits</a>
               <a href="#pricing" className="text-sm text-gray-600 hover:text-gray-900">Pricing</a>
               <a href="#faq" className="text-sm text-gray-600 hover:text-gray-900">FAQs</a>
-            </div>
-            <button
+          </div>
+          <button
               onClick={() => setShowEmailPopup(true)}
               className="px-6 py-2.5 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-medium text-sm transition-colors"
-            >
+          >
               Start Free Trial
-            </button>
-          </div>
+          </button>
+        </div>
         </div>
       </nav>
 
@@ -45,11 +52,11 @@ export default function LandingPage() {
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 Stop Guessing Your{' '}
                 <span className="text-[#FF6B5B]">TikTok Shop Profits</span>
-              </h1>
-              
+          </h1>
+          
               <p className="text-xl text-gray-700 mb-10 leading-relaxed font-medium">
-                TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
-              </p>
+            TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
+          </p>
 
               <div className="mb-8">
                 <button
@@ -72,12 +79,12 @@ export default function LandingPage() {
               </div>
 
               <div className="flex items-center gap-4">
-                <button
+          <button
                   onClick={() => setShowDemo(true)}
                   className="px-8 py-3 bg-white text-gray-900 border-2 border-gray-300 rounded-lg hover:border-gray-900 font-semibold transition-all"
-                >
+          >
                   Preview Demo →
-                </button>
+          </button>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span className="text-[#FF6B5B]">★</span>
                   <span className="font-medium">4.5/5 stars</span>
@@ -124,8 +131,8 @@ export default function LandingPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Our AI-powered profit tracking solution helps you see every fee, understand your margins, and optimize your TikTok Shop for maximum profitability.
-            </p>
-          </div>
+          </p>
+        </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -366,7 +373,7 @@ export default function LandingPage() {
               <span className="text-lg font-bold text-green-900">
                 Start 14-Day Free Trial - No Credit Card Required
               </span>
-            </div>
+          </div>
 
             {/* Pricing Toggle */}
             <div className="flex justify-center mb-8">
@@ -392,8 +399,8 @@ export default function LandingPage() {
                   Annually - 2 Month Free
                 </button>
               </div>
-            </div>
           </div>
+        </div>
 
           {/* Pricing Comparison Table */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -423,7 +430,7 @@ export default function LandingPage() {
               </div>
               
               <div className="p-8 text-center border-b border-gray-200">
-                <h4 className="text-2xl font-bold text-gray-900 mb-3">Elite</h4>
+                <h4 className="text-2xl font-bold text-gray-900 mb-3">Enterprise</h4>
                 <div className="text-4xl font-bold text-gray-900 mb-2">
                   ${pricingInterval === 'monthly' ? '149' : '124'}
                   <span className="text-lg text-gray-600">/month</span>
@@ -431,15 +438,15 @@ export default function LandingPage() {
                 <p className="text-xs text-gray-500 mt-2">14-day free trial</p>
               </div>
 
-              {/* Orders per month */}
+              {/* Transactions per month */}
               <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
-                Orders per month
+                Transactions per month
               </div>
               <div className="p-6 text-center border-r border-b border-gray-200">
-                <span className="text-gray-700">&lt;1,500</span>
+                <span className="text-gray-700">2,000</span>
               </div>
               <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
-                <span className="text-gray-700">&lt;15,000</span>
+                <span className="text-gray-700">15,000</span>
               </div>
               <div className="p-6 text-center border-b border-gray-200">
                 <span className="text-gray-700">Unlimited</span>
@@ -513,7 +520,7 @@ export default function LandingPage() {
               </div>
               <div className="p-6 text-center border-b border-gray-200">
                 <span className="text-blue-600 text-2xl">✓</span>
-              </div>
+            </div>
 
               {/* Customer Support */}
               <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
@@ -532,31 +539,35 @@ export default function LandingPage() {
               {/* CTA Buttons */}
               <div className="p-6 border-r border-gray-200"></div>
               <div className="p-6 text-center border-r border-gray-200">
-                <Link
-                  href="/signup"
+                <a
+                  href="https://buy.stripe.com/test_3cI9AVe6i0ALcrfaee"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block w-full px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-900 transition-colors"
                 >
                   Select Pro
-                </Link>
+                </a>
               </div>
               <div className="p-6 text-center border-r border-gray-200 bg-blue-50">
-                <Link
-                  href="/signup"
+                <a
+                  href="https://buy.stripe.com/test_bJe5kF7HUfvF62Raee"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
                 >
                   Select Premium
-                </Link>
+                </a>
               </div>
               <div className="p-6 text-center">
                 <Link
                   href="/signup"
                   className="inline-block w-full px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-900 transition-colors"
                 >
-                  Select Elite
+                  Select Enterprise
                 </Link>
               </div>
-            </div>
           </div>
+        </div>
 
           <p className="text-center text-sm text-gray-500 mt-8">
             All plans include 14-day free trial. No credit card required.
@@ -572,7 +583,7 @@ export default function LandingPage() {
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 <span className="text-[#FF6B5B]">Frequently</span> Asked Questions
-              </h2>
+          </h2>
               <p className="text-gray-600 mb-6">
                 Still confused with something? Let us know, we are here to help!
               </p>
@@ -606,13 +617,13 @@ export default function LandingPage() {
                 }
               ].map((faq, index) => (
                 <div key={index} className="bg-white rounded-lg border border-gray-200">
-                  <button
+          <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                  >
+          >
                     <span className="font-semibold text-gray-900">{faq.question}</span>
                     <span className="text-gray-400">{openFaq === index ? '−' : '+'}</span>
-                  </button>
+          </button>
                   {openFaq === index && (
                     <div className="px-6 pb-4">
                       <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
@@ -648,33 +659,78 @@ export default function LandingPage() {
         <DemoModal onClose={() => setShowDemo(false)} />
       )}
 
-      {/* Email Popup */}
+      {/* Email Popup for Free Trial */}
       {showEmailPopup && (
-        <EmailPopup onClose={() => setShowEmailPopup(false)} />
+        <EmailPopup onClose={() => setShowEmailPopup(false)} plan={null} />
+      )}
+
+      {/* Email Popup for Plan Selection */}
+      {showPlanPopup && (
+        <EmailPopup onClose={() => setShowPlanPopup(false)} plan={selectedPlan} />
       )}
     </div>
   )
 }
 
-function EmailPopup({ onClose }) {
+function EmailPopup({ onClose, plan }) {
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (email) {
-      localStorage.setItem('user_email', email)
-      localStorage.setItem('user_logged_in', 'true')
+    if (!email) return
+
+    // Save email to localStorage
+    localStorage.setItem('user_email', email)
+    localStorage.setItem('user_logged_in', 'true')
+
+    // If no plan selected (free trial), go directly to dashboard
+    if (!plan) {
       localStorage.setItem('trial_start', new Date().toISOString())
       window.location.href = '/dashboard'
+      return
     }
+
+    // If plan selected, redirect to Stripe checkout
+    try {
+      setLoading(true)
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, plan }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to create checkout session')
+      }
+
+      // Redirect to Stripe
+      window.location.href = result.url
+    } catch (err) {
+      console.error('Checkout error:', err)
+      alert('Error: ' + err.message)
+      setLoading(false)
+    }
+  }
+
+  const planNames = {
+    pro: 'Pro Plan - $39/month',
+    premium: 'Premium Plan - $79/month',
+    enterprise: 'Enterprise Plan - $149/month',
   }
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-      <div className="bg-white rounded-2xl max-w-md w-full p-8">
+      <div className="bg-white rounded-2xl max-w-md w-full p-8 relative">
         <div className="text-center mb-6">
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">Start Your Free Trial</h3>
-          <p className="text-gray-600">Enter your email to get instant access</p>
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            {plan ? 'Complete Your Subscription' : 'Start Your Free Trial'}
+          </h3>
+          <p className="text-gray-600">
+            {plan ? planNames[plan] : 'Enter your email to get instant access'}
+          </p>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -690,9 +746,10 @@ function EmailPopup({ onClose }) {
 
           <button
             type="submit"
-            className="w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
+            disabled={loading}
+            className="w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg disabled:opacity-50"
           >
-            Get Instant Access →
+            {loading ? 'Processing...' : plan ? 'Continue to Payment →' : 'Get Instant Access →'}
           </button>
         </form>
 
@@ -704,7 +761,7 @@ function EmailPopup({ onClose }) {
         </button>
 
         <p className="text-xs text-gray-500 text-center mt-4">
-          No credit card required • 14 days free
+          {plan ? '14-day free trial included • Cancel anytime' : 'No credit card required • 14 days free'}
         </p>
       </div>
     </div>
