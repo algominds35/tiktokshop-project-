@@ -926,18 +926,6 @@ function DemoModal({ onClose }) {
   )
 }
 
-                description: 'Get detailed breakdowns of every fee, payout, and profit margin automatically.'
-              }
-            ].map((item, index) => (
-              <div key={index}>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Social Proof Section */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
