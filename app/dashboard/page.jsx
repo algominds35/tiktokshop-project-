@@ -10,38 +10,10 @@ export default function Dashboard() {
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
   const [sortConfig, setSortConfig] = useState({ key: 'revenue', direction: 'desc' })
-  const [user, setUser] = useState(null)
 
   useEffect(() => {
-    checkAuth()
     loadData()
   }, [])
-
-  const checkAuth = async () => {
-    try {
-      const response = await fetch('/api/auth/session')
-      const session = await response.json()
-      
-      if (!session?.user) {
-        router.push('/login')
-        return
-      }
-      
-      setUser(session.user)
-      
-      // Check if trial expired
-      if (session.user.subscriptionStatus === 'trial') {
-        const trialEnd = new Date(session.user.trialEndDate)
-        if (new Date() > trialEnd) {
-          router.push('/subscribe')
-          return
-        }
-      }
-    } catch (error) {
-      console.error('Auth check error:', error)
-      router.push('/login')
-    }
-  }
 
   const loadData = async () => {
     try {
@@ -122,21 +94,13 @@ export default function Dashboard() {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/signout')
+      await fetch('/api/auth/logout', { method: 'POST' })
       router.push('/')
     } catch (err) {
       console.error('Logout error:', err)
     }
   }
 
-  const getRemainingTrialDays = () => {
-    if (!user || user.subscriptionStatus !== 'trial') return null
-    const trialEnd = new Date(user.trialEndDate)
-    const now = new Date()
-    const diffTime = Math.abs(trialEnd - now)
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-    return diffDays
-  }
 
   const sortTable = (key) => {
     let direction = 'asc'
@@ -188,13 +152,6 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              {user?.subscriptionStatus === 'trial' && getRemainingTrialDays() !== null && (
-                <div className="px-3 py-1.5 bg-amber-50 rounded-lg border border-amber-200">
-                  <p className="text-xs font-medium text-amber-900">
-                    {getRemainingTrialDays()} days left in trial
-                  </p>
-                </div>
-              )}
               <button
                 onClick={handleSync}
                 disabled={syncing}
