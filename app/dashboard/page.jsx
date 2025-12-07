@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+)
 
 export default function Dashboard() {
   const router = useRouter()
@@ -15,14 +21,34 @@ export default function Dashboard() {
   const [showWelcomeBanner, setShowWelcomeBanner] = useState(false)
 
   useEffect(() => {
-    // Check if logged in
-    const loggedIn = localStorage.getItem('user_logged_in')
-    const email = localStorage.getItem('user_email')
+    checkAuth()
+  }, [])
+
+  const checkAuth = async () => {
+    // Check Supabase session first
+    const { data: { session } } = await supabase.auth.getSession()
     
-    if (!loggedIn || !email) {
-      router.push('/login')
+    if (!session) {
+      // No active session, check localStorage as fallback
+      const loggedIn = localStorage.getItem('user_logged_in')
+      const email = localStorage.getItem('user_email')
+      
+      if (!loggedIn || !email) {
+        router.push('/login')
+        return
+      }
+      
+      // Has localStorage but no session, continue but user might need to reauth
+      checkTrialStatus(email)
+      loadData()
       return
     }
+    
+    // Has active session, store in localStorage
+    const email = session.user.email
+    localStorage.setItem('user_email', email)
+    localStorage.setItem('user_logged_in', 'true')
+    localStorage.setItem('user_id', session.user.id)
 
     // Check for verified parameter (from email confirmation)
     const urlParams = new URLSearchParams(window.location.search)
@@ -37,7 +63,7 @@ export default function Dashboard() {
     // Check trial status
     checkTrialStatus(email)
     loadData()
-  }, [])
+  }
 
   const checkTrialStatus = async (email) => {
     try {
