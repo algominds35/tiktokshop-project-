@@ -48,7 +48,7 @@ export default function LandingPage() {
               </h1>
               
               <p className="text-xl text-gray-700 mb-10 leading-relaxed font-medium">
-                Spreadsheets miss TikTok's hidden fees - We uncover them.
+                TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
               </p>
 
               <div className="mb-8">
