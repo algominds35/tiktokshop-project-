@@ -381,48 +381,16 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Free</h3>
-              <p className="text-sm text-gray-600 mb-6">For individuals and small shops</p>
-              <div className="mb-6">
-                <span className="text-5xl font-bold text-gray-900">$0</span>
-                <span className="text-gray-600 ml-2">free forever</span>
-              </div>
-              <p className="text-sm text-gray-600 mb-6">Limited features, perfect for testing</p>
-              
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Up to 50 transactions',
-                  'Basic fee breakdown',
-                  'Product-level tracking',
-                  'Email support'
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-gray-400">✓</span>
-                    <span className="text-sm text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button className="w-full py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-900 transition-colors">
-                Start Now →
-              </button>
-            </div>
-
-            {/* Professional Plan - Most Popular */}
+          <div className="max-w-md mx-auto">
+            {/* Professional Plan - Only Option */}
             <div className="bg-white rounded-2xl p-8 border-2 border-[#FF6B5B] relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#FF6B5B] text-white text-xs font-bold px-4 py-1 rounded-full">
-                Most Popular
-              </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
-              <p className="text-sm text-gray-600 mb-6">For serious TikTok Shop sellers</p>
+              <p className="text-sm text-gray-600 mb-6">For TikTok Shop sellers who want clarity</p>
               <div className="mb-6">
                 <span className="text-5xl font-bold text-gray-900">$29</span>
-                <span className="text-gray-600 ml-2">billed monthly</span>
+                <span className="text-gray-600 ml-2">per month</span>
               </div>
-              <p className="text-sm text-gray-600 mb-6">Everything in Free plan, plus:</p>
+              <p className="text-sm text-gray-600 mb-6">Everything you need to track profits:</p>
               
               <ul className="space-y-3 mb-8">
                 {[
@@ -432,7 +400,7 @@ export default function LandingPage() {
                   'Real-time profit tracking',
                   'Product profitability analysis',
                   'Priority email support',
-                  '14-day free trial'
+                  '14-day free trial - No credit card required'
                 ].map((feature, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="text-[#FF6B5B]">✓</span>
@@ -443,41 +411,14 @@ export default function LandingPage() {
 
               <Link
                 href="/signup"
-                className="block w-full py-3 bg-[#FF6B5B] text-white text-center rounded-lg font-semibold hover:bg-[#FF5547] transition-colors"
+                className="block w-full py-4 bg-[#FF6B5B] text-white text-center rounded-lg font-semibold hover:bg-[#FF5547] transition-colors shadow-lg text-lg"
               >
-                Start Free Trial
+                Start 14-Day Free Trial
               </Link>
-            </div>
-
-            {/* Enterprise Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
-              <p className="text-sm text-gray-600 mb-6">For agencies and large teams</p>
-              <div className="mb-6">
-                <span className="text-5xl font-bold text-gray-900">$99</span>
-                <span className="text-gray-600 ml-2">billed monthly</span>
-              </div>
-              <p className="text-sm text-gray-600 mb-6">Everything in Professional, plus:</p>
               
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Multiple TikTok Shops',
-                  'Advanced reporting',
-                  'Custom integrations',
-                  'Dedicated account manager',
-                  'Phone support',
-                  'Custom training'
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-gray-400">✓</span>
-                    <span className="text-sm text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button className="w-full py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-900 transition-colors">
-                Contact Sales →
-              </button>
+              <p className="text-center text-sm text-gray-500 mt-4">
+                Cancel anytime. No questions asked.
+              </p>
             </div>
           </div>
         </div>
