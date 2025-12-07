@@ -3,14 +3,21 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+)
 
 export default function SignupPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault()
     
     if (!email || email.trim() === '') {
@@ -18,22 +25,42 @@ export default function SignupPage() {
       return
     }
 
-    console.log('Signup clicked, email:', email)
-    
-    // Simple localStorage auth
     try {
+      setLoading(true)
+      setError('')
+      
+      // Create or get user in database first
+      const { data: existingUser } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', email)
+        .single()
+
+      if (!existingUser) {
+        // Create user
+        await supabase
+          .from('users')
+          .insert({
+            email: email,
+            subscription_status: 'trialing',
+            trial_ends_at: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
+          })
+      }
+      
+      // Store email and redirect (simplified auth for now)
       localStorage.setItem('user_email', email)
       localStorage.setItem('user_logged_in', 'true')
       localStorage.setItem('trial_start', new Date().toISOString())
-      console.log('localStorage set, redirecting...')
       
-      // Force hard redirect
+      setSuccess(true)
       setTimeout(() => {
         window.location.href = '/dashboard'
-      }, 100)
+      }, 500)
+      
     } catch (err) {
-      console.error('Error:', err)
-      alert('Error: ' + err.message)
+      console.error('Signup error:', err)
+      setError(err.message || 'Something went wrong')
+      setLoading(false)
     }
   }
 
