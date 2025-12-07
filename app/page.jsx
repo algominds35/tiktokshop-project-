@@ -351,32 +351,39 @@ export default function LandingPage() {
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Simple, <span className="text-[#FF6B5B]">Transparent</span> Pricing
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Start with 14 days free. No credit card required.
-            </p>
+            
+            {/* Free Trial Banner */}
+            <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-500 rounded-full px-6 py-3 mb-6">
+              <span className="text-2xl">🎉</span>
+              <span className="text-lg font-bold text-green-900">
+                Start 14-Day Free Trial - No Credit Card Required
+              </span>
+            </div>
 
             {/* Pricing Toggle */}
-            <div className="inline-flex items-center gap-0 bg-white rounded-lg p-1 border border-gray-200 shadow-sm">
-              <button
-                onClick={() => setPricingInterval('monthly')}
-                className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
-                  pricingInterval === 'monthly'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setPricingInterval('annual')}
-                className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
-                  pricingInterval === 'annual'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-700 hover:text-gray-900'
-                }`}
-              >
-                Annually - 2 Month Free
-              </button>
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex items-center gap-0 bg-white rounded-lg p-1 border border-gray-200 shadow-sm">
+                <button
+                  onClick={() => setPricingInterval('monthly')}
+                  className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
+                    pricingInterval === 'monthly'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-700 hover:text-gray-900'
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setPricingInterval('annual')}
+                  className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
+                    pricingInterval === 'annual'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-700 hover:text-gray-900'
+                  }`}
+                >
+                  Annually - 2 Month Free
+                </button>
+              </div>
             </div>
           </div>
 
@@ -395,6 +402,7 @@ export default function LandingPage() {
                   ${pricingInterval === 'monthly' ? '39' : '33'}
                   <span className="text-lg text-gray-600">/month</span>
                 </div>
+                <p className="text-xs text-gray-500 mt-2">14-day free trial</p>
               </div>
               
               <div className="p-8 text-center border-r border-b border-gray-200 bg-blue-50">
@@ -403,6 +411,7 @@ export default function LandingPage() {
                   ${pricingInterval === 'monthly' ? '79' : '66'}
                   <span className="text-lg text-gray-600">/month</span>
                 </div>
+                <p className="text-xs text-blue-700 font-semibold mt-2">14-day free trial</p>
               </div>
               
               <div className="p-8 text-center border-b border-gray-200">
@@ -411,6 +420,7 @@ export default function LandingPage() {
                   ${pricingInterval === 'monthly' ? '149' : '124'}
                   <span className="text-lg text-gray-600">/month</span>
                 </div>
+                <p className="text-xs text-gray-500 mt-2">14-day free trial</p>
               </div>
 
               {/* Orders per month */}
