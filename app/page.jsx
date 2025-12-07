@@ -2,6 +2,12 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+)
 
 export default function LandingPage() {
   const [showDemo, setShowDemo] = useState(false)
@@ -701,16 +707,53 @@ function EmailPopup({ onClose, plan }) {
       setLoading(true)
       setError('')
 
-      // Redirect to signup page for proper account creation with verification
-      // The signup page will handle Supabase Auth with email verification
-      if (!plan) {
-        // Free trial - redirect to signup page
-        window.location.href = `/signup?email=${encodeURIComponent(email)}`
+      // If plan selected (Stripe payment), redirect to complete registration
+      if (plan) {
+        window.location.href = `/complete-registration?plan=${plan}`
         return
       }
 
-      // If plan selected, redirect to complete registration after payment
-      window.location.href = `/complete-registration?plan=${plan}`
+      // Free trial - handle signup directly in popup
+      // Create user with Supabase Auth (email confirmation required)
+      const { data: authData, error: signUpError } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+        },
+      })
+
+      if (signUpError) throw signUpError
+
+      // Check if email confirmation is required
+      if (authData.user && !authData.session) {
+        // Email confirmation required - show verification message
+        setShowVerificationMessage(true)
+        setLoading(false)
+        return
+      }
+
+      // If email confirmation not required (shouldn't happen, but handle it)
+      if (authData.user && authData.session) {
+        // Create user in database
+        await supabase
+          .from('users')
+          .insert({
+            id: authData.user.id,
+            email: email,
+            subscription_status: 'trialing',
+            trial_ends_at: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
+          })
+
+        // Store in localStorage
+        localStorage.setItem('user_email', email)
+        localStorage.setItem('user_logged_in', 'true')
+        localStorage.setItem('user_id', authData.user.id)
+        localStorage.setItem('trial_start', new Date().toISOString())
+        
+        // Redirect to dashboard
+        window.location.href = '/dashboard'
+      }
     } catch (err) {
       console.error('Error:', err)
       setError(err.message || 'Something went wrong')
