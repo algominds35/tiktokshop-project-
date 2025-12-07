@@ -3,14 +3,21 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+)
 
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
     
     if (!email || email.trim() === '') {
@@ -18,21 +25,47 @@ export default function LoginPage() {
       return
     }
 
-    console.log('Login clicked, email:', email)
-    
-    // Simple localStorage auth
+    if (!password || password.trim() === '') {
+      setError('Please enter your password')
+      return
+    }
+
     try {
+      setLoading(true)
+      setError('')
+      
+      // Login with Supabase Auth
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      })
+
+      if (signInError) {
+        setError('Invalid email or password')
+        setLoading(false)
+        return
+      }
+
+      // Get user from database
+      const { data: user } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', email)
+        .single()
+
+      // Store in localStorage
       localStorage.setItem('user_email', email)
       localStorage.setItem('user_logged_in', 'true')
-      console.log('localStorage set, redirecting...')
+      localStorage.setItem('user_id', data.user.id)
+      localStorage.setItem('subscription_status', user?.subscription_status || 'trialing')
       
-      // Force hard redirect
-      setTimeout(() => {
-        window.location.href = '/dashboard'
-      }, 100)
+      // Redirect to dashboard
+      window.location.href = '/dashboard'
+      
     } catch (err) {
-      console.error('Error:', err)
-      alert('Error: ' + err.message)
+      console.error('Login error:', err)
+      setError('Something went wrong. Please try again.')
+      setLoading(false)
     }
   }
 
@@ -56,7 +89,7 @@ export default function LoginPage() {
           )}
 
           <form onSubmit={handleLogin}>
-            <div className="mb-6">
+            <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address
               </label>
@@ -67,6 +100,22 @@ export default function LoginPage() {
                 placeholder="you@company.com"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 disabled={loading}
+                required
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                disabled={loading}
+                required
               />
             </div>
 
@@ -75,7 +124,7 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full px-6 py-4 bg-[#FF6B5B] text-white rounded-xl hover:bg-[#FF5547] font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
-              {loading ? 'Signing in...' : 'Continue →'}
+              {loading ? 'Signing in...' : 'Sign In →'}
             </button>
           </form>
 

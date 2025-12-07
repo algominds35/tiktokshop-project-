@@ -11,21 +11,41 @@ const supabase = createClient(
 
 export async function POST(request) {
   try {
-    const session = await getServerSession()
-    
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // Get user email from localStorage (sent in request body)
+    const body = await request.json()
+    const { email, plan } = body
+
+    if (!email) {
+      return NextResponse.json({ error: 'Email required' }, { status: 401 })
     }
 
-    // Get user from database
-    const { data: user } = await supabase
+    // Map plan names to Stripe Price IDs
+    const PRICE_IDS = {
+      pro: process.env.STRIPE_PRICE_ID_PRO,
+      premium: process.env.STRIPE_PRICE_ID_PREMIUM,
+      enterprise: process.env.STRIPE_PRICE_ID_ENTERPRISE,
+    }
+
+    const priceId = PRICE_IDS[plan]
+    if (!priceId) {
+      return NextResponse.json({ error: 'Invalid plan selected' }, { status: 400 })
+    }
+
+    // Get or create user in database
+    let { data: user } = await supabase
       .from('users')
       .select('*')
-      .eq('email', session.user.email)
+      .eq('email', email)
       .single()
 
     if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 })
+      // Create user if doesn't exist
+      const { data: newUser } = await supabase
+        .from('users')
+        .insert({ email })
+        .select()
+        .single()
+      user = newUser
     }
 
     // Create or get Stripe customer
@@ -34,7 +54,6 @@ export async function POST(request) {
     if (!customerId) {
       const customer = await stripe.customers.create({
         email: user.email,
-        name: user.name,
         metadata: {
           userId: user.id,
         },
@@ -55,14 +74,18 @@ export async function POST(request) {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID, // You'll create this in Stripe dashboard
+          price: priceId,
           quantity: 1,
         },
       ],
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?payment=success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/subscribe?payment=canceled`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/?payment=canceled`,
       metadata: {
         userId: user.id,
+        plan: plan,
+      },
+      subscription_data: {
+        trial_period_days: 14, // 14-day free trial
       },
     })
 

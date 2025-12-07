@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@supabase/supabase-js'
 
@@ -10,15 +10,22 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 )
 
-export default function SignupPage() {
-  const router = useRouter()
+export default function CompleteRegistration() {
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
 
-  const handleSignup = async (e) => {
+  useEffect(() => {
+    // Get email from URL if Stripe passes it
+    const emailParam = searchParams.get('email')
+    if (emailParam) {
+      setEmail(emailParam)
+    }
+  }, [searchParams])
+
+  const handleComplete = async (e) => {
     e.preventDefault()
     
     if (!email || email.trim() === '') {
@@ -27,7 +34,7 @@ export default function SignupPage() {
     }
 
     if (!password || password.trim() === '') {
-      setError('Please enter a password')
+      setError('Please create a password')
       return
     }
 
@@ -40,7 +47,29 @@ export default function SignupPage() {
       setLoading(true)
       setError('')
       
-      // Create user with Supabase Auth
+      // Check if user already exists
+      const { data: existingUser } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', email)
+        .single()
+
+      if (existingUser) {
+        // User exists, just update to active
+        await supabase
+          .from('users')
+          .update({
+            subscription_status: 'active',
+          })
+          .eq('email', email)
+
+        // Log them in with existing password (they should use login page)
+        setError('Account already exists. Please use the login page.')
+        setLoading(false)
+        return
+      }
+
+      // Create new user with Supabase Auth
       const { data: authData, error: signUpError } = await supabase.auth.signUp({
         email: email,
         password: password,
@@ -54,27 +83,25 @@ export default function SignupPage() {
         .insert({
           id: authData.user.id,
           email: email,
-          subscription_status: 'trialing',
-          trial_ends_at: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
+          subscription_status: 'active', // They just paid!
+          trial_ends_at: null, // No trial needed, they paid
         })
 
       if (dbError && !dbError.message.includes('duplicate')) {
         throw dbError
       }
       
-      // Store in localStorage
+      // Log them in
       localStorage.setItem('user_email', email)
       localStorage.setItem('user_logged_in', 'true')
       localStorage.setItem('user_id', authData.user.id)
-      localStorage.setItem('trial_start', new Date().toISOString())
+      localStorage.setItem('subscription_status', 'active')
       
-      setSuccess(true)
-      setTimeout(() => {
-        window.location.href = '/dashboard'
-      }, 500)
+      // Redirect to dashboard
+      window.location.href = '/dashboard?welcome=true'
       
     } catch (err) {
-      console.error('Signup error:', err)
+      console.error('Registration error:', err)
       setError(err.message || 'Something went wrong')
       setLoading(false)
     }
@@ -88,26 +115,15 @@ export default function SignupPage() {
             <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg"></div>
             <span className="text-2xl font-bold text-gray-900">ReconcileBook</span>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Start Your Free Trial</h1>
-          <p className="text-gray-600">14 days free • No credit card required</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-4 mb-6">
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-white text-sm font-bold">✓</span>
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900 mb-1">What you get:</p>
-                <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• 14 days full access</li>
-                  <li>• No credit card required</li>
-                  <li>• Cancel anytime</li>
-                  <li>• All features included</li>
-                </ul>
-              </div>
+          <div className="text-center mb-6">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-3xl">✅</span>
             </div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h1>
+            <p className="text-gray-600">Complete your registration to access your dashboard</p>
           </div>
 
           {error && (
@@ -116,7 +132,7 @@ export default function SignupPage() {
             </div>
           )}
 
-          <form onSubmit={handleSignup}>
+          <form onSubmit={handleComplete}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address
@@ -130,11 +146,14 @@ export default function SignupPage() {
                 disabled={loading}
                 required
               />
+              <p className="text-xs text-gray-500 mt-2">
+                Use the same email you used for payment
+              </p>
             </div>
 
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                Create Password
               </label>
               <input
                 type="password"
@@ -153,22 +172,30 @@ export default function SignupPage() {
               disabled={loading}
               className="w-full px-6 py-4 bg-[#FF6B5B] text-white rounded-xl hover:bg-[#FF5547] font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
-              {loading ? 'Creating Account...' : 'Start For Free →'}
+              {loading ? 'Creating Your Account...' : 'Complete Registration →'}
             </button>
           </form>
 
-          <p className="text-sm text-gray-500 text-center mt-6">
-            Already have an account?{' '}
-            <Link href="/login" className="text-[#FF6B5B] hover:text-[#FF5547] font-medium">
-              Sign In
-            </Link>
-          </p>
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+            <p className="text-sm text-gray-700">
+              <strong>What's next?</strong>
+            </p>
+            <ul className="text-sm text-gray-600 mt-2 space-y-1">
+              <li>✓ Connect your TikTok Shop</li>
+              <li>✓ View real-time profit tracking</li>
+              <li>✓ Sync with QuickBooks</li>
+            </ul>
+          </div>
         </div>
 
-        <p className="text-center text-sm text-gray-500 mt-8">
-          By signing up, you agree to our <Link href="/terms" className="underline">Terms</Link> and <Link href="/privacy" className="underline">Privacy Policy</Link>
+        <p className="text-center text-sm text-gray-500 mt-6">
+          Questions?{' '}
+          <a href="mailto:support@reconcilebook.com" className="text-[#FF6B5B] hover:text-[#FF5547] font-medium">
+            Contact Support
+          </a>
         </p>
       </div>
     </div>
   )
 }
+
