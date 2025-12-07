@@ -93,7 +93,6 @@ export default function LandingPage() {
                   <div className="text-center">
                     <div className="text-5xl mb-3">📊</div>
                     <p className="text-gray-500 font-medium">Dashboard Preview</p>
-                    <p className="text-sm text-gray-400 mt-1">(Add your screenshot here)</p>
                   </div>
                 </div>
               </div>
