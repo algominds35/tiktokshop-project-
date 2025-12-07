@@ -560,7 +560,7 @@ export default function LandingPage() {
               <div className="p-6 border-r border-gray-200"></div>
               <div className="p-6 text-center border-r border-gray-200">
                 <a
-                  href="https://buy.stripe.com/test_3cI9AVe6i0ALcrfaee0Fi0a"
+                  href="https://buy.stripe.com/8x24gBd2e83d1MB0DE0Fi0g"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-900 transition-colors"
@@ -570,7 +570,7 @@ export default function LandingPage() {
               </div>
               <div className="p-6 text-center border-r border-gray-200 bg-blue-50">
                 <a
-                  href="https://buy.stripe.com/test_bJe5kF7HUfvF62Raee0Fi0b"
+                  href="https://buy.stripe.com/eVq00l9Q283dezn8660Fi0h"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
@@ -579,12 +579,14 @@ export default function LandingPage() {
                 </a>
               </div>
               <div className="p-6 text-center">
-                <Link
-                  href="/signup"
+                <a
+                  href="https://buy.stripe.com/fZu5kFbYa4R1gHvdqq0Fi0i"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block w-full px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-900 transition-colors"
                 >
                   Select Enterprise
-                </Link>
+                </a>
               </div>
           </div>
         </div>
