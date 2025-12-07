@@ -681,10 +681,12 @@ export default function LandingPage() {
               <Link href="/security" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
                 Security
               </Link>
-              <a href="mailto:alex@reconcilebookapp.com" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
-                Contact Support
-              </a>
             </div>
+            
+            {/* Contact Email - Clearly Visible */}
+            <p className="text-gray-700 text-center font-medium my-3">
+              Support: <a href="mailto:alex@reconcilebookapp.com" className="text-blue-600 hover:text-blue-700 underline">alex@reconcilebookapp.com</a>
+            </p>
             
             <p className="text-gray-600 text-center text-sm">
               © 2024 ReconcileBook. All rights reserved.
