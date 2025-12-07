@@ -58,10 +58,10 @@ export default function LandingPage() {
                 >
                   <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-2xl px-12 py-6 text-center shadow-2xl transition-all transform hover:scale-105 cursor-pointer">
                     <div className="text-3xl font-bold text-white mb-2 tracking-wide">
-                      14 DAY FREE TRIAL
+                      START FOR FREE
                     </div>
                     <div className="text-lg text-white font-medium">
-                      No credit card required, Cancel anytime.
+                      14-day free trial • No credit card required
                     </div>
                   </div>
                 </button>

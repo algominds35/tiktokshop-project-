@@ -83,7 +83,7 @@ export default function SignupPage() {
               disabled={loading}
               className="w-full px-6 py-4 bg-[#FF6B5B] text-white rounded-xl hover:bg-[#FF5547] font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
-              {loading ? 'Creating account...' : 'Start Free Trial →'}
+              {loading ? 'Redirecting to Dashboard...' : 'Start For Free →'}
             </button>
           </form>
 
