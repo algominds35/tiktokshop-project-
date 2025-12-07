@@ -345,7 +345,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 bg-white">
+      <section id="pricing" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -356,71 +356,193 @@ export default function LandingPage() {
             </p>
 
             {/* Pricing Toggle */}
-            <div className="inline-flex items-center gap-3 bg-gray-100 rounded-full p-1">
+            <div className="inline-flex items-center gap-0 bg-white rounded-lg p-1 border border-gray-200 shadow-sm">
               <button
                 onClick={() => setPricingInterval('monthly')}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
                   pricingInterval === 'monthly'
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
                 Monthly
               </button>
               <button
                 onClick={() => setPricingInterval('annual')}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
                   pricingInterval === 'annual'
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
-                Annual
-                <span className="ml-2 text-xs text-green-600 font-semibold">-15%</span>
+                Annually - 2 Month Free
               </button>
             </div>
           </div>
 
-          <div className="max-w-md mx-auto">
-            {/* Professional Plan - Only Option */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-[#FF6B5B] relative">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
-              <p className="text-sm text-gray-600 mb-6">For TikTok Shop sellers who want clarity</p>
-              <div className="mb-6">
-                <span className="text-5xl font-bold text-gray-900">$29</span>
-                <span className="text-gray-600 ml-2">per month</span>
+          {/* Pricing Comparison Table */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="grid grid-cols-4 gap-0">
+              {/* Header Row */}
+              <div className="p-8 border-r border-b border-gray-200">
+                <h3 className="text-3xl font-bold text-gray-900">Compare plans</h3>
               </div>
-              <p className="text-sm text-gray-600 mb-6">Everything you need to track profits:</p>
               
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Unlimited transactions',
-                  'Complete fee breakdown',
-                  'QuickBooks integration',
-                  'Real-time profit tracking',
-                  'Product profitability analysis',
-                  'Priority email support',
-                  '14-day free trial - No credit card required'
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-[#FF6B5B]">✓</span>
-                    <span className="text-sm text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Plan Names */}
+              <div className="p-8 text-center border-r border-b border-gray-200">
+                <h4 className="text-2xl font-bold text-gray-900 mb-3">Pro</h4>
+                <div className="text-4xl font-bold text-blue-600 mb-2">
+                  ${pricingInterval === 'monthly' ? '39' : '33'}
+                  <span className="text-lg text-gray-600">/month</span>
+                </div>
+              </div>
+              
+              <div className="p-8 text-center border-r border-b border-gray-200 bg-blue-50">
+                <h4 className="text-2xl font-bold text-blue-600 mb-3">Premium</h4>
+                <div className="text-4xl font-bold text-blue-600 mb-2">
+                  ${pricingInterval === 'monthly' ? '79' : '66'}
+                  <span className="text-lg text-gray-600">/month</span>
+                </div>
+              </div>
+              
+              <div className="p-8 text-center border-b border-gray-200">
+                <h4 className="text-2xl font-bold text-gray-900 mb-3">Elite</h4>
+                <div className="text-4xl font-bold text-gray-900 mb-2">
+                  ${pricingInterval === 'monthly' ? '149' : '124'}
+                  <span className="text-lg text-gray-600">/month</span>
+                </div>
+              </div>
 
-              <Link
-                href="/signup"
-                className="block w-full py-4 bg-[#FF6B5B] text-white text-center rounded-lg font-semibold hover:bg-[#FF5547] transition-colors shadow-lg text-lg"
-              >
-                Start 14-Day Free Trial
-              </Link>
-              
-              <p className="text-center text-sm text-gray-500 mt-4">
-                Cancel anytime. No questions asked.
-              </p>
+              {/* Orders per month */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                Orders per month
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-gray-700">&lt;1,500</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-gray-700">&lt;15,000</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-gray-700">Unlimited</span>
+              </div>
+
+              {/* History Access */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                See history on Signup
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-gray-700">3 Months</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-gray-700">12 Months</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-gray-700">12 Months</span>
+              </div>
+
+              {/* Real-time Profit Dashboard */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                Real-time Profit Dashboard
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+
+              {/* Product-wise Profit */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                Product-wise Profit
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+
+              {/* QuickBooks Integration */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                QuickBooks Integration
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+
+              {/* P&L Export to Excel */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                P&L Export to Excel
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+
+              {/* Customer Support */}
+              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
+                Customer Support
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <div className="p-6 text-center border-b border-gray-200">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="p-6 border-r border-gray-200"></div>
+              <div className="p-6 text-center border-r border-gray-200">
+                <Link
+                  href="/signup"
+                  className="inline-block w-full px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-900 transition-colors"
+                >
+                  Select Pro
+                </Link>
+              </div>
+              <div className="p-6 text-center border-r border-gray-200 bg-blue-50">
+                <Link
+                  href="/signup"
+                  className="inline-block w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+                >
+                  Select Premium
+                </Link>
+              </div>
+              <div className="p-6 text-center">
+                <Link
+                  href="/signup"
+                  className="inline-block w-full px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-900 transition-colors"
+                >
+                  Select Elite
+                </Link>
+              </div>
             </div>
           </div>
+
+          <p className="text-center text-sm text-gray-500 mt-8">
+            All plans include 14-day free trial. No credit card required.
+          </p>
         </div>
       </section>
 
