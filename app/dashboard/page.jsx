@@ -10,16 +10,54 @@ export default function Dashboard() {
   const [data, setData] = useState(null)
   const [error, setError] = useState('')
   const [sortConfig, setSortConfig] = useState({ key: 'revenue', direction: 'desc' })
+  const [trialStatus, setTrialStatus] = useState(null)
+  const [showTrialBanner, setShowTrialBanner] = useState(false)
 
   useEffect(() => {
     // Check if logged in
     const loggedIn = localStorage.getItem('user_logged_in')
-    if (!loggedIn) {
+    const email = localStorage.getItem('user_email')
+    
+    if (!loggedIn || !email) {
       router.push('/login')
       return
     }
+
+    // Check trial status
+    checkTrialStatus(email)
     loadData()
   }, [])
+
+  const checkTrialStatus = async (email) => {
+    try {
+      const response = await fetch('/api/user/trial-status', {
+        headers: {
+          'x-user-email': email
+        }
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to check trial status')
+      }
+
+      setTrialStatus(result)
+
+      // If trial expired and no active subscription, redirect to subscribe
+      if (result.isTrialExpired && !result.hasAccess) {
+        router.push('/subscribe?trial_expired=true')
+        return
+      }
+
+      // Show banner if trial is expiring soon (3 days or less)
+      if (result.subscriptionStatus === 'trialing' && result.daysRemaining <= 3 && result.daysRemaining > 0) {
+        setShowTrialBanner(true)
+      }
+    } catch (err) {
+      console.error('Trial status check error:', err)
+    }
+  }
 
   const loadData = async () => {
     try {
@@ -175,6 +213,31 @@ export default function Dashboard() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Trial Expiration Banner */}
+        {showTrialBanner && trialStatus && trialStatus.daysRemaining > 0 && (
+          <div className="mb-6 bg-orange-50 border-2 border-orange-400 rounded-lg p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="text-2xl">⏰</div>
+                <div>
+                  <p className="font-semibold text-orange-900">
+                    Your free trial expires in {trialStatus.daysRemaining} {trialStatus.daysRemaining === 1 ? 'day' : 'days'}
+                  </p>
+                  <p className="text-sm text-orange-700 mt-1">
+                    Subscribe now to continue tracking your profits after your trial ends.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => router.push('/subscribe')}
+                className="px-6 py-2 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap"
+              >
+                Subscribe Now
+              </button>
+            </div>
+          </div>
+        )}
+
         {error && (
           <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
             <p className="text-red-700 text-sm">{error}</p>

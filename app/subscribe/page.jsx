@@ -9,35 +9,21 @@ function SubscribeContent() {
   const searchParams = useSearchParams()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [trialExpired, setTrialExpired] = useState(false)
 
   useEffect(() => {
     if (searchParams.get('payment') === 'canceled') {
       setError('Payment was canceled. Please try again.')
     }
+    if (searchParams.get('trial_expired') === 'true') {
+      setTrialExpired(true)
+    }
   }, [searchParams])
 
-  const handleSubscribe = async () => {
-    try {
-      setLoading(true)
-      setError('')
-
-      const response = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-      })
-
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to create checkout session')
-      }
-
-      // Redirect to Stripe Checkout
-      window.location.href = result.url
-    } catch (err) {
-      console.error('Subscribe error:', err)
-      setError(err.message)
-      setLoading(false)
-    }
+  const handleSubscribe = (plan = 'premium') => {
+    // Redirect to pricing section or directly to Stripe payment link
+    // For now, redirect to landing page pricing section
+    window.location.href = '/#pricing'
   }
 
   return (
@@ -52,9 +38,15 @@ function SubscribeContent() {
 
         <div className="bg-white rounded-2xl shadow-lg p-10">
           <div className="text-center mb-8">
-            <div className="text-5xl mb-4">⏰</div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Your Trial Has Ended</h1>
-            <p className="text-gray-600">Continue tracking your real profits with a paid subscription</p>
+            <div className="text-5xl mb-4">{trialExpired ? '⏰' : '✨'}</div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              {trialExpired ? 'Your Free Trial Has Ended' : 'Upgrade to Continue'}
+            </h1>
+            <p className="text-gray-600">
+              {trialExpired 
+                ? 'Your 14-day free trial has expired. Subscribe now to continue tracking your profits.' 
+                : 'Continue tracking your real profits with a paid subscription'}
+            </p>
           </div>
 
           {error && (

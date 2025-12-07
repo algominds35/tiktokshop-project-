@@ -674,43 +674,46 @@ export default function LandingPage() {
 
 function EmailPopup({ onClose, plan }) {
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [showVerificationMessage, setShowVerificationMessage] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!email) return
-
-    // Save email to localStorage
-    localStorage.setItem('user_email', email)
-    localStorage.setItem('user_logged_in', 'true')
-
-    // If no plan selected (free trial), go directly to dashboard
-    if (!plan) {
-      localStorage.setItem('trial_start', new Date().toISOString())
-      window.location.href = '/dashboard'
+    
+    if (!email || email.trim() === '') {
+      setError('Please enter your email')
       return
     }
 
-    // If plan selected, redirect to Stripe checkout
+    if (!password || password.trim() === '') {
+      setError('Please create a password')
+      return
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters')
+      return
+    }
+
     try {
       setLoading(true)
-      const response = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, plan }),
-      })
+      setError('')
 
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to create checkout session')
+      // Redirect to signup page for proper account creation with verification
+      // The signup page will handle Supabase Auth with email verification
+      if (!plan) {
+        // Free trial - redirect to signup page
+        window.location.href = `/signup?email=${encodeURIComponent(email)}`
+        return
       }
 
-      // Redirect to Stripe
-      window.location.href = result.url
+      // If plan selected, redirect to complete registration after payment
+      window.location.href = `/complete-registration?plan=${plan}`
     } catch (err) {
-      console.error('Checkout error:', err)
-      alert('Error: ' + err.message)
+      console.error('Error:', err)
+      setError(err.message || 'Something went wrong')
       setLoading(false)
     }
   }
@@ -721,6 +724,32 @@ function EmailPopup({ onClose, plan }) {
     enterprise: 'Enterprise Plan - $149/month',
   }
 
+  // Show verification message
+  if (showVerificationMessage) {
+    return (
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+        <div className="bg-white rounded-2xl max-w-md w-full p-8 relative text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-3xl">✉️</span>
+          </div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">Check Your Email!</h3>
+          <p className="text-gray-600 mb-6">
+            We've sent a verification link to <strong>{email}</strong>
+          </p>
+          <p className="text-sm text-gray-500 mb-6">
+            Click the link in the email to verify your account and start your 14-day free trial.
+          </p>
+          <button
+            onClick={onClose}
+            className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-all"
+          >
+            Got It
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
       <div className="bg-white rounded-2xl max-w-md w-full p-8 relative">
@@ -729,27 +758,47 @@ function EmailPopup({ onClose, plan }) {
             {plan ? 'Complete Your Subscription' : 'Start Your Free Trial'}
           </h3>
           <p className="text-gray-600">
-            {plan ? planNames[plan] : 'Enter your email to get instant access'}
+            {plan ? planNames[plan] : 'Create your account to get instant access'}
           </p>
         </div>
 
+        {error && (
+          <div className="mb-4 bg-red-50 border border-red-200 rounded-lg p-3">
+            <p className="text-red-700 text-sm">{error}</p>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@company.com"
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 text-lg focus:border-orange-500 focus:outline-none"
-            autoFocus
-            required
-          />
+          <div className="mb-4">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@company.com"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-lg focus:border-orange-500 focus:outline-none"
+              autoFocus
+              required
+            />
+          </div>
+
+          <div className="mb-6">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Create a password (min. 6 characters)"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-lg focus:border-orange-500 focus:outline-none"
+              required
+              minLength={6}
+            />
+          </div>
 
           <button
             type="submit"
             disabled={loading}
             className="w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg disabled:opacity-50"
           >
-            {loading ? 'Processing...' : plan ? 'Continue to Payment →' : 'Get Instant Access →'}
+            {loading ? 'Creating Account...' : plan ? 'Continue to Payment →' : 'Create Account →'}
           </button>
         </form>
 
@@ -761,7 +810,7 @@ function EmailPopup({ onClose, plan }) {
         </button>
 
         <p className="text-xs text-gray-500 text-center mt-4">
-          {plan ? '14-day free trial included • Cancel anytime' : 'No credit card required • 14 days free'}
+          {plan ? '14-day free trial included • Cancel anytime' : 'No credit card required • 14 days free • Email verification required'}
         </p>
       </div>
     </div>
