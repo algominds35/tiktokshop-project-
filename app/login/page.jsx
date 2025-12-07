@@ -18,20 +18,12 @@ export default function LoginPage() {
       return
     }
 
-    try {
-      setLoading(true)
-      setError('')
+    // Simple localStorage auth
+    localStorage.setItem('user_email', email)
+    localStorage.setItem('user_logged_in', 'true')
 
-      // Simple localStorage auth
-      localStorage.setItem('user_email', email)
-      localStorage.setItem('user_logged_in', 'true')
-
-      // Redirect immediately
-      router.push('/dashboard')
-    } catch (err) {
-      setError(err.message)
-      setLoading(false)
-    }
+    // Hard redirect
+    window.location.href = '/dashboard'
   }
 
   return (

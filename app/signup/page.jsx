@@ -18,21 +18,13 @@ export default function SignupPage() {
       return
     }
 
-    try {
-      setLoading(true)
-      setError('')
+    // Simple localStorage auth
+    localStorage.setItem('user_email', email)
+    localStorage.setItem('user_logged_in', 'true')
+    localStorage.setItem('trial_start', new Date().toISOString())
 
-      // Simple localStorage auth
-      localStorage.setItem('user_email', email)
-      localStorage.setItem('user_logged_in', 'true')
-      localStorage.setItem('trial_start', new Date().toISOString())
-
-      // Redirect immediately
-      router.push('/dashboard')
-    } catch (err) {
-      setError(err.message)
-      setLoading(false)
-    }
+    // Hard redirect
+    window.location.href = '/dashboard'
   }
 
   return (
