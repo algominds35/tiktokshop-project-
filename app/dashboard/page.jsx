@@ -12,6 +12,12 @@ export default function Dashboard() {
   const [sortConfig, setSortConfig] = useState({ key: 'revenue', direction: 'desc' })
 
   useEffect(() => {
+    // Check if logged in
+    const loggedIn = localStorage.getItem('user_logged_in')
+    if (!loggedIn) {
+      router.push('/login')
+      return
+    }
     loadData()
   }, [])
 
@@ -92,13 +98,11 @@ export default function Dashboard() {
   }
 
 
-  const handleLogout = async () => {
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' })
-      router.push('/')
-    } catch (err) {
-      console.error('Logout error:', err)
-    }
+  const handleLogout = () => {
+    localStorage.removeItem('user_email')
+    localStorage.removeItem('user_logged_in')
+    localStorage.removeItem('trial_start')
+    router.push('/')
   }
 
 

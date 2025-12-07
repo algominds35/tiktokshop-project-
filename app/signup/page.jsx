@@ -10,7 +10,7 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const handleSignup = async (e) => {
+  const handleSignup = (e) => {
     e.preventDefault()
     
     if (!email) {
@@ -22,17 +22,12 @@ export default function SignupPage() {
       setLoading(true)
       setError('')
 
-      const response = await fetch('/api/auth/simple-signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
+      // Simple localStorage auth
+      localStorage.setItem('user_email', email)
+      localStorage.setItem('user_logged_in', 'true')
+      localStorage.setItem('trial_start', new Date().toISOString())
 
-      if (!response.ok) {
-        const data = await response.json()
-        throw new Error(data.error || 'Signup failed')
-      }
-
+      // Redirect immediately
       router.push('/dashboard')
     } catch (err) {
       setError(err.message)

@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault()
     
     if (!email) {
@@ -22,17 +22,11 @@ export default function LoginPage() {
       setLoading(true)
       setError('')
 
-      const response = await fetch('/api/auth/simple-login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
+      // Simple localStorage auth
+      localStorage.setItem('user_email', email)
+      localStorage.setItem('user_logged_in', 'true')
 
-      if (!response.ok) {
-        const data = await response.json()
-        throw new Error(data.error || 'Login failed')
-      }
-
+      // Redirect immediately
       router.push('/dashboard')
     } catch (err) {
       setError(err.message)
