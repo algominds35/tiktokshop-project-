@@ -53,24 +53,6 @@ export default function LoginPage() {
         .eq('email', email)
         .single()
 
-      // Log login activity
-      try {
-        await fetch('/api/log-activity', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            userId: data.user.id,
-            eventType: 'login',
-            eventData: {
-              email: email,
-              method: 'email_password'
-            }
-          })
-        })
-      } catch (logError) {
-        console.error('Error logging activity:', logError)
-      }
-
       // Store in localStorage
       localStorage.setItem('user_email', email)
       localStorage.setItem('user_logged_in', 'true')
