@@ -41,9 +41,9 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
-              <div className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 mb-6">
-                <span className="text-[#FF6B5B]">↗</span>
-                <span className="text-sm text-gray-700">Track Your Real Profits Now</span>
+              <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-500 rounded-full px-5 py-2.5 mb-6">
+                <span className="text-xl">🎉</span>
+                <span className="text-sm font-bold text-green-900">Start 14-Day FREE Trial - No Credit Card Required</span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -55,12 +55,18 @@ export default function LandingPage() {
                 TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
               </p>
 
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8 rounded">
+                <p className="text-base font-semibold text-blue-900">
+                  ✓ 14-Day FREE Trial • ✓ No Credit Card Required • ✓ Cancel Anytime
+                </p>
+              </div>
+
               <div className="flex items-center gap-4 mb-6">
                 <Link
                   href="/signup"
                   className="px-8 py-4 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors shadow-lg"
                 >
-                  Start Free Trial
+                  Start 14-Day Free Trial
                 </Link>
                 <button
                   onClick={() => setShowDemo(true)}
