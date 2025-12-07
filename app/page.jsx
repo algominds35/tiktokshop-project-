@@ -5,86 +5,86 @@ import Link from 'next/link'
 
 export default function LandingPage() {
   const [showDemo, setShowDemo] = useState(false)
+  const [pricingInterval, setPricingInterval] = useState('monthly')
+  const [openFaq, setOpenFaq] = useState(null)
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+      <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg"></div>
+              <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg"></div>
               <span className="text-xl font-bold text-gray-900">ReconcileBook</span>
             </div>
-            <div className="flex items-center gap-4">
-              <Link href="/login" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                Sign In
-              </Link>
-              <Link
-                href="/signup"
-                className="px-5 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 font-medium transition-all"
-              >
-                Start Free Trial
-              </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#home" className="text-sm text-gray-600 hover:text-gray-900">Home</a>
+              <a href="#features" className="text-sm text-gray-600 hover:text-gray-900">Features</a>
+              <a href="#benefits" className="text-sm text-gray-600 hover:text-gray-900">Benefits</a>
+              <a href="#pricing" className="text-sm text-gray-600 hover:text-gray-900">Pricing</a>
+              <a href="#faq" className="text-sm text-gray-600 hover:text-gray-900">FAQs</a>
             </div>
+            <Link
+              href="/signup"
+              className="px-6 py-2.5 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-medium text-sm transition-colors"
+            >
+              Start Free Trial
+            </Link>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section id="home" className="pt-32 pb-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full mb-8">
-              <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-blue-900">14-Day Free Trial • No Credit Card Required</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 mb-6">
+                <span className="text-[#FF6B5B]">↗</span>
+                <span className="text-sm text-gray-700">Track Your Real Profits Now</span>
+              </div>
+              
+              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Stop Guessing Your{' '}
+                <span className="text-[#FF6B5B]">TikTok Shop Profits</span>
+              </h1>
+              
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
+              </p>
+
+              <div className="flex items-center gap-4 mb-6">
+                <Link
+                  href="/signup"
+                  className="px-8 py-4 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors shadow-lg"
+                >
+                  Start Free Trial
+                </Link>
+                <button
+                  onClick={() => setShowDemo(true)}
+                  className="px-8 py-4 bg-white text-gray-900 border-2 border-gray-300 rounded-lg hover:border-gray-900 font-semibold transition-all"
+                >
+                  Preview Demo →
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <span className="text-[#FF6B5B]">★</span>
+                <span className="font-medium">4.5/5 stars</span> on G2 for Profit Tracking
+              </div>
             </div>
-            
-            <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
-              Stop Guessing Your<br />
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                TikTok Shop Profits
-              </span>
-            </h1>
-            
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-              TikTok Shop hides fees and pays you net amounts. We show you exactly where your money goes and your real profit margins.
-            </p>
 
-            <div className="flex items-center justify-center gap-4 mb-12">
-              <Link
-                href="/signup"
-                className="px-8 py-4 bg-gray-900 text-white rounded-xl hover:bg-gray-800 font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                Get Started Free →
-              </Link>
-              <button
-                onClick={() => setShowDemo(true)}
-                className="px-8 py-4 bg-white text-gray-900 border-2 border-gray-200 rounded-xl hover:border-gray-900 font-semibold transition-all"
-              >
-                Try Demo
-              </button>
-            </div>
-
-            <p className="text-sm text-gray-500">
-              Join 500+ TikTok Shop sellers tracking their real profits
-            </p>
-          </div>
-
-          {/* Hero Image - Dashboard Preview */}
-          <div className="mt-20 max-w-6xl mx-auto">
+            {/* Right Content - Dashboard Preview */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur-3xl opacity-20"></div>
-              <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 p-8">
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-8 aspect-video flex items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-200">
+                {/* Placeholder for dashboard screenshot */}
+                <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg aspect-[4/3] flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-5xl mb-4">📊</div>
-                    <p className="text-gray-600 font-medium">Dashboard Preview</p>
+                    <div className="text-5xl mb-3">📊</div>
+                    <p className="text-gray-500 font-medium">Dashboard Preview</p>
+                    <p className="text-sm text-gray-400 mt-1">(Add your screenshot here)</p>
                   </div>
                 </div>
               </div>
@@ -93,195 +93,463 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              See Your Real Numbers
-            </h2>
-            <p className="text-xl text-gray-600">
-              No more guessing. Know exactly where your money goes.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: '💸',
-                title: 'Complete Fee Breakdown',
-                description: 'Platform fees, payment processing, shipping costs, and affiliate commissions - all in one place.'
-              },
-              {
-                icon: '⚡',
-                title: 'Real-Time Sync',
-                description: 'Connect your TikTok Shop once and get automatic updates. No manual data entry required.'
-              },
-              {
-                icon: '📈',
-                title: 'Product-Level Insights',
-                description: 'Know which products are actually profitable and which ones are draining your margins.'
-              },
-              {
-                icon: '🔗',
-                title: 'QuickBooks Integration',
-                description: 'Automatically sync payouts to QuickBooks with proper journal entries and reconciliation.'
-              },
-              {
-                icon: '🎯',
-                title: 'Accurate Profit Margins',
-                description: 'See your true profit margins after all fees, not just the net payout from TikTok.'
-              },
-              {
-                icon: '⏱️',
-                title: 'Save Hours Every Week',
-                description: 'Stop manually calculating fees. Get instant clarity on your business performance.'
-              }
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-900 transition-all hover:shadow-lg"
-              >
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+      {/* Logo Section */}
+      <section className="py-12 bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between opacity-40 grayscale">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="text-2xl font-bold text-gray-400">
+                LOGO
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Problem/Solution */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-10">
-              <div className="text-4xl mb-4">😵‍💫</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">The Problem</h3>
-              <ul className="space-y-4">
-                {[
-                  'TikTok Shop takes multiple hidden fees before paying you',
-                  'You only see "net payout" with no breakdown',
-                  'Some products look profitable but actually lose money',
-                  'Hours wasted reconciling confusing reports'
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="text-red-600 font-bold mt-1">✕</span>
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-10">
-              <div className="text-4xl mb-4">✨</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">The Solution</h3>
-              <ul className="space-y-4">
-                {[
-                  'Automatic sync with TikTok Shop API',
-                  'Complete breakdown of every single fee',
-                  'Real profit margins per product with alerts',
-                  'Know your numbers in 30 seconds, not 3 hours'
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="text-green-600 font-bold mt-1">✓</span>
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-20 px-6 bg-gray-50">
+      {/* Features Section */}
+      <section id="features" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Simple, Transparent Pricing
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Know Your Real{' '}
+              <span className="text-[#FF6B5B]">TikTok Shop Profit</span>
             </h2>
-            <p className="text-xl text-gray-600">
-              No hidden fees. Because we hate those too.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our AI-powered profit tracking solution helps you see every fee, understand your margins, and optimize your TikTok Shop for maximum profitability.
             </p>
           </div>
 
-          <div className="max-w-lg mx-auto">
-            <div className="bg-white rounded-2xl border-2 border-gray-900 p-10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-gradient-to-br from-blue-600 to-cyan-600 text-white px-4 py-1 text-sm font-bold">
-                POPULAR
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: '🤖',
+                title: 'AI-Powered Fee Analysis',
+                description: 'Automatically identifies and categorizes every TikTok Shop fee.'
+              },
+              {
+                icon: '📊',
+                title: 'Real-Time Sync',
+                description: 'Live connection to TikTok Shop API for instant profit updates.'
+              },
+              {
+                icon: '📈',
+                title: 'Product-Level Insights',
+                description: 'Know exactly which products are profitable and which aren\'t.'
+              },
+              {
+                icon: '👥',
+                title: 'QuickBooks Integration',
+                description: 'Sync payouts automatically with proper reconciliation.'
+              }
+            ].map((feature, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-[#FF6B5B] transition-colors">
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
               </div>
-              
-              <div className="text-center mb-8">
-                <div className="text-5xl font-bold text-gray-900 mb-2">
-                  $29
-                  <span className="text-2xl text-gray-600 font-normal">/month</span>
-                </div>
-                <p className="text-gray-600">Everything you need to track profits</p>
-              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <ul className="space-y-4 mb-8">
+      {/* Product Demo Section */}
+      <section id="benefits" className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              See Your <span className="text-[#FF6B5B]">Real Numbers</span> Clearly
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              ReconcileBook is designed to help you understand your TikTok Shop finances, see hidden fees, and track real profit margins.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                title: 'Complete Fee Breakdown',
+                subtitle: 'See every fee clearly',
+                placeholder: 'Fee Chart'
+              },
+              {
+                title: 'Profit Tracking',
+                subtitle: 'Real-time profit margins',
+                placeholder: 'Profit Graph'
+              },
+              {
+                title: 'Product Performance',
+                subtitle: 'Review your top products',
+                placeholder: 'Product Table'
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">{item.subtitle}</p>
+                <div className="bg-white rounded-lg border-2 border-dashed border-gray-300 aspect-[4/3] flex items-center justify-center">
+                  <p className="text-gray-400 text-sm">{item.placeholder}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Instant Connection',
+                description: 'Connect your TikTok Shop in one click and get immediate insights into your fees and profit margins.'
+              },
+              {
+                title: 'Track Your Numbers',
+                description: 'Monitor your profit margins in real-time with our intuitive dashboard and clear visualizations.'
+              },
+              {
+                title: 'Automated Reports',
+                description: 'Get detailed breakdowns of every fee, payout, and profit margin automatically.'
+              }
+            ].map((item, index) => (
+              <div key={index}>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                From Guessing{' '}
+                <span className="text-[#FF6B5B]">to Knowing</span>
+              </h2>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Stop wasting hours trying to calculate TikTok Shop fees manually. Our platform automatically tracks every fee, shows real profit margins, and helps you make data-driven decisions about your products.
+              </p>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Get clarity on your finances in seconds, reduce stress about hidden fees, and grow your TikTok Shop with confidence knowing your real numbers.
+              </p>
+              <Link
+                href="/signup"
+                className="inline-block px-8 py-4 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors"
+              >
+                Start Free Trial
+              </Link>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="text-sm text-gray-500 text-center mb-2">Profit Clarity Score</div>
+                {/* Gauge placeholder */}
+                <div className="w-64 h-64 bg-white rounded-full border-8 border-gray-200 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl font-bold text-gray-900">100</div>
+                    <div className="text-sm text-gray-500">Crystal Clear</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Sellers Who've <span className="text-[#FF6B5B]">Transformed</span> Their Business
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our users are the reason we're here. Their success stories inspire us to keep pushing the boundaries of what's possible.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                name: 'Sarah M., TikTok Shop Seller',
+                quote: 'The fee transparency has given me complete peace of mind. I finally know my real profit margins and can make informed decisions about pricing.'
+              },
+              {
+                name: 'Mike T., E-commerce Entrepreneur',
+                quote: 'ReconcileBook saved me hours every week. The automated tracking and QuickBooks sync make accounting so much easier.'
+              }
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-8 border border-orange-200">
+                <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
+                <p className="font-semibold text-gray-900">{testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Target Audience Section */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Who Can Benefit From{' '}
+              <span className="text-[#FF6B5B]">ReconcileBook?</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our profit tracking platform is perfect for anyone selling on TikTok Shop who wants clarity on their finances.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-12">
+            {[
+              {
+                title: 'TikTok Shop Sellers',
+                description: 'Track multiple products, understand fees, and maximize your profit margins with ease.',
+                image: '👨‍💼'
+              },
+              {
+                title: 'E-commerce Entrepreneurs',
+                description: 'Manage your finances across platforms and grow your business with QuickBooks integration.',
+                image: '👩‍💼'
+              },
+              {
+                title: 'Small Business Owners',
+                description: 'Stay organized with automated tracking and spend less time on manual accounting.',
+                image: '👥'
+              },
+              {
+                title: 'Freelance Sellers',
+                description: 'Keep your finances clear and meet deadlines with real-time profit tracking.',
+                image: '💼'
+              }
+            ].map((audience, index) => (
+              <div key={index} className="flex items-center gap-8">
+                <div className="flex-shrink-0">
+                  <div className="w-40 h-40 bg-white rounded-2xl border-2 border-gray-200 flex items-center justify-center text-6xl">
+                    {audience.image}
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{audience.title}</h3>
+                  <p className="text-gray-600">{audience.description}</p>
+                </div>
+                {index < 3 && (
+                  <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 mt-40">
+                    <div className="w-0.5 h-12 border-l-2 border-dashed border-[#FF6B5B]"></div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Simple, <span className="text-[#FF6B5B]">Transparent</span> Pricing
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Start with 14 days free. No credit card required.
+            </p>
+
+            {/* Pricing Toggle */}
+            <div className="inline-flex items-center gap-3 bg-gray-100 rounded-full p-1">
+              <button
+                onClick={() => setPricingInterval('monthly')}
+                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                  pricingInterval === 'monthly'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600'
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setPricingInterval('annual')}
+                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                  pricingInterval === 'annual'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600'
+                }`}
+              >
+                Annual
+                <span className="ml-2 text-xs text-green-600 font-semibold">-15%</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Free Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Free</h3>
+              <p className="text-sm text-gray-600 mb-6">For individuals and small shops</p>
+              <div className="mb-6">
+                <span className="text-5xl font-bold text-gray-900">$0</span>
+                <span className="text-gray-600 ml-2">free forever</span>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">Limited features, perfect for testing</p>
+              
+              <ul className="space-y-3 mb-8">
                 {[
-                  'Unlimited TikTok Shop connections',
-                  'Real-time profit tracking',
-                  'Complete fee breakdown',
-                  'Product profitability analysis',
-                  'QuickBooks integration',
+                  'Up to 50 transactions',
+                  'Basic fee breakdown',
+                  'Product-level tracking',
                   'Email support'
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-green-600 text-xs font-bold">✓</span>
-                    </div>
-                    <span className="text-gray-700">{feature}</span>
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-gray-400">✓</span>
+                    <span className="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button className="w-full py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-900 transition-colors">
+                Start Now →
+              </button>
+            </div>
+
+            {/* Professional Plan - Most Popular */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-[#FF6B5B] relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#FF6B5B] text-white text-xs font-bold px-4 py-1 rounded-full">
+                Most Popular
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
+              <p className="text-sm text-gray-600 mb-6">For serious TikTok Shop sellers</p>
+              <div className="mb-6">
+                <span className="text-5xl font-bold text-gray-900">$29</span>
+                <span className="text-gray-600 ml-2">billed monthly</span>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">Everything in Free plan, plus:</p>
+              
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Unlimited transactions',
+                  'Complete fee breakdown',
+                  'QuickBooks integration',
+                  'Real-time profit tracking',
+                  'Product profitability analysis',
+                  'Priority email support',
+                  '14-day free trial'
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-[#FF6B5B]">✓</span>
+                    <span className="text-sm text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Link
                 href="/signup"
-                className="block w-full py-4 bg-gray-900 text-white text-center rounded-xl font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl mb-4"
+                className="block w-full py-3 bg-[#FF6B5B] text-white text-center rounded-lg font-semibold hover:bg-[#FF5547] transition-colors"
               >
-                Start 14-Day Free Trial
+                Start Free Trial
               </Link>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+              <p className="text-sm text-gray-600 mb-6">For agencies and large teams</p>
+              <div className="mb-6">
+                <span className="text-5xl font-bold text-gray-900">$99</span>
+                <span className="text-gray-600 ml-2">billed monthly</span>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">Everything in Professional, plus:</p>
               
-              <p className="text-center text-sm text-gray-500">
-                No credit card required • Cancel anytime
-              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Multiple TikTok Shops',
+                  'Advanced reporting',
+                  'Custom integrations',
+                  'Dedicated account manager',
+                  'Phone support',
+                  'Custom training'
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-gray-400">✓</span>
+                    <span className="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button className="w-full py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-900 transition-colors">
+                Contact Sales →
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-6">
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20"></div>
-            <div className="relative">
-              <h2 className="text-4xl font-bold mb-4">
-                Ready to Stop Guessing?
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Left Side */}
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                <span className="text-[#FF6B5B]">Frequently</span> Asked Questions
               </h2>
-              <p className="text-xl mb-8 text-gray-300">
-                Start your 14-day free trial today. No credit card required.
+              <p className="text-gray-600 mb-6">
+                Still confused with something? Let us know, we are here to help!
               </p>
-              <Link
-                href="/signup"
-                className="inline-block px-10 py-4 bg-white text-gray-900 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                Get Started Free →
-              </Link>
+              <button className="px-6 py-3 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors">
+                Contact Us
+              </button>
+            </div>
+
+            {/* Right Side - FAQ Items */}
+            <div className="space-y-4">
+              {[
+                {
+                  question: 'How does the profit tracking work?',
+                  answer: 'We connect to your TikTok Shop via OAuth and automatically pull all transaction data, fees, and payouts. Our system calculates your real profit margins by tracking every fee.'
+                },
+                {
+                  question: 'What fees does ReconcileBook track?',
+                  answer: 'We track platform fees, payment processing fees, shipping fees, affiliate commissions, refunds, and all other TikTok Shop deductions.'
+                },
+                {
+                  question: 'Is my data secure?',
+                  answer: 'Yes! We use bank-level encryption and secure OAuth connections. We never store your TikTok Shop credentials and comply with all data protection regulations.'
+                },
+                {
+                  question: 'Can I integrate with QuickBooks?',
+                  answer: 'Yes! Professional and Enterprise plans include QuickBooks Online integration with automatic journal entry creation for each payout.'
+                },
+                {
+                  question: 'Do you offer a free trial?',
+                  answer: 'Yes! We offer a 14-day free trial with full access to all Professional features. No credit card required to start.'
+                }
+              ].map((faq, index) => (
+                <div key={index} className="bg-white rounded-lg border border-gray-200">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="font-semibold text-gray-900">{faq.question}</span>
+                    <span className="text-gray-400">{openFaq === index ? '−' : '+'}</span>
+                  </button>
+                  {openFaq === index && (
+                    <div className="px-6 pb-4">
+                      <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-gray-200">
+      <footer className="py-12 px-6 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg"></div>
+              <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg"></div>
               <span className="text-xl font-bold text-gray-900">ReconcileBook</span>
             </div>
             <p className="text-gray-600 text-center">
@@ -309,7 +577,7 @@ function DemoModal({ onClose }) {
         <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
           <div>
             <h3 className="text-2xl font-bold text-gray-900">Demo Dashboard</h3>
-            <p className="text-gray-600 mt-1">This is sample data to show you how it works</p>
+            <p className="text-gray-600 mt-1">Sample data showing how ReconcileBook works</p>
           </div>
           <button
             onClick={onClose}
@@ -340,76 +608,11 @@ function DemoModal({ onClose }) {
             ))}
           </div>
 
-          {/* Fee Breakdown */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <h4 className="text-lg font-bold text-gray-900 mb-6">Fee Breakdown</h4>
-            <div className="space-y-6">
-              {[
-                { label: 'Platform Fees', amount: '$1,867.50', percentage: 48, color: 'bg-red-500' },
-                { label: 'Payment Processing', amount: '$994.00', percentage: 26, color: 'bg-orange-500' },
-                { label: 'Shipping Fees', amount: '$622.50', percentage: 16, color: 'bg-yellow-500' },
-                { label: 'Affiliate Commissions', amount: '$378.50', percentage: 10, color: 'bg-purple-500' }
-              ].map((fee, index) => (
-                <div key={index}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700">{fee.label}</span>
-                    <span className="text-sm font-bold text-gray-900">{fee.amount}</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
-                    <div className={`${fee.color} h-3 rounded-full transition-all`} style={{ width: `${fee.percentage}%` }}></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Product Table */}
-          <div className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-            <div className="p-6 border-b border-gray-200">
-              <h4 className="text-lg font-bold text-gray-900">Product Performance</h4>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-white border-b border-gray-200">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Product</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Revenue</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Fees</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Profit</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Margin</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-gray-50">
-                  {[
-                    { name: 'Wireless Earbuds', revenue: 4280, fees: 1327, profit: 2953, margin: 69.0 },
-                    { name: 'Phone Case Set', revenue: 3150, fees: 977, profit: 2173, margin: 69.0 },
-                    { name: 'Portable Charger', revenue: 2890, fees: 897, profit: 1993, margin: 69.0 },
-                    { name: 'LED Strip Lights', revenue: 2130, fees: 661, profit: 1469, margin: 69.0 }
-                  ].map((product, index) => (
-                    <tr key={index} className="border-b border-gray-200">
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{product.name}</td>
-                      <td className="px-6 py-4 text-sm text-right text-gray-900">${product.revenue.toLocaleString()}</td>
-                      <td className="px-6 py-4 text-sm text-right text-gray-900">${product.fees.toLocaleString()}</td>
-                      <td className="px-6 py-4 text-sm text-right text-green-600 font-medium">${product.profit.toLocaleString()}</td>
-                      <td className="px-6 py-4 text-sm text-right font-bold text-gray-900">{product.margin}%</td>
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                          Profitable
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
           <div className="text-center pt-4">
             <Link
               href="/signup"
               onClick={onClose}
-              className="inline-block px-8 py-4 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all"
+              className="inline-block px-8 py-4 bg-[#FF6B5B] text-white rounded-xl font-semibold hover:bg-[#FF5547] transition-all"
             >
               Start Your Free Trial →
             </Link>
