@@ -497,6 +497,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
       {/* Pricing Section */}
       <section id="pricing" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -1049,5 +1052,157 @@ function DemoModal({ onClose }) {
         </div>
       </div>
     </div>
+  )
+}
+
+function TestimonialsSection() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+
+  const testimonials = [
+    {
+      name: 'Sarah Mitchell',
+      title: 'Founder & CEO',
+      company: 'Luxe Accessories',
+      image: '/testimonials/person-1.jpg',
+      rating: 5,
+      text: "I appreciate how quickly and conveniently ReconcileBook provides data. I think it's the only tool capable of pulling in TikTok Shop fees — highly recommended!"
+    },
+    {
+      name: 'James Chen',
+      title: 'Founder',
+      company: 'Peak Performance Gear',
+      image: '/testimonials/person-2.jpg',
+      rating: 5,
+      text: "ReconcileBook has been super quick and convenient for tracking my TikTok Shop profits. Overall we're enjoying the product and the clarity it brings."
+    },
+    {
+      name: 'Emma Rodriguez',
+      title: 'Senior Marketing Manager',
+      company: 'Wellness Essentials Co.',
+      image: '/testimonials/person-3.jpg',
+      rating: 5,
+      text: "I was drowning in spreadsheets trying to figure out our TikTok Shop numbers, but ReconcileBook made it so easy — and the support is awesome!"
+    },
+    {
+      name: 'Michael Thompson',
+      title: 'Founder',
+      company: 'Elite Beauty Supply',
+      image: '/testimonials/person-4.jpg',
+      rating: 5,
+      text: "Great support to start with. I tried other tools, but ReconcileBook is the most accurate and shows me exactly where my money is going."
+    }
+  ]
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const goToTestimonial = (index) => {
+    setCurrentTestimonial(index)
+  }
+
+  const current = testimonials[currentTestimonial]
+
+  return (
+    <section className="py-20 px-6 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Trusted by TikTok Shop <span className="text-[#FF6B5B]">Sellers</span>
+          </h2>
+          <p className="text-xl text-gray-600">
+            See what our customers are saying about ReconcileBook
+          </p>
+        </div>
+
+        <div className="relative bg-white rounded-3xl shadow-xl p-12 border border-gray-100">
+          {/* Quote Icon */}
+          <div className="absolute top-0 right-8 -translate-y-1/2">
+            <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center">
+              <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Testimonial Content */}
+          <div className="text-center mb-8">
+            <img 
+              src={current.image}
+              alt={current.name}
+              className="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-gray-100 shadow-lg"
+            />
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">{current.name}</h3>
+            <p className="text-gray-600 mb-4">
+              {current.title} @ {current.company}
+            </p>
+            
+            {/* Star Rating */}
+            <div className="flex items-center justify-center gap-1 mb-6">
+              {[...Array(current.rating)].map((_, i) => (
+                <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                </svg>
+              ))}
+            </div>
+
+            {/* Testimonial Text */}
+            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              "{current.text}"
+            </p>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevTestimonial}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            aria-label="Previous testimonial"
+          >
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={nextTestimonial}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            aria-label="Next testimonial"
+          >
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Dot Navigation */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-all ${
+                  index === currentTestimonial 
+                    ? 'bg-blue-600 w-8' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <Link
+            href="/signup"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
+          >
+            Join 500+ Happy Sellers →
+          </Link>
+        </div>
+      </div>
+    </section>
   )
 }
