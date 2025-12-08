@@ -268,6 +268,7 @@ export default function DemoPage() {
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Product</th>
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Units Sold</th>
                   <th className="px-6 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Revenue</th>
                   <th className="px-6 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Fees</th>
                   <th className="px-6 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Profit</th>
@@ -279,6 +280,7 @@ export default function DemoPage() {
                   { 
                     name: 'Wireless Bluetooth Earbuds', 
                     id: '1729669027988280020',
+                    unitsSold: 85,
                     revenue: 4250.00, 
                     fees: 950.00, 
                     profit: 3300.00, 
@@ -288,6 +290,7 @@ export default function DemoPage() {
                   { 
                     name: 'Premium Phone Case', 
                     id: '1729669065913045716',
+                    unitsSold: 179,
                     revenue: 3580.00, 
                     fees: 825.00, 
                     profit: 2755.00, 
@@ -297,6 +300,7 @@ export default function DemoPage() {
                   { 
                     name: 'USB-C Fast Charging Cable', 
                     id: '1729669102847562340',
+                    unitsSold: 241,
                     revenue: 2415.50, 
                     fees: 683.30, 
                     profit: 1732.20, 
@@ -306,6 +310,7 @@ export default function DemoPage() {
                   { 
                     name: 'Tempered Glass Screen Protector', 
                     id: '1729669138294018560',
+                    unitsSold: 89,
                     revenue: 890.00, 
                     fees: 425.00, 
                     profit: 465.00, 
@@ -315,6 +320,7 @@ export default function DemoPage() {
                   { 
                     name: '3-in-1 Wireless Charging Dock', 
                     id: '1729669174561892352',
+                    unitsSold: 11,
                     revenue: 550.00, 
                     fees: 285.00, 
                     profit: 265.00, 
@@ -324,6 +330,7 @@ export default function DemoPage() {
                   { 
                     name: 'Car Phone Mount', 
                     id: '1729669210483945728',
+                    unitsSold: 19,
                     revenue: 380.00, 
                     fees: 210.00, 
                     profit: 170.00, 
@@ -333,6 +340,7 @@ export default function DemoPage() {
                   { 
                     name: 'Portable Power Bank 20000mAh', 
                     id: '1729669246729834496',
+                    unitsSold: 6,
                     revenue: 180.00, 
                     fees: 80.00, 
                     profit: 100.00, 
@@ -356,6 +364,7 @@ export default function DemoPage() {
                         </div>
                       </div>
                     </td>
+                    <td className="px-6 py-4 text-right text-gray-900 font-semibold">{product.unitsSold}</td>
                     <td className="px-6 py-4 text-right text-gray-900">${product.revenue.toLocaleString()}</td>
                     <td className="px-6 py-4 text-right text-red-600 font-medium">${product.fees.toLocaleString()}</td>
                     <td className="px-6 py-4 text-right text-gray-900 font-semibold">${product.profit.toLocaleString()}</td>
