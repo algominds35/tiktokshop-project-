@@ -258,17 +258,17 @@ export default function LandingPage() {
                     </svg>
                   </div>
                 </div>
-                <div>
+            <div>
                   <h3 className="text-2xl font-bold text-white mb-3">
                     Do you struggle to track product-level profit?
                   </h3>
                   <p className="text-gray-300">
                     Get detailed profit analytics on each product with ReconcileBook's P&L tool.
                   </p>
+            </div>
+                    </div>
                 </div>
-                  </div>
-              </div>
-          </div>
+            </div>
 
           {/* Dashboard Preview Section */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
@@ -279,7 +279,7 @@ export default function LandingPage() {
                   <line x1="8" y1="21" x2="16" y2="21" strokeWidth="2" strokeLinecap="round"/>
                   <line x1="12" y1="17" x2="12" y2="21" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
-              </div>
+            </div>
               <h2 className="text-4xl font-bold text-white mb-4">
                 Meet Your Real-Time Profit Dashboard
               </h2>
@@ -292,35 +292,35 @@ export default function LandingPage() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">No Profit Guesswork</span>
-                </div>
+          </div>
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">Forecast & Historical Profits</span>
-                </div>
+        </div>
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">Informed Decision</span>
-                </div>
-              </div>
+    </div>
+          </div>
               <div className="bg-[#FF8C00] text-white rounded-lg px-8 py-4 inline-block">
                 <div className="text-2xl font-bold">14 DAY FREE TRIAL</div>
                 <div className="text-sm">No credit card required, Cancel anytime.</div>
-              </div>
-            </div>
+        </div>
+      </div>
             <div className="relative">
               <img 
                 src="/images/dashboard-1.png" 
                 alt="ReconcileBook Dashboard Preview" 
                 className="w-full h-auto rounded-2xl shadow-2xl border-4 border-blue-500"
               />
-            </div>
+        </div>
           </div>
 
-        </div>
+          </div>
       </section>
 
       {/* Product Profitability Showcase Section */}
@@ -332,8 +332,8 @@ export default function LandingPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               See exactly which products are making you money and which ones are eating into your profits. Make data-driven decisions with real numbers.
-            </p>
-          </div>
+        </p>
+      </div>
 
           {/* Product Table */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
@@ -370,39 +370,39 @@ export default function LandingPage() {
                           'bg-red-100 text-red-800'
                         }`}>
                           {product.margin}%
-                        </span>
+                  </span>
                       </td>
                     </tr>
-                  ))}
+            ))}
                 </tbody>
               </table>
-            </div>
+          </div>
 
             {/* Legend */}
             <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 <span className="text-gray-600">≥70% margin</span>
-              </div>
+          </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <span className="text-gray-600">40-70% margin</span>
-              </div>
+        </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <span className="text-gray-600">&lt;40% margin</span>
+      </div>
+    </div>
               </div>
-            </div>
-          </div>
 
           {/* CTA */}
           <div className="text-center mt-12">
-            <Link
-              href="/signup"
+              <Link
+                href="/signup"
               className="inline-block px-8 py-4 bg-[#FF6B5B] text-white rounded-xl font-semibold hover:bg-[#FF5547] transition-all text-lg shadow-lg"
-            >
+              >
               Start Tracking Your Products For Free →
-            </Link>
+              </Link>
             <p className="text-sm text-gray-500 mt-4">14-day free trial • No credit card required</p>
           </div>
         </div>
@@ -1056,151 +1056,37 @@ function DemoModal({ onClose }) {
 }
 
 function TestimonialsSection() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-
-  const testimonials = [
-    {
-      name: 'Sarah Mitchell',
-      title: 'Founder & CEO',
-      company: 'Luxe Accessories',
-      image: '/testimonials/person-1.jpg',
-      rating: 5,
-      text: "I appreciate how quickly and conveniently ReconcileBook provides data. I think it's the only tool capable of pulling in TikTok Shop fees — highly recommended!"
-    },
-    {
-      name: 'James Chen',
-      title: 'Founder',
-      company: 'Peak Performance Gear',
-      image: '/testimonials/person-2.jpg',
-      rating: 5,
-      text: "ReconcileBook has been super quick and convenient for tracking my TikTok Shop profits. Overall we're enjoying the product and the clarity it brings."
-    },
-    {
-      name: 'Emma Rodriguez',
-      title: 'Senior Marketing Manager',
-      company: 'Wellness Essentials Co.',
-      image: '/testimonials/person-3.jpg',
-      rating: 5,
-      text: "I was drowning in spreadsheets trying to figure out our TikTok Shop numbers, but ReconcileBook made it so easy — and the support is awesome!"
-    },
-    {
-      name: 'Michael Thompson',
-      title: 'Founder',
-      company: 'Elite Beauty Supply',
-      image: '/testimonials/person-4.jpg',
-      rating: 5,
-      text: "Great support to start with. I tried other tools, but ReconcileBook is the most accurate and shows me exactly where my money is going."
-    }
-  ]
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
-  const goToTestimonial = (index) => {
-    setCurrentTestimonial(index)
-  }
-
-  const current = testimonials[currentTestimonial]
-
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-20 px-6 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Trusted by TikTok Shop <span className="text-[#FF6B5B]">Sellers</span>
+          <p className="text-sm text-gray-600 mb-4">14-day free trial • No credit card required</p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Sellers Who've <span className="text-[#FF6B5B]">Transformed</span> Their Business
           </h2>
-          <p className="text-xl text-gray-600">
-            See what our customers are saying about ReconcileBook
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Our users are the reason we're here. Their success stories inspire us to keep pushing the boundaries of what's possible.
           </p>
         </div>
 
-        <div className="relative bg-white rounded-3xl shadow-xl p-12 border border-gray-100">
-          {/* Quote Icon */}
-          <div className="absolute top-0 right-8 -translate-y-1/2">
-            <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center">
-              <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Testimonial Content */}
-          <div className="text-center mb-8">
-            <img 
-              src={current.image}
-              alt={current.name}
-              className="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-gray-100 shadow-lg"
-            />
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">{current.name}</h3>
-            <p className="text-gray-600 mb-4">
-              {current.title} @ {current.company}
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Testimonial 1 */}
+          <div className="bg-orange-50 rounded-2xl p-8 border border-orange-100">
+            <p className="text-gray-700 text-lg mb-6 italic leading-relaxed">
+              "The fee transparency has given me complete peace of mind. I finally know my real profit margins and can make informed decisions about pricing."
             </p>
-            
-            {/* Star Rating */}
-            <div className="flex items-center justify-center gap-1 mb-6">
-              {[...Array(current.rating)].map((_, i) => (
-                <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                </svg>
-              ))}
-            </div>
+            <p className="font-bold text-gray-900">Sarah M., TikTok Shop Seller</p>
+          </div>
 
-            {/* Testimonial Text */}
-            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              "{current.text}"
+          {/* Testimonial 2 */}
+          <div className="bg-orange-50 rounded-2xl p-8 border border-orange-100">
+            <p className="text-gray-700 text-lg mb-6 italic leading-relaxed">
+              "ReconcileBook saved me hours every week. The automated tracking and QuickBooks sync make accounting so much easier."
             </p>
+            <p className="font-bold text-gray-900">Mike T., E-commerce Entrepreneur</p>
           </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
-            aria-label="Previous testimonial"
-          >
-            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
-            aria-label="Next testimonial"
-          >
-            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Dot Navigation */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentTestimonial 
-                    ? 'bg-blue-600 w-8' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-          <Link
-            href="/signup"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
-          >
-            Join 500+ Happy Sellers →
-          </Link>
         </div>
       </div>
     </section>
