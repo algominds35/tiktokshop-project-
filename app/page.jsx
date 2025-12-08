@@ -137,7 +137,7 @@ export default function LandingPage() {
           <h3 className="text-center text-lg font-semibold text-gray-600 mb-8">
             Trusted by Top TikTok Shop Sellers
           </h3>
-          <div className="flex items-center justify-between opacity-50 grayscale">
+          <div className="flex items-center justify-between">
             <img src="/logos/wellgaard.png" alt="Wellgaard" className="h-10 object-contain" />
             <img src="/logos/QVC_idEMmcOk-k_1.png" alt="QVC" className="h-10 object-contain" />
             <img src="/logos/joy.png" alt="JOY Sportswear" className="h-10 object-contain" />
