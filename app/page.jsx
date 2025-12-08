@@ -139,7 +139,7 @@ export default function LandingPage() {
           </h3>
           <div className="flex items-center justify-between">
             <img src="/logos/idQxCVUwLR_logos.png" alt="Wellgaard" className="h-10 object-contain" />
-            <img src="/logos/idNvNRqlk_1765225836914.png" alt="Halara" className="h-10 object-contain" />
+            <img src="/logos/idNrNRJqlk_1765225836914.png" alt="Halara" className="h-10 object-contain" />
             <img src="/logos/joy.png" alt="JOY Sportswear" className="h-10 object-contain" />
             <img src="/logos/idwhN_kpL7_logos.png" alt="Nature Spell" className="h-10 object-contain" />
           </div>
