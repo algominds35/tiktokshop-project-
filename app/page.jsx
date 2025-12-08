@@ -139,7 +139,7 @@ export default function LandingPage() {
           </h3>
           <div className="flex items-center justify-between opacity-50 grayscale">
             <img src="/logos/tiktok.png" alt="TikTok" className="h-10 object-contain" />
-            <img src="/logos/quickbooks.png" alt="QuickBooks" className="h-10 object-contain" />
+            <img src="/logos/qvc.png" alt="QVC" className="h-10 object-contain" />
             <img src="/logos/joy.png" alt="JOY Sportswear" className="h-10 object-contain" />
             <img src="/logos/oudware.png" alt="Oudware" className="h-10 object-contain" />
           </div>
