@@ -270,26 +270,83 @@ export default function LandingPage() {
               </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Instant Connection',
-                description: 'Connect your TikTok Shop in one click and get immediate insights into your fees and profit margins.'
-              },
-              {
-                title: 'Track Your Numbers',
-                description: 'Monitor your profit margins in real-time with our intuitive dashboard and clear visualizations.'
-              },
-              {
-                title: 'Automated Reports',
-                description: 'Get detailed breakdowns of every fee, payout, and profit margin automatically.'
-              }
-            ].map((item, index) => (
-              <div key={index}>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+          {/* Dashboard Preview Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div>
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <rect x="2" y="3" width="20" height="14" rx="2" strokeWidth="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="12" y1="17" x2="12" y2="21" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
               </div>
-            ))}
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Meet Your Real-Time Profit Dashboard
+              </h2>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Effortlessly track your TikTok Shop performance—including sales, refunds, ad spend, commissions, and net profit—all in one place. Get instant clarity on your margins and compare product performance with a clean, visual layout.
+              </p>
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="text-gray-900 font-medium">No Profit Guesswork</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="text-gray-900 font-medium">Forecast & Historical Profits</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="text-gray-900 font-medium">Informed Decision</span>
+                </div>
+              </div>
+              <div className="bg-[#FF8C00] text-white rounded-lg px-8 py-4 inline-block">
+                <div className="text-2xl font-bold">14 DAY FREE TRIAL</div>
+                <div className="text-sm">No credit card required, Cancel anytime.</div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="bg-gray-200 rounded-2xl aspect-video flex items-center justify-center border-4 border-blue-500">
+                <p className="text-gray-500">Dashboard Screenshot Goes Here</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Clarity Score Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-2">
+                From Guessing <span className="text-[#FF6B5B]">to Knowing</span>
+              </h2>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Stop wasting hours trying to calculate TikTok Shop fees manually. Our platform automatically tracks every fee, shows real profit margins, and helps you make data-driven decisions about your products.
+              </p>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Get clarity on your finances in seconds, reduce stress about hidden fees, and grow your TikTok Shop with confidence knowing your real numbers.
+              </p>
+              <button className="bg-[#FF6B5B] text-white rounded-lg px-8 py-4 font-semibold hover:bg-[#ff5544] transition-colors">
+                Start Free Trial
+              </button>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <svg className="w-64 h-64" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="90" fill="none" stroke="#e5e7eb" strokeWidth="12"/>
+                  <circle cx="100" cy="100" r="90" fill="none" stroke="#3B82F6" strokeWidth="12" strokeDasharray="565.48" strokeDashoffset="0" transform="rotate(-90 100 100)"/>
+                  <text x="100" y="90" textAnchor="middle" className="text-5xl font-bold" fill="#1f2937">100</text>
+                  <text x="100" y="115" textAnchor="middle" className="text-sm" fill="#6b7280">Crystal Clear</text>
+                </svg>
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white px-3 py-1 rounded-full shadow-md">
+                  <span className="text-sm font-medium text-gray-700">Profit Clarity Score</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
