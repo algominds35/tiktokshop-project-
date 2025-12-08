@@ -395,31 +395,6 @@ export default function LandingPage() {
               </span>
           </div>
 
-            {/* Pricing Toggle */}
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-0 bg-white rounded-lg p-1 border border-gray-200 shadow-sm">
-                <button
-                  onClick={() => setPricingInterval('monthly')}
-                  className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
-                    pricingInterval === 'monthly'
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-700 hover:text-gray-900'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setPricingInterval('annual')}
-                  className={`px-6 py-2.5 rounded-md font-semibold transition-all ${
-                    pricingInterval === 'annual'
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-700 hover:text-gray-900'
-                  }`}
-                >
-                  Annually - 2 Month Free
-                </button>
-              </div>
-          </div>
         </div>
 
           {/* Pricing Comparison Table */}
