@@ -94,13 +94,13 @@ export default function LandingPage() {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-4 mb-6">
-                <div className="text-lg text-gray-700">
-                  Trusted by <span className="font-bold text-gray-900">500+</span> TikTok Shop Sellers
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-sm text-gray-600">
+                  Trusted by <span className="font-semibold text-gray-900">500+</span> TikTok Shop Sellers
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="text-yellow-400">★★★★★</span>
-                  <span className="text-sm font-semibold text-gray-700 ml-1">4.9/5</span>
+                  <span className="text-yellow-400 text-sm">★★★★★</span>
+                  <span className="text-xs font-medium text-gray-600">4.5/5</span>
                 </div>
               </div>
 
