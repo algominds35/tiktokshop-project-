@@ -52,12 +52,12 @@ export default function LandingPage() {
               >
                 Login
               </Link>
-              <Link
-                href="/signup"
-                className="px-6 py-2.5 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-medium text-sm transition-colors inline-block"
-              >
-                Start Free Trial
-              </Link>
+            <Link
+              href="/signup"
+              className="px-6 py-2.5 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-medium text-sm transition-colors inline-block"
+            >
+              Start Free Trial
+            </Link>
             </div>
         </div>
         </div>
@@ -112,23 +112,23 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Right Content - Dual Screenshots Notion Style */}
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                {/* Screenshot 1 */}
-                <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 hover:shadow-3xl transition-all transform hover:scale-105">
+            {/* Right Content - Dual Screenshots Notion Style - BIGGER */}
+            <div className="relative lg:col-span-1">
+              <div className="grid grid-cols-1 gap-6">
+                {/* Screenshot 1 - LARGE */}
+                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-gray-200 hover:shadow-3xl transition-all">
                   <img 
                     src="/images/dashboard-1.png" 
-                    alt="ReconcileBook Dashboard - Profit Tracking"
-                    className="w-full h-auto object-cover"
+                    alt="ReconcileBook Dashboard - Product Profitability"
+                    className="w-full h-auto"
                   />
-                </div>
-                {/* Screenshot 2 */}
-                <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 hover:shadow-3xl transition-all transform hover:scale-105">
+                  </div>
+                {/* Screenshot 2 - LARGE */}
+                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-gray-200 hover:shadow-3xl transition-all">
                   <img 
                     src="/images/dashboard-2.png" 
-                    alt="ReconcileBook Dashboard - Fee Breakdown"
-                    className="w-full h-auto object-cover"
+                    alt="ReconcileBook Dashboard - Fee Breakdown & Stats"
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -658,15 +658,15 @@ export default function LandingPage() {
             <div className="flex flex-wrap justify-center gap-6 my-4">
               <Link href="/privacy" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
                 Privacy Policy
-              </Link>
+            </Link>
               <Link href="/terms" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
                 Terms of Service
               </Link>
               <Link href="/security" className="text-gray-600 hover:text-gray-900 text-sm font-medium">
                 Security
-              </Link>
-            </div>
-            
+                </Link>
+        </div>
+
             {/* Contact Email - Clearly Visible */}
             <p className="text-gray-700 text-center font-medium my-3">
               Support: <a href="mailto:alex@reconcilebookapp.com" className="text-blue-600 hover:text-blue-700 underline">alex@reconcilebookapp.com</a>
