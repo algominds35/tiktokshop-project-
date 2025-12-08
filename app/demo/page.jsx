@@ -1,8 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 
 export default function DemoPage() {
+  const [dateRange, setDateRange] = useState('last30days')
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -47,6 +50,72 @@ export default function DemoPage() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         
+        {/* Date Range Filters */}
+        <div className="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setDateRange('today')}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                dateRange === 'today' 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Today
+            </button>
+            <button
+              onClick={() => setDateRange('yesterday')}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                dateRange === 'yesterday' 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Yesterday
+            </button>
+            <button
+              onClick={() => setDateRange('last7days')}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                dateRange === 'last7days' 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Last 7 days
+            </button>
+            <button
+              onClick={() => setDateRange('last14days')}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                dateRange === 'last14days' 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Last 14 days
+            </button>
+            <button
+              onClick={() => setDateRange('last30days')}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                dateRange === 'last30days' 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Last 30 days
+            </button>
+            <button
+              onClick={() => setDateRange('custom')}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                dateRange === 'custom' 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Custom
+            </button>
+          </div>
+        </div>
+
         {/* KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white border border-gray-200 rounded-lg p-6">
