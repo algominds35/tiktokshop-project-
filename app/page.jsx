@@ -98,18 +98,6 @@ export default function LandingPage() {
                 Trusted by <span className="font-bold text-gray-900">Top</span> TikTok Shop Sellers
               </div>
 
-              <div className="flex items-center gap-4">
-          <button
-                  onClick={() => setShowDemo(true)}
-                  className="px-8 py-3 bg-white text-gray-900 border-2 border-gray-300 rounded-lg hover:border-gray-900 font-semibold transition-all"
-          >
-                  Preview Demo →
-          </button>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span className="text-[#FF6B5B]">★</span>
-                  <span className="font-medium">4.5/5 stars</span>
-                </div>
-              </div>
             </div>
 
             {/* Right Content - Dual Screenshots Notion Style - BIGGER */}
