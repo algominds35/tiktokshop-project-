@@ -323,41 +323,87 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Social Proof Section */}
+      {/* Product Profitability Showcase Section */}
       <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                From Guessing{' '}
-                <span className="text-[#FF6B5B]">to Knowing</span>
-              </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Stop wasting hours trying to calculate TikTok Shop fees manually. Our platform automatically tracks every fee, shows real profit margins, and helps you make data-driven decisions about your products.
-              </p>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Get clarity on your finances in seconds, reduce stress about hidden fees, and grow your TikTok Shop with confidence knowing your real numbers.
-              </p>
-              <Link
-                href="/signup"
-                className="inline-block px-8 py-4 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors"
-              >
-                Start Free Trial
-              </Link>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Product-Level <span className="text-[#FF6B5B]">Profit Tracking</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              See exactly which products are making you money and which ones are eating into your profits. Make data-driven decisions with real numbers.
+            </p>
+          </div>
+
+          {/* Product Table */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Product</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700 uppercase tracking-wider">Revenue</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700 uppercase tracking-wider">Fees</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700 uppercase tracking-wider">Profit</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700 uppercase tracking-wider">Margin</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {[
+                    { name: 'Wireless Bluetooth Earbuds', revenue: 4250, fees: 950, profit: 3300, margin: 77.6 },
+                    { name: 'Premium Phone Case', revenue: 3580, fees: 825, profit: 2755, margin: 76.9 },
+                    { name: 'USB-C Fast Charging Cable', revenue: 2415.5, fees: 683.3, profit: 1732.2, margin: 71.7 },
+                    { name: 'Tempered Glass Screen Protector', revenue: 890, fees: 425, profit: 465, margin: 52.2 },
+                    { name: '3-in-1 Wireless Charging Dock', revenue: 550, fees: 285, profit: 265, margin: 48.2 },
+                    { name: 'Car Phone Mount', revenue: 380, fees: 210, profit: 170, margin: 44.7 },
+                    { name: 'Portable Power Bank 20000mAh', revenue: 180, fees: 80, profit: 100, margin: 55.6 },
+                  ].map((product, index) => (
+                    <tr key={index} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{product.name}</td>
+                      <td className="px-6 py-4 text-sm text-right font-semibold text-gray-900">${product.revenue.toLocaleString()}</td>
+                      <td className="px-6 py-4 text-sm text-right font-semibold text-red-600">${product.fees.toLocaleString()}</td>
+                      <td className="px-6 py-4 text-sm text-right font-semibold text-gray-900">${product.profit.toLocaleString()}</td>
+                      <td className="px-6 py-4 text-sm text-right">
+                        <span className={`inline-flex items-center px-3 py-1 rounded-full font-bold ${
+                          product.margin >= 70 ? 'bg-green-100 text-green-800' :
+                          product.margin >= 40 ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-red-100 text-red-800'
+                        }`}>
+                          {product.margin}%
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="flex justify-center">
-              <div className="relative">
-                <div className="text-sm text-gray-500 text-center mb-2">Profit Clarity Score</div>
-                {/* Gauge placeholder */}
-                <div className="w-64 h-64 bg-white rounded-full border-8 border-gray-200 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl font-bold text-gray-900">100</div>
-                    <div className="text-sm text-gray-500">Crystal Clear</div>
-                  </div>
-                </div>
+            {/* Legend */}
+            <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="text-gray-600">≥70% margin</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <span className="text-gray-600">40-70% margin</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <span className="text-gray-600">&lt;40% margin</span>
               </div>
             </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <Link
+              href="/signup"
+              className="inline-block px-8 py-4 bg-[#FF6B5B] text-white rounded-xl font-semibold hover:bg-[#FF5547] transition-all text-lg shadow-lg"
+            >
+              Start Tracking Your Products For Free →
+            </Link>
+            <p className="text-sm text-gray-500 mt-4">14-day free trial • No credit card required</p>
           </div>
         </div>
       </section>
