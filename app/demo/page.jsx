@@ -28,6 +28,21 @@ export default function DemoPage() {
         </div>
       </nav>
 
+      {/* TikTok Shop Connected Badge */}
+      <div className="bg-white border-b border-gray-200 py-4">
+        <div className="max-w-7xl mx-auto px-6 flex justify-center">
+          <div className="flex items-center gap-3 bg-green-50 border-2 border-green-300 px-6 py-3 rounded-lg">
+            <svg className="w-6 h-6 text-gray-900" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-8v13a3 3 0 11-3-3v-2a5 5 0 105 5V6.69a7.17 7.17 0 005.77 4.25v-4.25z"/>
+            </svg>
+            <span className="font-bold text-gray-900 text-lg">TikTok Shop</span>
+            <div className="flex items-center gap-2 ml-3 pl-3 border-l-2 border-green-400">
+              <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+              <span className="font-semibold text-green-600">Connected</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
