@@ -683,14 +683,14 @@ export default function LandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
               Got a question? Get your answer
-            </h2>
+          </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Everything you need to know about the product and billing. Can't find the answer you're looking for? Please chat to our friendly team at{' '}
               <a href="mailto:alex@reconcilebookapp.com" className="text-[#FF6B5B] hover:text-[#FF5547] underline">
                 alex@reconcilebookapp.com
               </a>
             </p>
-          </div>
+            </div>
 
           {/* FAQ Grid */}
           <div className="grid md:grid-cols-2 gap-8">
@@ -727,7 +727,7 @@ export default function LandingPage() {
                 }
               ].map((faq, index) => (
                 <div key={index} className="bg-gray-800 rounded-xl border border-gray-700">
-                  <button
+          <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-750 transition-colors rounded-xl"
                   >
@@ -740,7 +740,7 @@ export default function LandingPage() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
-                  </button>
+          </button>
                   {openFaq === index && (
                     <div className="px-6 pb-5">
                       <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
