@@ -94,7 +94,7 @@ export default function LandingPage() {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-8">
                 <div className="text-sm text-gray-600">
                   Trusted by <span className="font-semibold text-gray-900">500+</span> TikTok Shop Sellers
                 </div>
@@ -102,6 +102,14 @@ export default function LandingPage() {
                   <span className="text-yellow-400 text-sm">★★★★★</span>
                   <span className="text-xs font-medium text-gray-600">4.5/5</span>
                 </div>
+              </div>
+
+              {/* Brand Logos Section */}
+              <div className="flex flex-wrap items-center justify-start gap-8 opacity-70">
+                <img src="/logos/tiktok.png" alt="TikTok" className="h-8 grayscale hover:grayscale-0 transition-all" />
+                <img src="/logos/quickbooks.png" alt="QuickBooks" className="h-8 grayscale hover:grayscale-0 transition-all" />
+                <img src="/logos/joy.png" alt="JOY Sportswear" className="h-8 grayscale hover:grayscale-0 transition-all" />
+                <img src="/logos/oudware.png" alt="Oudware" className="h-8 grayscale hover:grayscale-0 transition-all" />
               </div>
 
             </div>

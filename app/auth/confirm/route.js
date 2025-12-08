@@ -29,3 +29,4 @@ export async function GET(request) {
   return NextResponse.redirect(`${requestUrl.origin}/`)
 }
 
+
