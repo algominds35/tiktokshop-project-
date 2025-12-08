@@ -662,60 +662,133 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Left Side */}
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                <span className="text-[#FF6B5B]">Frequently</span> Asked Questions
-          </h2>
-              <p className="text-gray-600 mb-6">
-                Still confused with something? Let us know, we are here to help!
-              </p>
-              <a 
-                href="mailto:alex@reconcilebookapp.com?subject=ReconcileBook Support Request"
-                className="inline-block px-6 py-3 bg-[#FF6B5B] text-white rounded-lg hover:bg-[#FF5547] font-semibold transition-colors"
-              >
-                Contact Us
+      <section id="faq" className="py-20 px-6 bg-gray-900">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+              Got a question? Get your answer
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+              Everything you need to know about the product and billing. Can't find the answer you're looking for? Please chat to our friendly team at{' '}
+              <a href="mailto:alex@reconcilebookapp.com" className="text-[#FF6B5B] hover:text-[#FF5547] underline">
+                alex@reconcilebookapp.com
               </a>
-            </div>
+            </p>
+          </div>
 
-            {/* Right Side - FAQ Items */}
-            <div className="space-y-4">
+          {/* FAQ Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left Column */}
+            <div className="space-y-6">
               {[
                 {
-                  question: 'How does the profit tracking work?',
-                  answer: 'We connect to your TikTok Shop via OAuth and automatically pull all transaction data, fees, and payouts. Our system calculates your real profit margins by tracking every fee.'
+                  question: 'What is ReconcileBook?',
+                  answer: 'ReconcileBook is a real-time TikTok Shop profit tracking and analytics platform for sellers, automatically pulling sales, ad spend, fees, and commissions from TikTok Seller Center, Ads Manager, and the Affiliate Center to give you an accurate, automated view of your true net profit and product-level performance without relying on manual spreadsheets.'
                 },
                 {
-                  question: 'What fees does ReconcileBook track?',
-                  answer: 'We track platform fees, payment processing fees, shipping fees, affiliate commissions, refunds, and all other TikTok Shop deductions.'
+                  question: '1. Is there a free trial available?',
+                  answer: 'Yes, you can try us for free for 14 days. If you want, we\'ll provide you with a free 15-minute onboarding call to get you up and running. No credit card required.'
                 },
                 {
-                  question: 'Is my data secure?',
-                  answer: 'Yes! We use bank-level encryption and secure OAuth connections. We never store your TikTok Shop credentials and comply with all data protection regulations.'
+                  question: '2. Can I change my plan later?',
+                  answer: 'Absolutely! You can upgrade or downgrade your plan at any time from your account settings. Changes will be reflected in your next billing cycle, and we\'ll prorate any differences.'
                 },
                 {
-                  question: 'Can I integrate with QuickBooks?',
-                  answer: 'Yes! Professional and Enterprise plans include QuickBooks Online integration with automatic journal entry creation for each payout.'
+                  question: '3. What is your cancellation policy?',
+                  answer: 'You can cancel your subscription at any time with no penalties or cancellation fees. Your account will remain active until the end of your current billing period, and you\'ll continue to have full access during that time.'
                 },
                 {
-                  question: 'Do you offer a free trial?',
-                  answer: 'Yes! We offer a 14-day free trial with full access to all Professional features. No credit card required to start.'
+                  question: '4. What types of fees can I see in the app?',
+                  answer: 'ReconcileBook tracks all TikTok Shop fees including platform commission fees, payment processing fees, shipping fees, affiliate commissions, refund fees, and any other deductions. You\'ll see a complete breakdown of where every dollar goes.'
+                },
+                {
+                  question: '5. Can I download the profit and loss statements?',
+                  answer: 'Yes! You can export your profit and loss statements, sales reports, and product-level analytics as CSV or PDF files. Professional and Enterprise plans also include automatic QuickBooks journal entries.'
+                },
+                {
+                  question: '6. Can I use ReconcileBook for my dropshipping business on TikTok Shop?',
+                  answer: 'Absolutely! ReconcileBook is perfect for dropshipping businesses. Track your supplier costs, shipping fees, and all TikTok Shop deductions to see your true profit margins on each product in real-time.'
                 }
               ].map((faq, index) => (
-                <div key={index} className="bg-white rounded-lg border border-gray-200">
-          <button
+                <div key={index} className="bg-gray-800 rounded-xl border border-gray-700">
+                  <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-          >
-                    <span className="font-semibold text-gray-900">{faq.question}</span>
-                    <span className="text-gray-400">{openFaq === index ? '−' : '+'}</span>
-          </button>
+                    className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-750 transition-colors rounded-xl"
+                  >
+                    <span className="font-semibold text-white text-lg">{faq.question}</span>
+                    <svg 
+                      className={`w-6 h-6 text-gray-400 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                   {openFaq === index && (
-                    <div className="px-6 pb-4">
-                      <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+                    <div className="px-6 pb-5">
+                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-6">
+              {[
+                {
+                  question: '7. Is ReconcileBook\'s data updated in real time?',
+                  answer: 'Yes! ReconcileBook syncs with your TikTok Shop account every hour to pull the latest sales, orders, and fee data. You can also manually refresh at any time to see the most up-to-date information.'
+                },
+                {
+                  question: '8. Is ReconcileBook secure?',
+                  answer: 'Absolutely. We use bank-level AES-256 encryption, secure OAuth connections, and never store your TikTok Shop credentials. We\'re SOC 2 compliant and follow all GDPR and CCPA regulations. Your data is safe with us.'
+                },
+                {
+                  question: '9. How long does it take to set up ReconcileBook?',
+                  answer: 'Setting up ReconcileBook is quick and easy. It usually takes around 15 minutes to fetch your details from TikTok Shop APIs. However, if you have a large number of orders, it may take up to 45 minutes to fetch all your data. Simply sign up, connect your TikTok Shop account, and ReconcileBook will automatically start tracking your profits and expenses in real-time.'
+                },
+                {
+                  question: '10. What markets are supported by ReconcileBook for TikTok Shop?',
+                  answer: 'ReconcileBook supports all TikTok Shop markets including United States, United Kingdom, Southeast Asia (Indonesia, Malaysia, Philippines, Singapore, Thailand, Vietnam), and other regions where TikTok Shop operates.'
+                },
+                {
+                  question: '11. How can I calculate my TikTok Shop\'s profit accurately using ReconcileBook?',
+                  answer: 'ReconcileBook automatically calculates your true profit by pulling all sales data and subtracting every fee: platform fees, payment processing, shipping, affiliate commissions, refunds, and more. Add your product costs, and you\'ll see your real profit margin on every single product.'
+                },
+                {
+                  question: '12. How can I add recurring and one-time expenses in ReconcileBook?',
+                  answer: 'You can easily add both recurring expenses (like software subscriptions, virtual assistant costs) and one-time expenses (like product photography, packaging) directly in the app. These will be factored into your profit calculations automatically.'
+                },
+                {
+                  question: '13. How can I contact ReconcileBook support for real-time assistance?',
+                  answer: 'Email us at alex@reconcilebookapp.com for support. We typically respond within 24-48 hours. Professional and Enterprise customers get priority support with faster response times.'
+                },
+                {
+                  question: '14. How does ReconcileBook help with tracking my dropshipping net profit?',
+                  answer: 'ReconcileBook tracks all your TikTok Shop sales and fees, and lets you input your supplier costs per product. This gives you instant visibility into your true net profit margins for each dropshipped product, so you know exactly which products are making you money.'
+                }
+              ].map((faq, index) => (
+                <div key={index + 7} className="bg-gray-800 rounded-xl border border-gray-700">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === (index + 7) ? null : (index + 7))}
+                    className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-750 transition-colors rounded-xl"
+                  >
+                    <span className="font-semibold text-white text-lg">{faq.question}</span>
+                    <svg 
+                      className={`w-6 h-6 text-gray-400 transition-transform ${openFaq === (index + 7) ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {openFaq === (index + 7) && (
+                    <div className="px-6 pb-5">
+                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </div>
                   )}
                 </div>
