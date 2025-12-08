@@ -203,11 +203,13 @@ export default function LandingPage() {
 
           {/* Pain Points Section with Image */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            {/* Left: Image placeholder */}
+            {/* Left: Image */}
             <div className="relative">
-              <div className="aspect-square bg-gray-800 rounded-2xl flex items-center justify-center border border-gray-700">
-                <p className="text-gray-500 text-lg">Add your Canva image here (stressed person)</p>
-                </div>
+              <img 
+                src="/stressed-person.webp" 
+                alt="Stressed business owner" 
+                className="w-full h-auto rounded-2xl"
+              />
           </div>
 
             {/* Right: Pain Points */}
