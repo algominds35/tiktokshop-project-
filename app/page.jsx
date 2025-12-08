@@ -190,43 +190,82 @@ export default function LandingPage() {
       </section>
 
       {/* Product Demo Section */}
-      <section id="benefits" className="py-20 px-6 bg-white">
+      <section id="benefits" className="py-20 px-6 bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              See Your <span className="text-[#FF6B5B]">Real Numbers</span> Clearly
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+              Get Accurate Profit Analytics
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              ReconcileBook is designed to help you understand your TikTok Shop finances, see hidden fees, and track real profit margins.
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+              TikTok is secretly ripping you off. We'll show you exactly how much they're stealing.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                title: 'Complete Fee Breakdown',
-                subtitle: 'See every fee clearly',
-                placeholder: 'Fee Chart'
-              },
-              {
-                title: 'Profit Tracking',
-                subtitle: 'Real-time profit margins',
-                placeholder: 'Profit Graph'
-              },
-              {
-                title: 'Product Performance',
-                subtitle: 'Review your top products',
-                placeholder: 'Product Table'
-              }
-            ].map((item, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{item.subtitle}</p>
-                <div className="bg-white rounded-lg border-2 border-dashed border-gray-300 aspect-[4/3] flex items-center justify-center">
-                  <p className="text-gray-400 text-sm">{item.placeholder}</p>
+          {/* Pain Points Section with Image */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            {/* Left: Image placeholder */}
+            <div className="relative">
+              <div className="aspect-square bg-gray-800 rounded-2xl flex items-center justify-center border border-gray-700">
+                <p className="text-gray-500 text-lg">Add your Canva image here (stressed person)</p>
                 </div>
+          </div>
+
+            {/* Right: Pain Points */}
+            <div className="space-y-8">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#FF6B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
               </div>
-            ))}
+          </div>
+            <div>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    Do you wait weeks for your accountant to close books?
+                  </h3>
+                  <p className="text-gray-300">
+                    With ReconcileBook, get real-time profit tracking, so you're always on top of your numbers.
+                  </p>
+                </div>
+            </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#FF6B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    Switching between Seller Center, Ads Manager, and Affiliate Center?
+                  </h3>
+                  <p className="text-gray-300">
+                    Let ReconcileBook automate the work — all your numbers, in one dashboard
+            </p>
+          </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[#FF6B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-3">
+                    Do you struggle to track product-level profit?
+                  </h3>
+                  <p className="text-gray-300">
+                    Get detailed profit analytics on each product with ReconcileBook's P&L tool.
+                  </p>
+                </div>
+                  </div>
+              </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
