@@ -83,11 +83,11 @@ export default function LandingPage() {
                   href="/signup"
                   className="inline-block w-full"
                 >
-                  <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-2xl px-12 py-6 text-center shadow-2xl transition-all transform hover:scale-105 cursor-pointer">
-                    <div className="text-3xl font-bold text-white mb-2 tracking-wide">
+                  <div className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-xl px-8 py-4 text-center shadow-lg transition-all cursor-pointer">
+                    <div className="text-xl font-bold text-white mb-1">
                       START FOR FREE
                     </div>
-                    <div className="text-lg text-white font-medium">
+                    <div className="text-sm text-white/90 font-medium">
                       14-day free trial • No credit card required
                     </div>
                   </div>
