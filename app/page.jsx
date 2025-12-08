@@ -138,7 +138,7 @@ export default function LandingPage() {
             Trusted by Top TikTok Shop Sellers
           </h3>
           <div className="flex items-center justify-between opacity-50 grayscale">
-            <img src="/logos/blueland.jpeg" alt="Blueland" className="h-10 object-contain" />
+            <img src="/logos/halara.png" alt="Halara" className="h-10 object-contain" />
             <img src="/logos/QVC_idEMmcOk-k_1.png" alt="QVC" className="h-10 object-contain" />
             <img src="/logos/joy.png" alt="JOY Sportswear" className="h-10 object-contain" />
             <img src="/logos/oudware.png" alt="Oudware" className="h-10 object-contain" />
