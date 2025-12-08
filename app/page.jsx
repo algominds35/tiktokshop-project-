@@ -543,7 +543,7 @@ export default function LandingPage() {
                   ${pricingInterval === 'monthly' ? '149' : '124'}
                   <span className="text-lg text-gray-600">/month</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-2">14-day free trial</p>
+                <p className="text-xs text-gray-500 mt-2">Contact for demo</p>
               </div>
 
               {/* Transactions per month */}
@@ -680,7 +680,7 @@ export default function LandingPage() {
         </div>
 
           <p className="text-center text-sm text-gray-500 mt-8">
-            All plans include 14-day free trial.
+            Pro and Premium plans include 14-day free trial.
           </p>
         </div>
       </section>
