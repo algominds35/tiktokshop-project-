@@ -247,7 +247,7 @@ export default function LandingPage() {
                   <p className="text-gray-300">
                     Let ReconcileBook automate the work — all your numbers, in one dashboard
             </p>
-          </div>
+        </div>
               </div>
 
               <div className="flex gap-4">
@@ -279,7 +279,7 @@ export default function LandingPage() {
                   <line x1="8" y1="21" x2="16" y2="21" strokeWidth="2" strokeLinecap="round"/>
                   <line x1="12" y1="17" x2="12" y2="21" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
-            </div>
+                  </div>
               <h2 className="text-4xl font-bold text-white mb-4">
                 Meet Your Real-Time Profit Dashboard
               </h2>
@@ -292,19 +292,19 @@ export default function LandingPage() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">No Profit Guesswork</span>
-          </div>
+                </div>
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">Forecast & Historical Profits</span>
-        </div>
+              </div>
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">Informed Decision</span>
-    </div>
+            </div>
           </div>
               <div className="bg-[#FF8C00] text-white rounded-lg px-8 py-4 inline-block">
                 <div className="text-2xl font-bold">14 DAY FREE TRIAL</div>
@@ -327,13 +327,13 @@ export default function LandingPage() {
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Product-Level <span className="text-[#FF6B5B]">Profit Tracking</span>
-              </h2>
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               See exactly which products are making you money and which ones are eating into your profits. Make data-driven decisions with real numbers.
-        </p>
-            </div>
+            </p>
+          </div>
 
           {/* Product Table */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
@@ -404,38 +404,6 @@ export default function LandingPage() {
               Start Tracking Your Products For Free →
               </Link>
             <p className="text-sm text-gray-500 mt-4">14-day free trial • No credit card required</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Sellers Who've <span className="text-[#FF6B5B]">Transformed</span> Their Business
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our users are the reason we're here. Their success stories inspire us to keep pushing the boundaries of what's possible.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                name: 'Sarah M., TikTok Shop Seller',
-                quote: 'The fee transparency has given me complete peace of mind. I finally know my real profit margins and can make informed decisions about pricing.'
-              },
-              {
-                name: 'Mike T., E-commerce Entrepreneur',
-                quote: 'ReconcileBook saved me hours every week. The automated tracking and QuickBooks sync make accounting so much easier.'
-              }
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-8 border border-orange-200">
-                <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
-                <p className="font-semibold text-gray-900">{testimonial.name}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
