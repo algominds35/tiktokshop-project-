@@ -6,6 +6,21 @@ import Link from 'next/link'
 export default function DemoPage() {
   const [dateRange, setDateRange] = useState('last30days')
   
+  // Demo data that changes based on date range
+  const getDemoData = () => {
+    const dataByRange = {
+      today: { revenue: 342.50, fees: 82.20, profit: 260.30, margin: 76 },
+      yesterday: { revenue: 428.75, fees: 102.90, profit: 325.85, margin: 76 },
+      last7days: { revenue: 2850.25, fees: 684.06, profit: 2166.19, margin: 76 },
+      last14days: { revenue: 5687.40, fees: 1364.98, profit: 4322.42, margin: 76 },
+      last30days: { revenue: 10245.50, fees: 2458.30, profit: 7787.20, margin: 76 },
+      custom: { revenue: 10245.50, fees: 2458.30, profit: 7787.20, margin: 76 }
+    }
+    return dataByRange[dateRange] || dataByRange.last30days
+  }
+
+  const demoData = getDemoData()
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -120,22 +135,22 @@ export default function DemoPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white border border-gray-200 rounded-lg p-6">
             <p className="text-sm font-semibold text-gray-600 uppercase mb-3">Gross Revenue</p>
-            <p className="text-3xl font-bold text-blue-600">$10,245.50</p>
+            <p className="text-3xl font-bold text-blue-600">${demoData.revenue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-lg p-6">
             <p className="text-sm font-semibold text-gray-600 uppercase mb-3">Total Fees</p>
-            <p className="text-3xl font-bold text-gray-900">$2,458.30</p>
+            <p className="text-3xl font-bold text-gray-900">${demoData.fees.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-lg p-6">
             <p className="text-sm font-semibold text-gray-600 uppercase mb-3">Net Profit</p>
-            <p className="text-3xl font-bold text-blue-600">$7,787.20</p>
+            <p className="text-3xl font-bold text-blue-600">${demoData.profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-lg p-6">
             <p className="text-sm font-semibold text-gray-600 uppercase mb-3">Profit Margin</p>
-            <p className="text-3xl font-bold text-blue-600">76%</p>
+            <p className="text-3xl font-bold text-blue-600">{demoData.margin}%</p>
           </div>
         </div>
 

@@ -97,12 +97,58 @@ export default function Dashboard() {
     }
   }
 
-  const loadData = async () => {
+  const getDateRange = (range) => {
+    const now = new Date()
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+    let startDate, endDate
+
+    switch (range) {
+      case 'today':
+        startDate = today
+        endDate = now
+        break
+      case 'yesterday':
+        startDate = new Date(today)
+        startDate.setDate(startDate.getDate() - 1)
+        endDate = new Date(today)
+        endDate.setSeconds(endDate.getSeconds() - 1)
+        break
+      case 'last7days':
+        startDate = new Date(today)
+        startDate.setDate(startDate.getDate() - 7)
+        endDate = now
+        break
+      case 'last14days':
+        startDate = new Date(today)
+        startDate.setDate(startDate.getDate() - 14)
+        endDate = now
+        break
+      case 'last30days':
+        startDate = new Date(today)
+        startDate.setDate(startDate.getDate() - 30)
+        endDate = now
+        break
+      default:
+        startDate = new Date(today)
+        startDate.setDate(startDate.getDate() - 30)
+        endDate = now
+    }
+
+    return {
+      startDate: startDate.toISOString(),
+      endDate: endDate.toISOString()
+    }
+  }
+
+  const loadData = async (dateRangeFilter = dateRange) => {
     try {
       setLoading(true)
       setError('')
 
-      const response = await fetch('/api/profit')
+      const { startDate, endDate } = getDateRange(dateRangeFilter)
+      const url = `/api/profit?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`
+      
+      const response = await fetch(url)
       const result = await response.json()
 
       if (!response.ok) {
@@ -120,6 +166,11 @@ export default function Dashboard() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleDateRangeChange = (range) => {
+    setDateRange(range)
+    loadData(range)
   }
 
   const handleSync = async () => {
@@ -369,7 +420,7 @@ export default function Dashboard() {
             <div className="bg-white border border-gray-200 rounded-lg p-4">
               <div className="flex flex-wrap items-center gap-2">
                 <button
-                  onClick={() => setDateRange('today')}
+                  onClick={() => handleDateRangeChange('today')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'today' 
                       ? 'bg-green-500 text-white' 
@@ -379,7 +430,7 @@ export default function Dashboard() {
                   Today
                 </button>
                 <button
-                  onClick={() => setDateRange('yesterday')}
+                  onClick={() => handleDateRangeChange('yesterday')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'yesterday' 
                       ? 'bg-green-500 text-white' 
@@ -389,7 +440,7 @@ export default function Dashboard() {
                   Yesterday
                 </button>
                 <button
-                  onClick={() => setDateRange('last7days')}
+                  onClick={() => handleDateRangeChange('last7days')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'last7days' 
                       ? 'bg-green-500 text-white' 
@@ -399,7 +450,7 @@ export default function Dashboard() {
                   Last 7 days
                 </button>
                 <button
-                  onClick={() => setDateRange('last14days')}
+                  onClick={() => handleDateRangeChange('last14days')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'last14days' 
                       ? 'bg-green-500 text-white' 
@@ -409,7 +460,7 @@ export default function Dashboard() {
                   Last 14 days
                 </button>
                 <button
-                  onClick={() => setDateRange('last30days')}
+                  onClick={() => handleDateRangeChange('last30days')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'last30days' 
                       ? 'bg-green-500 text-white' 
@@ -419,7 +470,7 @@ export default function Dashboard() {
                   Last 30 days
                 </button>
                 <button
-                  onClick={() => setDateRange('custom')}
+                  onClick={() => handleDateRangeChange('custom')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'custom' 
                       ? 'bg-green-500 text-white' 
