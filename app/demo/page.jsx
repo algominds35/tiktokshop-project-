@@ -285,7 +285,7 @@ export default function DemoPage() {
                     fees: 950.00, 
                     profit: 3300.00, 
                     margin: 77.6,
-                    bgColor: 'bg-blue-100'
+                    image: '/images/bluetooth earbuds.webp'
                   },
                   { 
                     name: 'Premium Phone Case', 
@@ -295,7 +295,7 @@ export default function DemoPage() {
                     fees: 825.00, 
                     profit: 2755.00, 
                     margin: 76.9,
-                    bgColor: 'bg-purple-100'
+                    image: '/images/phone case.webp'
                   },
                   { 
                     name: 'USB-C Fast Charging Cable', 
@@ -305,7 +305,7 @@ export default function DemoPage() {
                     fees: 683.30, 
                     profit: 1732.20, 
                     margin: 71.7,
-                    bgColor: 'bg-green-100'
+                    image: '/images/amazon usb.jpg'
                   },
                   { 
                     name: 'Tempered Glass Screen Protector', 
@@ -315,7 +315,7 @@ export default function DemoPage() {
                     fees: 425.00, 
                     profit: 465.00, 
                     margin: 52.2,
-                    bgColor: 'bg-orange-100'
+                    image: '/images/Tempered Glass Screen Protector.webp'
                   },
                   { 
                     name: '3-in-1 Wireless Charging Dock', 
@@ -351,12 +351,20 @@ export default function DemoPage() {
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        {/* Product Image Placeholder */}
-                        <div className={`w-12 h-12 ${product.bgColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                          </svg>
-                        </div>
+                        {/* Product Image */}
+                        {product.image ? (
+                          <img 
+                            src={product.image} 
+                            alt={product.name} 
+                            className="w-12 h-12 rounded-lg object-cover flex-shrink-0 border border-gray-200"
+                          />
+                        ) : (
+                          <div className={`w-12 h-12 ${product.bgColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                          </div>
+                        )}
                         {/* Product Name and ID */}
                         <div>
                           <div className="text-sm text-gray-500 font-mono">{product.id}</div>
