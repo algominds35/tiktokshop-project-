@@ -276,16 +276,86 @@ export default function DemoPage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {[
-                  { name: 'Wireless Bluetooth Earbuds', revenue: 4250.00, fees: 950.00, profit: 3300.00, margin: 77.6 },
-                  { name: 'Premium Phone Case', revenue: 3580.00, fees: 825.00, profit: 2755.00, margin: 76.9 },
-                  { name: 'USB-C Fast Charging Cable', revenue: 2415.50, fees: 683.30, profit: 1732.20, margin: 71.7 },
-                  { name: 'Tempered Glass Screen Protector', revenue: 890.00, fees: 425.00, profit: 465.00, margin: 52.2 },
-                  { name: '3-in-1 Wireless Charging Dock', revenue: 550.00, fees: 285.00, profit: 265.00, margin: 48.2 },
-                  { name: 'Car Phone Mount', revenue: 380.00, fees: 210.00, profit: 170.00, margin: 44.7 },
-                  { name: 'Portable Power Bank 20000mAh', revenue: 180.00, fees: 80.00, profit: 100.00, margin: 55.6 },
+                  { 
+                    name: 'Wireless Bluetooth Earbuds', 
+                    id: '1729669027988280020',
+                    revenue: 4250.00, 
+                    fees: 950.00, 
+                    profit: 3300.00, 
+                    margin: 77.6,
+                    bgColor: 'bg-blue-100'
+                  },
+                  { 
+                    name: 'Premium Phone Case', 
+                    id: '1729669065913045716',
+                    revenue: 3580.00, 
+                    fees: 825.00, 
+                    profit: 2755.00, 
+                    margin: 76.9,
+                    bgColor: 'bg-purple-100'
+                  },
+                  { 
+                    name: 'USB-C Fast Charging Cable', 
+                    id: '1729669102847562340',
+                    revenue: 2415.50, 
+                    fees: 683.30, 
+                    profit: 1732.20, 
+                    margin: 71.7,
+                    bgColor: 'bg-green-100'
+                  },
+                  { 
+                    name: 'Tempered Glass Screen Protector', 
+                    id: '1729669138294018560',
+                    revenue: 890.00, 
+                    fees: 425.00, 
+                    profit: 465.00, 
+                    margin: 52.2,
+                    bgColor: 'bg-orange-100'
+                  },
+                  { 
+                    name: '3-in-1 Wireless Charging Dock', 
+                    id: '1729669174561892352',
+                    revenue: 550.00, 
+                    fees: 285.00, 
+                    profit: 265.00, 
+                    margin: 48.2,
+                    bgColor: 'bg-pink-100'
+                  },
+                  { 
+                    name: 'Car Phone Mount', 
+                    id: '1729669210483945728',
+                    revenue: 380.00, 
+                    fees: 210.00, 
+                    profit: 170.00, 
+                    margin: 44.7,
+                    bgColor: 'bg-yellow-100'
+                  },
+                  { 
+                    name: 'Portable Power Bank 20000mAh', 
+                    id: '1729669246729834496',
+                    revenue: 180.00, 
+                    fees: 80.00, 
+                    profit: 100.00, 
+                    margin: 55.6,
+                    bgColor: 'bg-red-100'
+                  },
                 ].map((product, index) => (
                   <tr key={index} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 text-gray-900">{product.name}</td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        {/* Product Image Placeholder */}
+                        <div className={`w-12 h-12 ${product.bgColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                          </svg>
+                        </div>
+                        {/* Product Name and ID */}
+                        <div>
+                          <div className="text-sm text-gray-500 font-mono">{product.id}</div>
+                          <div className="font-medium text-gray-900">{product.name}</div>
+                        </div>
+                      </div>
+                    </td>
                     <td className="px-6 py-4 text-right text-gray-900">${product.revenue.toLocaleString()}</td>
                     <td className="px-6 py-4 text-right text-red-600 font-medium">${product.fees.toLocaleString()}</td>
                     <td className="px-6 py-4 text-right text-gray-900 font-semibold">${product.profit.toLocaleString()}</td>
