@@ -1083,7 +1083,7 @@ function TestimonialsSection() {
       company: 'Elite Beauty Supply',
       image: '/testimonials/person-4.jpg',
       rating: 5,
-      text: "This is exactly the tool I've been looking for! ReconcileBook shows me exactly where my money is going with incredible accuracy. Great support too!"
+      text: "ReconcileBook has transformed how I track my profits. The accuracy is incredible, and I finally have complete visibility into where every dollar goes. The support team has been exceptional."
     }
   ]
 
