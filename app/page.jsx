@@ -602,20 +602,6 @@ export default function LandingPage() {
                 <span className="text-blue-600 text-2xl">✓</span>
               </div>
 
-              {/* QuickBooks Integration */}
-              <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
-                QuickBooks Integration
-              </div>
-              <div className="p-6 text-center border-r border-b border-gray-200">
-                <span className="text-blue-600 text-2xl">✓</span>
-              </div>
-              <div className="p-6 text-center border-r border-b border-gray-200 bg-blue-50">
-                <span className="text-blue-600 text-2xl">✓</span>
-              </div>
-              <div className="p-6 text-center border-b border-gray-200">
-                <span className="text-blue-600 text-2xl">✓</span>
-              </div>
-
               {/* P&L Export to Excel */}
               <div className="p-6 font-semibold text-gray-900 border-r border-b border-gray-200">
                 P&L Export to Excel
