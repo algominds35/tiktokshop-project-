@@ -112,15 +112,24 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Right Content - Dashboard Preview */}
+            {/* Right Content - Dual Screenshots Notion Style */}
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-200">
-                {/* Placeholder for dashboard screenshot */}
-                <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg aspect-[4/3] flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-5xl mb-3">📊</div>
-                    <p className="text-gray-500 font-medium">Dashboard Preview</p>
-                  </div>
+              <div className="grid grid-cols-2 gap-4">
+                {/* Screenshot 1 */}
+                <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 hover:shadow-3xl transition-all transform hover:scale-105">
+                  <img 
+                    src="/images/dashboard-1.png" 
+                    alt="ReconcileBook Dashboard - Profit Tracking"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                {/* Screenshot 2 */}
+                <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 hover:shadow-3xl transition-all transform hover:scale-105">
+                  <img 
+                    src="/images/dashboard-2.png" 
+                    alt="ReconcileBook Dashboard - Fee Breakdown"
+                    className="w-full h-auto object-cover"
+                  />
                 </div>
               </div>
             </div>
