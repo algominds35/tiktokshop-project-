@@ -285,7 +285,7 @@ export default function DemoPage() {
                     fees: 950.00, 
                     profit: 3300.00, 
                     margin: 77.6,
-                    image: '/images/bluetooth earbuds.webp'
+                    image: '/images/bluetooth-earbuds.webp'
                   },
                   { 
                     name: 'Premium Phone Case', 
@@ -295,7 +295,7 @@ export default function DemoPage() {
                     fees: 825.00, 
                     profit: 2755.00, 
                     margin: 76.9,
-                    image: '/images/phone case.webp'
+                    image: '/images/phone-case.webp'
                   },
                   { 
                     name: 'USB-C Fast Charging Cable', 
@@ -305,7 +305,7 @@ export default function DemoPage() {
                     fees: 683.30, 
                     profit: 1732.20, 
                     margin: 71.7,
-                    image: '/images/amazon usb.jpg'
+                    image: '/images/amazon-usb.jpg'
                   },
                   { 
                     name: 'Tempered Glass Screen Protector', 
@@ -315,7 +315,7 @@ export default function DemoPage() {
                     fees: 425.00, 
                     profit: 465.00, 
                     margin: 52.2,
-                    image: '/images/Tempered Glass Screen Protector.webp'
+                    image: '/images/tempered-glass-screen-protector.webp'
                   },
                   { 
                     name: '3-in-1 Wireless Charging Dock', 

@@ -31,13 +31,13 @@ export default function Dashboard() {
     
     if (!session) {
       // No active session, check localStorage as fallback
-      const loggedIn = localStorage.getItem('user_logged_in')
-      const email = localStorage.getItem('user_email')
-      
-      if (!loggedIn || !email) {
-        router.push('/login')
-        return
-      }
+    const loggedIn = localStorage.getItem('user_logged_in')
+    const email = localStorage.getItem('user_email')
+    
+    if (!loggedIn || !email) {
+      router.push('/login')
+      return
+    }
       
       // Has localStorage but no session, continue but user might need to reauth
       checkTrialStatus(email)
