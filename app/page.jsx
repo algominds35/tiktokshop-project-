@@ -132,8 +132,11 @@ export default function LandingPage() {
       </section>
 
       {/* Logo Section */}
-      <section className="py-12 bg-white border-y border-gray-200">
+      <section className="py-16 bg-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
+          <h3 className="text-center text-lg font-semibold text-gray-600 mb-8">
+            Trusted by Top TikTok Shop Sellers
+          </h3>
           <div className="flex items-center justify-between opacity-50 grayscale">
             <img src="/logos/tiktok.png" alt="TikTok" className="h-10 object-contain" />
             <img src="/logos/quickbooks.png" alt="QuickBooks" className="h-10 object-contain" />
@@ -379,7 +382,7 @@ export default function LandingPage() {
                             className="w-10 h-10 rounded-lg object-cover flex-shrink-0 border border-gray-200"
                           />
                           <span className="text-sm font-medium text-gray-900">{product.name}</span>
-                        </div>
+              </div>
                       </td>
                       <td className="px-6 py-4 text-sm text-right font-semibold text-gray-900">${product.revenue.toLocaleString()}</td>
                       <td className="px-6 py-4 text-sm text-right font-semibold text-red-600">${product.fees.toLocaleString()}</td>
