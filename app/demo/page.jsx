@@ -31,9 +31,23 @@ export default function DemoPage() {
       {/* Demo Mode Banner */}
       <div className="bg-blue-50 border-b border-blue-200 py-3">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-blue-700 font-medium">
-            <strong>Demo Mode:</strong> This is sample data to showcase the dashboard. Connect your TikTok Shop to see your real data.
-          </p>
+          <div className="flex items-center justify-center gap-4">
+            <p className="text-blue-700 font-medium">
+              <strong>Demo Mode:</strong> This is sample data to showcase the dashboard.
+            </p>
+            <div className="flex items-center gap-2 bg-white border border-green-300 px-4 py-2 rounded-lg">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-8v13a3 3 0 11-3-3v-2a5 5 0 105 5V6.69a7.17 7.17 0 005.77 4.25v-4.25z"/>
+                </svg>
+                <span className="font-bold text-gray-900">TikTok Shop</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span className="text-sm font-semibold text-green-600">Connected</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
