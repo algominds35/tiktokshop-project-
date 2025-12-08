@@ -273,37 +273,37 @@ export default function LandingPage() {
           {/* Dashboard Preview Section */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div>
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <rect x="2" y="3" width="20" height="14" rx="2" strokeWidth="2"/>
                   <line x1="8" y1="21" x2="16" y2="21" strokeWidth="2" strokeLinecap="round"/>
                   <line x1="12" y1="17" x2="12" y2="21" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl font-bold text-white mb-4">
                 Meet Your Real-Time Profit Dashboard
               </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed">
                 Effortlessly track your TikTok Shop performance—including sales, refunds, ad spend, commissions, and net profit—all in one place. Get instant clarity on your margins and compare product performance with a clean, visual layout.
               </p>
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
-                  <span className="text-gray-900 font-medium">No Profit Guesswork</span>
+                  <span className="text-white font-medium">No Profit Guesswork</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
-                  <span className="text-gray-900 font-medium">Forecast & Historical Profits</span>
+                  <span className="text-white font-medium">Forecast & Historical Profits</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
-                  <span className="text-gray-900 font-medium">Informed Decision</span>
+                  <span className="text-white font-medium">Informed Decision</span>
                 </div>
               </div>
               <div className="bg-[#FF8C00] text-white rounded-lg px-8 py-4 inline-block">
@@ -312,9 +312,11 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gray-200 rounded-2xl aspect-video flex items-center justify-center border-4 border-blue-500">
-                <p className="text-gray-500">Dashboard Screenshot Goes Here</p>
-              </div>
+              <img 
+                src="/images/dashboard-1.png" 
+                alt="ReconcileBook Dashboard Preview" 
+                className="w-full h-auto rounded-2xl shadow-2xl border-4 border-blue-500"
+              />
             </div>
           </div>
 
