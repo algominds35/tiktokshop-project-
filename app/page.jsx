@@ -369,26 +369,15 @@ export default function LandingPage() {
                     { name: 'Premium Phone Case', revenue: 3580, fees: 825, profit: 2755, margin: 76.9, image: '/images/phone-case.webp' },
                     { name: 'USB-C Fast Charging Cable', revenue: 2415.5, fees: 683.3, profit: 1732.2, margin: 71.7, image: '/images/amazon-usb.jpg' },
                     { name: 'Tempered Glass Screen Protector', revenue: 890, fees: 425, profit: 465, margin: 52.2, image: '/images/tempered-glass-screen-protector.webp' },
-                    { name: '3-in-1 Wireless Charging Dock', revenue: 550, fees: 285, profit: 265, margin: 48.2 },
-                    { name: 'Car Phone Mount', revenue: 380, fees: 210, profit: 170, margin: 44.7 },
-                    { name: 'Portable Power Bank 20000mAh', revenue: 180, fees: 80, profit: 100, margin: 55.6 },
                   ].map((product, index) => (
                     <tr key={index} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          {product.image ? (
-                            <img 
-                              src={product.image} 
-                              alt={product.name} 
-                              className="w-10 h-10 rounded-lg object-cover flex-shrink-0 border border-gray-200"
-                            />
-                          ) : (
-                            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                              </svg>
-                            </div>
-                          )}
+                          <img 
+                            src={product.image} 
+                            alt={product.name} 
+                            className="w-10 h-10 rounded-lg object-cover flex-shrink-0 border border-gray-200"
+                          />
                           <span className="text-sm font-medium text-gray-900">{product.name}</span>
                         </div>
                       </td>
