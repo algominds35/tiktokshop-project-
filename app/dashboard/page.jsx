@@ -380,7 +380,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-          </div>
+                  </div>
         ) : (
           <div className="space-y-6">
             {/* Date Range Filters */}
@@ -426,17 +426,17 @@ export default function Dashboard() {
                 >
                   Last 14 days
                 </button>
-                <button
+                    <button
                   onClick={() => handleDateRangeChange('last30days')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'last30days' 
                       ? 'bg-green-500 text-white' 
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
-                >
+                    >
                   Last 30 days
-                </button>
-                <button
+                    </button>
+            <button
                   onClick={() => handleDateRangeChange('custom')}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     dateRange === 'custom' 
@@ -445,7 +445,7 @@ export default function Dashboard() {
                   }`}
                 >
                   Custom
-                </button>
+            </button>
               </div>
             </div>
 

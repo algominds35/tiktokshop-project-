@@ -138,8 +138,8 @@ export default function LandingPage() {
             Trusted by Top TikTok Shop Sellers
           </h3>
           <div className="flex items-center justify-between opacity-50 grayscale">
-            <img src="/logos/tiktok.png" alt="TikTok" className="h-10 object-contain" />
-            <img src="/logos/qvc.png" alt="QVC" className="h-10 object-contain" />
+            <img src="/logos/blueland.jpeg" alt="Blueland" className="h-10 object-contain" />
+            <img src="/logos/QVC_idEMmcOk-k_1.png" alt="QVC" className="h-10 object-contain" />
             <img src="/logos/joy.png" alt="JOY Sportswear" className="h-10 object-contain" />
             <img src="/logos/oudware.png" alt="Oudware" className="h-10 object-contain" />
           </div>
@@ -228,7 +228,7 @@ export default function LandingPage() {
                 alt="Stressed business owner" 
                 className="w-full h-auto rounded-2xl"
               />
-                </div>
+          </div>
 
             {/* Right: Pain Points */}
             <div className="space-y-8">
@@ -247,7 +247,7 @@ export default function LandingPage() {
                   <p className="text-gray-300">
                     With ReconcileBook, get real-time profit tracking, so you're always on top of your numbers.
               </p>
-                </div>
+        </div>
           </div>
 
               <div className="flex gap-4">
@@ -258,7 +258,7 @@ export default function LandingPage() {
                     </svg>
               </div>
           </div>
-                <div>
+            <div>
                   <h3 className="text-2xl font-bold text-white mb-3">
                     Switching between Seller Center, Ads Manager, and Affiliate Center?
                   </h3>
@@ -266,7 +266,7 @@ export default function LandingPage() {
                     Let ReconcileBook automate the work — all your numbers, in one dashboard
             </p>
         </div>
-              </div>
+            </div>
 
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
@@ -283,10 +283,10 @@ export default function LandingPage() {
                   <p className="text-gray-300">
                     Get detailed profit analytics on each product with ReconcileBook's P&L tool.
                   </p>
+              </div>
             </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+        </div>
 
           {/* Dashboard Preview Section */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
@@ -300,7 +300,7 @@ export default function LandingPage() {
                   </div>
               <h2 className="text-4xl font-bold text-white mb-4">
                 Meet Your Real-Time Profit Dashboard
-              </h2>
+            </h2>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Effortlessly track your TikTok Shop performance—including sales, refunds, ad spend, commissions, and net profit—all in one place. Get instant clarity on your margins and compare product performance with a clean, visual layout.
             </p>
@@ -310,7 +310,7 @@ export default function LandingPage() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">No Profit Guesswork</span>
-                </div>
+          </div>
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
@@ -322,7 +322,7 @@ export default function LandingPage() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                   <span className="text-white font-medium">Informed Decision</span>
-            </div>
+          </div>
           </div>
               <div className="bg-[#FF8C00] text-white rounded-lg px-8 py-4 inline-block">
                 <div className="text-2xl font-bold">14 DAY FREE TRIAL</div>
@@ -382,7 +382,7 @@ export default function LandingPage() {
                             className="w-10 h-10 rounded-lg object-cover flex-shrink-0 border border-gray-200"
                           />
                           <span className="text-sm font-medium text-gray-900">{product.name}</span>
-              </div>
+                  </div>
                       </td>
                       <td className="px-6 py-4 text-sm text-right font-semibold text-gray-900">${product.revenue.toLocaleString()}</td>
                       <td className="px-6 py-4 text-sm text-right font-semibold text-red-600">${product.fees.toLocaleString()}</td>
@@ -400,7 +400,7 @@ export default function LandingPage() {
             ))}
                 </tbody>
               </table>
-                  </div>
+                </div>
 
             {/* Legend */}
             <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center gap-6 text-sm">
@@ -411,11 +411,11 @@ export default function LandingPage() {
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <span className="text-gray-600">40-70% margin</span>
-              </div>
+                  </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <span className="text-gray-600">&lt;40% margin</span>
-            </div>
+              </div>
     </div>
               </div>
 
@@ -668,7 +668,7 @@ export default function LandingPage() {
           <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-750 transition-colors rounded-xl"
-                  >
+          >
                     <span className="font-semibold text-white text-lg">{faq.question}</span>
                     <svg 
                       className={`w-6 h-6 text-gray-400 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
@@ -1060,8 +1060,8 @@ function TestimonialsSection() {
       image: '/testimonials/person-1.jpg',
       rating: 5,
       text: "I appreciate how quickly and conveniently ReconcileBook provides data. I think it's the only tool capable of pulling in TikTok Shop fees — highly recommended!"
-    },
-    {
+              },
+              {
       name: 'James Chen',
       title: 'Founder',
       company: 'Peak Performance Gear',
