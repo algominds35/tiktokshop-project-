@@ -504,7 +504,7 @@ export default function LandingPage() {
             <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-500 rounded-full px-6 py-3 mb-6">
               <span className="text-2xl">🎉</span>
               <span className="text-lg font-bold text-green-900">
-                Start 14-Day Free Trial - No Credit Card Required
+                Start 14-Day Free Trial
               </span>
           </div>
 
@@ -680,7 +680,7 @@ export default function LandingPage() {
         </div>
 
           <p className="text-center text-sm text-gray-500 mt-8">
-            All plans include 14-day free trial. No credit card required.
+            All plans include 14-day free trial.
           </p>
         </div>
       </section>
