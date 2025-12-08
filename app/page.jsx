@@ -432,63 +432,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Target Audience Section */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Who Can Benefit From{' '}
-              <span className="text-[#FF6B5B]">ReconcileBook?</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our profit tracking platform is perfect for anyone selling on TikTok Shop who wants clarity on their finances.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-12">
-            {[
-              {
-                title: 'TikTok Shop Sellers',
-                description: 'Track multiple products, understand fees, and maximize your profit margins with ease.',
-                image: '👨‍💼'
-              },
-              {
-                title: 'E-commerce Entrepreneurs',
-                description: 'Manage your finances across platforms and grow your business with QuickBooks integration.',
-                image: '👩‍💼'
-              },
-              {
-                title: 'Small Business Owners',
-                description: 'Stay organized with automated tracking and spend less time on manual accounting.',
-                image: '👥'
-              },
-              {
-                title: 'Freelance Sellers',
-                description: 'Keep your finances clear and meet deadlines with real-time profit tracking.',
-                image: '💼'
-              }
-            ].map((audience, index) => (
-              <div key={index} className="flex items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-40 h-40 bg-white rounded-2xl border-2 border-gray-200 flex items-center justify-center text-6xl">
-                    {audience.image}
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{audience.title}</h3>
-                  <p className="text-gray-600">{audience.description}</p>
-                </div>
-                {index < 3 && (
-                  <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 mt-40">
-                    <div className="w-0.5 h-12 border-l-2 border-dashed border-[#FF6B5B]"></div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <TestimonialsSection />
 
