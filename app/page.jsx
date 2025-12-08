@@ -320,36 +320,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Clarity Score Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-2">
-                From Guessing <span className="text-[#FF6B5B]">to Knowing</span>
-              </h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Stop wasting hours trying to calculate TikTok Shop fees manually. Our platform automatically tracks every fee, shows real profit margins, and helps you make data-driven decisions about your products.
-              </p>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Get clarity on your finances in seconds, reduce stress about hidden fees, and grow your TikTok Shop with confidence knowing your real numbers.
-              </p>
-              <button className="bg-[#FF6B5B] text-white rounded-lg px-8 py-4 font-semibold hover:bg-[#ff5544] transition-colors">
-                Start Free Trial
-              </button>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="relative">
-                <svg className="w-64 h-64" viewBox="0 0 200 200">
-                  <circle cx="100" cy="100" r="90" fill="none" stroke="#e5e7eb" strokeWidth="12"/>
-                  <circle cx="100" cy="100" r="90" fill="none" stroke="#3B82F6" strokeWidth="12" strokeDasharray="565.48" strokeDashoffset="0" transform="rotate(-90 100 100)"/>
-                  <text x="100" y="90" textAnchor="middle" className="text-5xl font-bold" fill="#1f2937">100</text>
-                  <text x="100" y="115" textAnchor="middle" className="text-sm" fill="#6b7280">Crystal Clear</text>
-                </svg>
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white px-3 py-1 rounded-full shadow-md">
-                  <span className="text-sm font-medium text-gray-700">Profit Clarity Score</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
