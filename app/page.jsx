@@ -97,19 +97,11 @@ export default function LandingPage() {
               <div className="flex items-center gap-3 mb-8">
                 <div className="text-sm text-gray-600">
                   Trusted by <span className="font-semibold text-gray-900">500+</span> TikTok Shop Sellers
-                </div>
+              </div>
                 <div className="flex items-center gap-1">
                   <span className="text-yellow-400 text-sm">★★★★★</span>
                   <span className="text-xs font-medium text-gray-600">4.5/5</span>
                 </div>
-              </div>
-
-              {/* Brand Logos Section */}
-              <div className="flex flex-wrap items-center justify-start gap-8 opacity-70">
-                <img src="/logos/tiktok.png" alt="TikTok" className="h-8 grayscale hover:grayscale-0 transition-all" />
-                <img src="/logos/quickbooks.png" alt="QuickBooks" className="h-8 grayscale hover:grayscale-0 transition-all" />
-                <img src="/logos/joy.png" alt="JOY Sportswear" className="h-8 grayscale hover:grayscale-0 transition-all" />
-                <img src="/logos/oudware.png" alt="Oudware" className="h-8 grayscale hover:grayscale-0 transition-all" />
               </div>
 
             </div>
@@ -142,12 +134,11 @@ export default function LandingPage() {
       {/* Logo Section */}
       <section className="py-12 bg-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between opacity-40 grayscale">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="text-2xl font-bold text-gray-400">
-                LOGO
-              </div>
-            ))}
+          <div className="flex items-center justify-between opacity-50 grayscale">
+            <img src="/logos/tiktok.png" alt="TikTok" className="h-10 object-contain" />
+            <img src="/logos/quickbooks.png" alt="QuickBooks" className="h-10 object-contain" />
+            <img src="/logos/joy.png" alt="JOY Sportswear" className="h-10 object-contain" />
+            <img src="/logos/oudware.png" alt="Oudware" className="h-10 object-contain" />
           </div>
         </div>
       </section>
